@@ -1,0 +1,72 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-task" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2>{{ 'Edit reservation'|trans }}</h2>
+                {{ form_start(edit_reservation_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    {% set difference = date(reservation.calendar.endDate).diff(date(reservation.calendar.startDate)) %}
+                    {% set leftDays = difference.days %}
+                    <legend>{{ 'Reservation from'|trans }} :</legend>
+                    <a href="{{ path('app_delete_event', { id: reservation.calendar.id, reservation: reservation.id}) }}"
+                       onclick="return confirm('{{ 'Are you sure delete reservation'|trans }}')" class="bt-delete bt-right">{{ 'Delete reservation'|trans }}
+                    </a>
+                    <p>{{ reservation.calendar.startDate|date("d-m-Y") }} au {{ reservation.calendar.endDate|date("d-m-Y") }}, {{ 'that is'|trans }}
+                        {% if leftDays == 1 %}
+                            1 {{ 'day'|trans }}
+                        {% else %}
+                            {{ leftDays }} {{ 'days'|trans }}
+                        {% endif %}
+                    </p>
+                    <script>
+                        $( function() {
+                            $( "#date-start" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+                            $( "#date-end" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+                        } );
+                    </script>
+                    <div class="input-flex">
+                        {{ form_row(edit_reservation_form.title) }}
+                    </div>
+                    <div class="input-flex">
+                        <div class="input-date">
+                            <label for="date-start" class="required">{{ 'Start date'|trans }}</label>
+                            {# Here was as on old format "Y-m-d" #}
+                            <input type="text" id="date-start" name="start-date" required="required" autocomplete="0" value="{{ reservation.calendar.startDate|date("d-m-Y") }}">
+                        </div>
+                        <div class="input-date">
+                            <label for="date-end" class="required">{{ 'End date'|trans }}</label>
+                            <input type="text" id="date-end" name="end-date" required="required" autocomplete="0" value="{{ reservation.calendar.endDate|date("d-m-Y") }}">
+                        </div>
+                    </div>
+
+                    <div class="input-flex">
+                        <div class="input-select">
+                            {{ form_row(edit_reservation_form.housing) }}
+                        </div>
+                    </div>
+                    <div class="input-flex">
+                        <div class="input-select">
+                            {{ form_row(edit_reservation_form.user) }}
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="input-description">
+                        {{ form_label(edit_reservation_form.note) }}
+                        {{ form_widget(edit_reservation_form.note) }}
+                        <span class="character">0/200</span>
+                    </div>
+
+                    <div class="input-submit">
+                        <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                        <a href="{{ path('app_delete_event', { id: reservation.calendar.id, reservation: reservation.id}) }}" onclick="return confirm('{{ 'Are you sure delete reservation'|trans }}')"
+                           class="bt-disabled">{{ 'Delete reservation'|trans }}
+                        </a>
+                    </div>
+                </fieldset>
+                {{ form_end(edit_reservation_form) }}
+            </div>
+        </div>
+    </div>
+</div>

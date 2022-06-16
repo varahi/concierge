@@ -1,0 +1,10 @@
+<h1>Message du site Concierge Me</h1>
+
+Cher {{ user.firstName }} {{ user.lastName }}<br />
+Votre tâche a été modifiée par un administrateur  <br /><br />
+
+<h3>Informations sur la tâche</h3>
+<b>Tâche #</b> : {{ task.id }}<br />
+<b>Titre de la tâche</b> : {{ task.title }}<br /><br />
+
+<a href="{{ url('app_employer_profile') }}">Connectez-vous à votre interface</a>

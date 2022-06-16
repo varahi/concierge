@@ -1,0 +1,67 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding lightbox-settings">
+    <div class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				{% if add_material is defined %}
+					<h2>{{ 'Create a Material'|trans }}</h2>
+				{% endif %}
+				{% if edit_material is defined %}
+					<h2>{{ 'Edit Material'|trans }}</h2>
+				{% endif %}
+				{{ form_start(material_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'} } ) }}
+					<fieldset>
+						<div class="input-flex">
+							<div class="col-8">
+								{{ form_row(material_form.name) }}
+							</div>
+							{{ form_row(material_form.quantity) }}
+						</div>
+						<div class="input-price">
+							{#
+							{{ form_row(material_form.dayPrice) }}
+                            {{ form_row(material_form.weekPrice) }}
+							#}
+							{{ form_row(material_form.price) }}
+						</div>
+
+						{#
+						<div class="input-flex input-radio-rental">
+							<div class="velvet">
+								<label>
+									{% if material.isRenter is defined %}
+										<input type="radio" name="material_form[isRenter]" value="renter" {% if material.isRenter == 1 %} checked {% endif %} required>
+									{% else %}
+										<input type="radio" name="material_form[isRenter]" value="renter" required>
+									{% endif %}
+									{{ 'Renter'|trans }}
+								</label>
+							</div>
+							<div class="green">
+								<label>
+									{% if material.isOwner is defined %}
+										<input type="radio" name="material_form[isRenter]" value="owner" {% if material.isOwner == 1 %} checked {% endif %}>
+									{% else %}
+										<input type="radio" name="material_form[isRenter]" value="owner">
+									{% endif %}
+									{{ 'Owner'|trans }}
+								</label>
+							</div>
+						</div>
+						#}
+
+						<div class="input-checkbox">
+							{{ form_row(material_form.isRenter) }}
+						</div>
+						<div class="input-checkbox">
+							{{ form_row(material_form.isOwner) }}
+						</div>
+
+						<div class="input-submit">
+							<input type="submit" value="{{ 'form.submit'|trans }}"/>
+						</div>
+                    </fieldset>
+                {{ form_end(material_form) }}
+			</div>
+		</div>
+    </div>
+</div>

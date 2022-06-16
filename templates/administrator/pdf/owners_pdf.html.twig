@@ -1,0 +1,25 @@
+{% extends 'pdf.html.twig' %}
+{% block body %}
+    <h1 style="text-align: center; text-transform: uppercase; color: #477CD5; font-weight: normal">Owners/Apartments</h1>
+
+    {% if owners %}
+        <div class="table">
+            {% for owner in owners %}
+                <h3>
+                    {{ owner.firstName }} {{ owner.lastName }} - {{ owner.email }}
+                </h3>
+                {% if owner.apartments %}
+                    {% for apartment in owner.apartments %}
+                        <div>{{ apartment.number }} {{ apartment.address }} {{ apartment.zip }} {{ apartment.city }}</div>
+                    {% endfor %}
+                {% endif %}
+                <hr />
+            {% endfor %}
+        </div>
+    {% else %}
+        {#
+        <p>{{ 'No owners'|trans }}</p>
+        #}
+    {% endif %}
+
+{% endblock %}

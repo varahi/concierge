@@ -1,0 +1,21 @@
+<div class="list-user">
+    {% for index,user in employers %}
+            <div class="item">
+                    <div class="input-checkbox">
+                            <input type="checkbox" name="" id="employee-{{ user.id }}" data-user="{{ user.id }}"/>
+                    </div>
+                    <div class="title">
+                            <p>{{ user.lastName }} {{ user.firstName }}</p>
+                            <div class="image" style="background-color: {{ user.color }}">
+                                    <span>{{ user.firstName|slice(0, 1) }}</span>
+                            </div>
+                    </div>
+                    <div class="button">
+                            <a class="bt-edit ajax-popup-link" href="{{ path('app_edit_employer', { id: user.id}) }}">{{ 'Edit'|trans }}</a>
+                    </div>
+                    {% include 'administrator/partials/leftCol/_list_task.html.twig' %}
+            </div>
+    {% else %}
+        <div class="text-center alert alert-primary">{{ 'No employers'|trans }}</div>
+    {% endfor %}
+</div>

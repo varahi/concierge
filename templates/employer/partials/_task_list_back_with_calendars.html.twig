@@ -1,0 +1,41 @@
+<div class="detail-task user-task">
+    {% if tasks %}
+        {% for index,calendar in calendars %}
+            <div class="task-date">
+                {# Founded only this solution to check if task exists before loop #}
+                {% if calendar.__isInitialized__ is defined %}
+
+                    {# Entry tasks #}
+                    <div class="date {% if calendar.isArchived == 1 %}hidden{% endif %}">
+                        <p>
+                            {# {{ calendar.startDate |date("l, d F Y", "Europe/Paris") }} #}
+                            {{ calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EE, dd MMM yyyy') }}
+                        </p>
+                    </div>
+                    {% for task in calendar.task %}
+                        {% for user in task.users %}
+                            {% if user.id == currentUser.id %}
+                                {% include 'employer/partials/_task.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+
+                    {# Leaving tasks #}
+                    {% if calendar.isSingle is null %}
+                        <div class="date {% if calendar.isArchived == 1 %}hidden{% endif %}">
+                            <p>
+                                {# {{ calendar.endDate |date("l, d F Y", "Europe/Paris") }} #}
+                                {{ calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EE, dd MMM yyyy') }}
+                            </p>
+                        </div>
+                        {% for task in calendar.task %}
+                            {% if task.isEntry == 0 %}
+                                {% include 'employer/partials/_task.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

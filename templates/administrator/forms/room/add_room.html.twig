@@ -1,0 +1,38 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				<h2>{{ 'Create room'|trans }}</h2>
+
+				{{ form_start(add_room_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+				<fieldset>
+					{{ form_row(add_room_form.name) }}
+					<div class="input-submit2">
+						<input type="submit" value="{{ 'form.submit'|trans }}"/>
+					</div>
+				</fieldset>
+				{{ form_end(add_room_form) }}
+
+				{#
+				{{ form(add_room_form) }}
+				#}
+
+				{#
+				<form class="form-std">
+					<fieldset>
+						<div class="input-select">
+							<select>
+								<option>Salle à manger</option>
+							</select>
+						</div>
+						<div class="input-submit2">
+							<input type="submit" value="{{ 'form.submit'|trans }}"/>
+						</div>
+					</fieldset>
+				</form>
+				#}
+
+			</div>
+		</div>
+    </div>
+</div>

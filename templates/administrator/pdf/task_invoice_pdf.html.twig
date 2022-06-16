@@ -1,0 +1,39 @@
+{% extends 'pdf.html.twig' %}
+{% block body %}
+    <h1 style="text-align: center; text-transform: uppercase; color: #477CD5; font-weight: normal">Invoice # {{ task.invoice.id }} for task #{{ task.id }}</h1>
+
+    <h3>Invoice</h3>
+    {% if task.invoice %}
+    {% if task.invoice.isRenter %}
+        Invoice Number: {{ task.invoice.id }} <br />
+        Created Date: {{ task.invoice.created|date("d-m-Y H:i") }} <br />
+    {% endif %}
+    {% endif %}
+
+    <hr />
+
+    <h3>Owner</h3>
+    {% if task.invoice.owner %}
+        First Name: {{ task.invoice.owner.firstName }} <br />
+        Last Name: {{ task.invoice.owner.lastName }} <br />
+        Email: {{ task.invoice.owner.email }} <br />
+        Telephone: {{ task.invoice.owner.telephone }} <br />
+    {% endif %}
+
+    <hr />
+
+    <h3>Apartment</h3>
+    {% if task.invoice.apartment %}<br />
+        Apartment id: {{ task.invoice.apartment.id }}<br />
+        {% if task.invoice.apartment.address %}
+            Address: {{ task.invoice.apartment.address }}<br />
+        {% endif %}
+        {% if task.invoice.apartment.city %}
+            City: {{ task.invoice.apartment.city }}<br />
+        {% endif %}
+        {% if task.invoice.apartment.zip %}
+            Zip: {{ task.invoice.apartment.zip }}<br />
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

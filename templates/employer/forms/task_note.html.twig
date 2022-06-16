@@ -1,0 +1,24 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2>{{ 'Add note'|trans }} for task #{{ task.id }}</h2>
+
+                {{ form_start(task_note_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    <div class="input-description big-area">
+                        {#
+                        <label for="note">{{ 'Note'|trans }}</label>
+                        #}
+                        {{ form_widget(task_note_form.note) }}
+                        <span class="character">0/500</span>
+                    </div>
+                    <div class="input-submit2">
+                        <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                    </div>
+                </fieldset>
+                {{ form_end(task_note_form) }}
+            </div>
+        </div>
+    </div>
+</div>

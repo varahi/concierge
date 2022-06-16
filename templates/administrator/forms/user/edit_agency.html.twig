@@ -1,0 +1,57 @@
+<div id="custom-content" class="white-popup-block">
+
+    <div id="edit-owner" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2>{{ 'Edit an agency'|trans }}</h2>
+                {{ form_start(agency_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    <legend>{{ 'Contact information'|trans }}</legend>
+                    <div class="input-flex">
+                        {{ form_row(agency_form.company) }}
+                    </div>
+                    {{ form_row(agency_form.address) }}
+                    <div class="input-select-multiple">
+                        {{ form_row(agency_form.agencyApartments) }}
+                    </div>
+                    <div class="input-flex">
+                        <div class="input-cp">
+                            {{ form_row(agency_form.zip) }}
+                        </div>
+                        {{ form_row(agency_form.city) }}
+                    </div>
+                    <div class="input-flex">
+                        <div>
+                            <label for="agency_form_telephone">{{ 'Phone'|trans }}</label>
+                            <input type="text" id="agency_form_telephone" name="agency_form[telephone]" maxlength="255"
+                                   class="inputmask mask-phone" value="{{ agency.telephoneFullNumber }}">
+                            {{ form_row(agency_form.telephoneFullNumber) }}
+                        </div>
+                        <div>
+                            <label for="agency_form_telephone">{{ 'Phone2'|trans }}</label>
+                            <input type="text" id="agency_form_telephone2" name="agency_form[telephone2]" maxlength="255"
+                                   class="inputmask mask-phone" value="{{ agency.telephone2FullNumber  }}">
+                            {{ form_row(agency_form.telephone2FullNumber) }}
+                        </div>
+                    </div>
+                    <div>
+                        {{ form_row(agency_form.email) }}
+                    </div>
+                    <div>
+                        {{ form_row(agency_form.note) }}
+                    </div>
+
+                    <div class="input-submit">
+                        <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                        <a href="{{ path('app_delete_owner', { id: agency.id}) }}" onclick="return confirm('{{ 'Are you sure delete agency'|trans }}')"
+                           class="bt-disabled">{{ 'Delete agency'|trans }}
+                        </a>
+                    </div>
+
+                </fieldset>
+
+                {{ form_end(agency_form) }}
+            </div>
+        </div>
+    </div>
+</div>

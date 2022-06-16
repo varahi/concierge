@@ -1,0 +1,147 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding lightbox-settings">
+    <div class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				{% if add_pack is defined %}
+					<h2>{{ 'Create a Pack'|trans }}</h2>
+				{% endif %}
+				{% if edit_pack is defined %}
+					<h2>{{ 'Edit Pack'|trans }}</h2>
+				{% endif %}
+				{{ form_start(pack_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'} } ) }}
+					<fieldset>
+						<div>{{ form_row(pack_form.name) }}</div>
+						<div class="input-flex">
+							<div class="col-8">
+
+								{# Edit existng params #}
+								{% if params is defined and params is not null %}
+									<label>{{ 'Contain'|trans }}</label>
+									{% for param in params %}
+										<div class="input-flex">
+											<div class="input-select">
+												<select name="pack_form[contain][]" id="pack_form_contain_{{ param.id }}">
+													{% for prestation in prestations %}
+														<option value="{{ prestation.id }}" {% if param.prestation.id == prestation.id %} selected {% endif %}>{{ prestation.name }} - {{ prestation.price|format_currency('EUR')  }}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+									{% endfor %}
+								{% endif %}
+							</div>
+
+							<div class="col-2">
+								{% if params is defined and params is not null %}
+									<label class="required">{{ 'Quantity'|trans }}</label>
+									{% for param in params %}
+										<div class="input-flex">
+											<div>
+												<input type="number" id="form-std_quantity_{{ param.id }}" width="20" name="pack_form[quantity][]"
+												   placeholder="{{ param.quantity }}" value="{{ param.quantity }}" required>
+											</div>
+										</div>
+									{% endfor %}
+								{% endif %}
+							</div>
+
+							{#
+							<div class="col-2">
+								{% if params is defined and params is not null %}
+									<label class="required">{{ 'Discount'|trans }}</label>
+									{% for param in params %}
+										<div class="input-flex">
+											<div>
+												<input type="text" id="new_price" name="pack_form[new_discount][]" placeholder="Enter value">
+											</div>
+											<div style="margin: auto 5px; flex: none;">
+												<a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+												   href="{{ path('app_delete_contain', {id: param.id}) }}">{{ 'Delete'|trans }}
+												</a>
+											</div>
+										</div>
+									{% endfor %}
+								{% endif %}
+							</div>
+							#}
+
+							<div class="col-2">
+								{% if params is defined and params is not null %}
+									<label class="required">{{ 'Discount'|trans }} &euro;</label>
+									{% for param in params %}
+										<div class="input-flex">
+											<div>
+												<input type="number" step="0.01" size="5" id="form-std_price_{{ param.id }}" width="20" name="pack_form[discount][]"
+													   placeholder="{{ param.discount }}" value="{{ param.discount }}">
+											</div>
+											<div style="margin: auto 5px; flex: none; padding: 0;">
+												<a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+												   href="{{ path('app_delete_contain', {id: param.id}) }}">{{ 'Delete'|trans }}
+												</a>
+											</div>
+										</div>
+									{% endfor %}
+								{% endif %}
+							</div>
+						</div>
+						<div class="add-newPack text-center">
+							<a class="bt-blue" href="#">{{ 'Add line'|trans }}</a>
+						</div>
+						<div class="input-newPack input-hidden">
+							<div class="input-flex">
+								<div class="col-8">
+									<label>{{ 'New Contain'|trans }}</label>
+								</div>
+								<div class="col-2">
+									<label>{{ 'New quantity'|trans }}</label>
+								</div>
+							</div>
+							<div class="input-flex input-newLine">
+								<div class="col-8">
+									{# New param field #}
+									<div class="input-flex">
+										<div class="input-select">
+											<select name="pack_form[new_contain][]" >
+												<option value="">{{ 'New Contain'|trans }}</option>
+												{% for prestation in prestations %}
+													<option value="{{ prestation.id }}">{{ prestation.name }} - {{ prestation.price }} &#8364;</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-2">
+									<div class="input-flex">
+										<div>
+											<input type="number" id="new_quantity" name="pack_form[new_quantity][]" placeholder="{{ 'Enter value' }}">
+										</div>
+									</div>
+								</div>
+								<div class="col-2">
+									<div class="input-flex">
+										<div>
+											<input type="number" step="0.01" id="new_price" name="pack_form[new_discount][]" placeholder="{{ 'Enter value' }}">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div>{{ form_row(pack_form.total) }}</div>
+						{% if params is defined and params is not null %}
+							{% for param in params %}
+								<input type="hidden" name="pack_form[param][]" value="{{ param.id }}">
+							{% endfor %}
+						{% endif %}
+
+						<div class="input-flex">
+							<div class="input-submit">
+								<input type="submit" value="{{ 'form.submit'|trans }}"/>
+							</div>
+						</div>
+                    </fieldset>
+                {{ form_end(pack_form) }}
+			</div>
+		</div>
+    </div>
+</div>

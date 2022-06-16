@@ -1,0 +1,56 @@
+
+<div>
+    <h2>{{ 'Owner information'|trans }}</h2>
+    <table class="table-std">
+        <tbody>
+        {% if task.housing.user is defined %}
+            <tr>
+                <th>{{ 'Owner'|trans }}</th>
+                <td>
+                    {% if task.housing.user.firstName is defined %}
+                        {{ task.housing.user.firstName }}
+                    {% endif %}
+                    {% if task.housing.user.lastName is defined %}
+                        {{ task.housing.user.lastName }}
+                    {% endif %}
+                    {% if task.housing.user.contactPerson is defined %}
+                        {{ task.housing.user.contactPerson }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
+        {% if task.housing.user.telephone is defined %}
+            <tr>
+                <th>{{ 'Phone'|trans }}</th>
+                <td>{{ task.housing.user.telephone }}</td>
+            </tr>
+        {% endif %}
+        {% if task.housing.user.email is defined %}
+            <tr>
+                <th>{{ 'Email'|trans }}</th>
+                <td>{{ task.housing.user.email }}</td>
+            </tr>
+        {% endif %}
+        {% if task.housing.user.apartments is defined %}
+            <tr>
+                <th>{{ 'Offer'|trans }}</th>
+                <td>
+                    {% for apartment in task.housing.user.apartments %}
+                        {% if apartment.packs.id|default('-1') == '-1' %}
+                            {# Not defined #}
+                        {% else %}
+                            {{ apartment.packs.name }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endif %}
+        {% if task.ownerNote %}
+            <tr>
+                <th>{{ 'Note'|trans }}</th>
+                <td colspan="2">{{ task.ownerNote }}</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>

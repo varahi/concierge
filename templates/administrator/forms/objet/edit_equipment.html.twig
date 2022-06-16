@@ -1,0 +1,55 @@
+<div id="custom-content" class="white-popup-block">
+    <div id="edit-equipment" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="left-detail">
+                <header>
+                    <p class="title">{{ 'Modify equipment'|trans }}</p>
+                </header>
+                <div class="content">
+                    {{ form_start(equipment_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                        <fieldset>
+                        <div class="input-flex">
+
+                            <div>
+                                {{ form_row(equipment_form.name) }}
+                                <br />
+                                <div class="input-flex">
+                                    <div class="col-8">
+										<div class="input-select">
+											{{ form_row(equipment_form.state) }}
+										</div>
+                                    </div>
+                                    <div class="col-4">
+                                        {{ form_row(equipment_form.quantity) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="input-description">
+                                    {#
+                                    {{ 'Description'|trans }}
+                                    #}
+                                    {{ form_row(equipment_form.description) }}
+                                    <span class="character">0/200</span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <h2>{{ 'Equipment photos'|trans }}</h2>
+                        {{ include("administrator/forms/upload_form.html.twig") }}
+                        <div class="input-submit">
+                            {#
+                            <input type="reset" value="{{ 'Cancel'|trans }}"/>
+                            #}
+                            <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                            <button class="bt-disabled">{{ 'Delete'|trans }}</button>
+                        </div>
+                    </fieldset>
+                    {{ form_end(equipment_form) }}
+                </div>
+            </div>
+            {% include 'administrator/partials/lightbox/_right_detail.html.twig' %}
+        </div>
+    </div>
+</div>

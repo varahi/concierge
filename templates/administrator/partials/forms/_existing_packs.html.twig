@@ -1,0 +1,43 @@
+<div class="input-flex">
+    <div class="col-8">
+        {% if invoicePacks is defined and invoicePacks is not null %}
+            <label>{{ 'Contain'|trans }}</label>
+            {% for invoicePack in invoicePacks %}
+                <div class="input-flex">
+                    <div class="input-select">
+                        <select name="calendar_form[pack][]" id="calendar_form_pack_{{ invoicePack.id }}">
+                            {% for pack in packs %}
+                                <option value="{{ pack.id }}" {% if invoicePack.id == pack.id %} selected {% endif %}
+									{% if pack.isRenter == 1 %} class="velvet" {% endif %} {% if pack.isOwner == 1 %} class="green" {% endif %}>
+                                    {{ pack.name }} {% if pack.price is defined and pack.price is not null %} - {{ pack.price }} &#8364;{% endif %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="col-2">
+        {% if invoicePacks is defined and invoicePacks is not null %}
+            <label class="required">{{ 'Quantity'|trans }}</label>
+            {% for invoiceContain in invoiceContains %}
+                {% if invoiceContain.pack is defined and invoiceContain.pack is not null %}
+                    <div class="input-flex">
+                        <div>
+                            <input type="number" id="form-std_quantity_{{ invoiceContain.id }}" width="20" name="calendar_form[pack_quantity][]"
+                                   placeholder="{{ invoiceContain.quantity }}" value="{{ invoiceContain.quantity }}" required>
+                        </div>
+                        <div style="margin: auto 5px; flex: none; padding: 0;">
+                            <a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+                               href="{{ path('app_delete_invoice_contain', {id: invoiceContain.id}) }}">{{ 'Delete'|trans }}
+                            </a>
+                        </div>
+                    </div>
+                    <input type="hidden" name="calendar_form[pack_contains][]" value="{{ invoiceContain.id }}">
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

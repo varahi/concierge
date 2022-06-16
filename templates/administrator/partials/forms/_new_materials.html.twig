@@ -1,0 +1,46 @@
+<div class="add-newMaterial text-center">
+    <a class="bt-blue" href="#">{{ 'New material'|trans }}</a>
+</div>
+
+<div class="input-newMaterial input-hidden">
+    <div class="input-flex">
+        <div class="col-8">
+            <label>{{ 'New material'|trans }}</label>
+        </div>
+        <div class="col-4">
+            <label>{{ 'New quantity'|trans }}</label>
+        </div>
+    </div>
+    <div class="input-flex input-newLine">
+        <div class="col-8">
+            <div class="input-flex">
+                <div class="input-select">
+                    <select name="calendar_form[new_material][]" >
+                        <option value="">{{ 'New material'|trans }}</option>
+                        {% for material in materials %}
+                            <option value="{{ material.id }}"
+                                    {% if material.isOwner == 1 and material.isRenter == 1 %}
+                                        class="velvet-green"
+                                    {% elseif material.isRenter == 1 %}
+                                        class="velvet"
+                                    {% else %}
+                                        class="green"
+                                    {% endif %}
+                            >
+								{{ material.name }}
+                                {% if material.price is defined and material.price is not null %} - {% if material.isRenter == 1 %} Renter {% endif %} {% if material.isOwner == 1 %} Owner {% endif %} {{ material.price }} &#8364;{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="input-flex">
+                <div>
+                    <input type="number" id="new_quantity" name="calendar_form[new_material_quantity][]" placeholder="{{ 'Enter value' }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

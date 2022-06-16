@@ -1,0 +1,28 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding lightbox-settings">
+    <div class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				{% if add_pack is defined %}
+					<h2>{{ 'Create a Pack'|trans }}</h2>
+				{% endif %}
+				{% if edit_pack is defined %}
+					<h2>{{ 'Edit Pack'|trans }}</h2>
+				{% endif %}
+				{{ form_start(pack_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'} } ) }}
+					<fieldset>
+						{{ form_row(pack_form.name) }}
+						{#
+							@TODO: make contains in the pack. As Pack->Params->Prestation
+						<div class="input-select-multiple">
+							{{ form_row(pack_form.contain) }}
+						</div>
+						#}
+						<div class="input-submit">
+							<input type="submit" value="{{ 'form.submit'|trans }}"/>
+						</div>
+                    </fieldset>
+                {{ form_end(pack_form) }}
+			</div>
+		</div>
+    </div>
+</div>

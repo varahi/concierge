@@ -1,0 +1,7 @@
+# This is a custom service what can be different for each domain
+parameters:
+  default_admin_email: info@t3dev.ru
+  default_subject: Subject from site orcieresconciergerie.me
+  default_domain: 'orcieresconciergerie.me'
+  default_scheme: 'https'
+  app.supported_locales: 'en|fr|ru'

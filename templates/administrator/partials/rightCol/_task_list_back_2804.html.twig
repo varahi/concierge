@@ -1,0 +1,100 @@
+{#
+    Variant #1
+#}
+{# Founded only this solution to check if task exists before loop #}
+
+{#
+<div class="_detail-task">
+    {% if tasks %}
+        {% for index,calendar in calendars %}
+            {% if calendar.__isInitialized__ is defined %}
+                <div class="_date">
+                    <p>Entry cal id {{ calendar.id }} {{ calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}</p>
+                </div>
+                {% for task in calendar.task %}
+                    {% if task.isEntry == 1 %}
+                        id {{task.id}} - {{ task.housing.name }}
+                    {% endif %}
+
+                    {% if task.isEntry == 0 %}
+                    <div class="_date">
+                        {% set date = null %}
+                        {% if date != task.endDate %}
+                            <p> Leaving {{ task.endDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}</p>
+                        {% endif %}
+                    </div>
+                        id {{task.id}} - {{ task.housing.name }}
+                    {% endif %}
+                {% endfor %}
+                <br /><br /><hr /><br />
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>{{ 'No tasks'|trans }}</p>
+    {% endif %}
+</div>
+#}
+
+
+{% set startDate = null %}
+{% for task in tasks %}
+
+    {% if startDate != task.startDate %}
+        {% set startDate = task.startDate %}
+        <p> {{ task.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}</p>
+    {% endif %}
+
+    {% if task.isEntry == 1 %}
+        <p>{{ task.id }} - {{ task.title }}</p>
+    {% else %}
+        <p>{{ task.id }} - {{ task.title }}</p>
+    {% endif %}
+
+
+{% endfor %}
+
+
+
+{#
+{% set array = ["testA","testB","testA","testC","testB"]  %}
+
+{% for name in array|reduce((unique, item) => item in unique ? unique : unique|merge([item]), []) %}
+    My name is {{name}}
+{% endfor %}
+#}
+
+
+{#$
+The main problem what we have duplicate "Leaving task". We can show entry task and only one date title and sort this for entry tasks. But if show leaving task
+#}
+
+{#
+We can normally group tasks and sorting them by dates if use only entry tasks. Or if group entry and leaving tasks by only start date (not by end dates for leaving tasks)
+We showing tasks in foreach cycle. Please look at the simplified output algorithm
+
+foreach tasks {
+  if task is entry ->
+    mar., 26 avr. 2022 (start date of entry tasks)
+    Entry task 1
+    Entry task 2
+
+    jeu., 28 avr. 2022 (start date of entry tasks)
+    Entry task 3
+    Entry task 4
+
+  if task is leaving ->
+    27 avr. 2022 (end date of leaving tasks)
+    Leaving task 1
+    Leaving task 2
+
+    sam., 30 avr. 2022 (end date of leaving tasks)
+    Leaving task 3
+    Leaving task 4
+}
+As result we have non sorted dates. I suggest group dates only by start dates, there is no another solution.
+
+26 avr. 2022
+28 avr. 2022
+27 avr. 2022
+30 avr. 2022
+#}

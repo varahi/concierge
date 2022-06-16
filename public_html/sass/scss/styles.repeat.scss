@@ -1,0 +1,224 @@
+
+@import "styles.variable.scss";
+@import "mixin.scss";
+
+/**** BUTTON / TEXT STYLE ****/
+.bt-red, .bt-black, .bt-blue, .bt-green, .bt-border, .bt-blue2, .bt-blue3, .bt-blue4, .bt-grey{
+	display: inline-block;
+	padding: 13px 30px;
+	color: #fff !important;
+	background-color: $red;
+	text-transform: uppercase;
+	border-radius: 30px;
+	font-size: 18px;
+	font-family: $heebo;
+	text-decoration: none !important;
+	@include transition(all, 0.3s, 0s);
+	position: relative;
+	&:hover, &:active, &:focus{
+		text-decoration: none;
+		background-color: darken($red, 10%);
+	}
+}
+
+.bt-red{
+	background-color: $red;
+	&:hover, &:active, &:focus{
+		background-color: darken($red, 10%);
+	}
+}
+.bt-border{
+	background-color: transparent;
+	border: 1px solid $grey;
+	color: $black !important;
+	&:hover, &:active, &:focus{
+		background-color: $black;
+		color: #fff !important;
+	}
+}
+.bt-black{
+	background-color: $black;
+	&:hover, &:active, &:focus{
+		background-color: $green;
+		color: $black !important;
+	}
+}
+.bt-blue{
+	background-color: $blue;
+	&:hover, &:active, &:focus{
+		background-color: darken($blue, 10%);
+	}
+}
+.bt-blue2{
+	background-color: $blue2;
+	&:hover, &:active, &:focus{
+		background-color: darken($blue2, 10%);
+	}
+}
+.bt-blue3{
+	background-color: $blue3;
+	&:hover, &:active, &:focus{
+		background-color: $blue2;
+	}
+}
+.bt-blue4{
+	background-color: $blue4;
+	&:hover, &:active, &:focus{
+		background-color: $blue2;
+	}
+}
+.bt-grey{
+	background-color: #B8BCC1;
+	color: #fff !important;
+	&:hover, &:active, &:focus{
+		background-color: #9A9A9A;
+	}
+}
+.bt-green{
+	background-color: $green;
+	color: $black !important;
+	&:hover, &:active, &:focus{
+		background-color: darken($green, 10%);
+	}
+}
+
+
+.bt-invoice{
+	background: url('../../images/icon_invoice.svg') no-repeat center center;
+	background-size: auto 100%;
+	margin-left: 20px;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.bt-view{
+	background: url('../../images/icon_search2.svg') no-repeat center center;
+	background-size: auto 100%;
+	margin-left: 20px;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.bt-edit{
+	background: url('../../images/icon_edit.svg') no-repeat center center;
+	background-size: auto 100%;
+	margin-left: 20px;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.bt-notification{
+	background: url('../../images/icon_notification.png') no-repeat center center;
+	background-size: auto 100%;
+	margin-left: 20px;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	&:hover, &.active{
+	background: url('../../images/icon_no_notification.png') no-repeat center center;
+	}
+}
+.bt-settings2{
+	background: url('../../images/icon_key.svg') no-repeat center center;
+	background-size: auto 100%;
+	margin-left: 20px;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.bt-settings{
+	background: url('../../images/icon_settings2.svg') no-repeat center center;
+	background-size: auto 100%;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.bt-photo{
+	display: inline-block;
+	width: 15px;
+	height: 13px;
+	background: url('../../images/icon_photo.svg') no-repeat center center;
+	text-indent: -9999px;
+}
+
+.text-right{
+	text-align: right !important;
+}
+.text-center{
+	text-align: center !important;
+}
+.text-left{
+	text-align: left !important;
+}
+
+.txt-red{
+	color: $red !important;
+	*{
+		color: inherit;
+	}
+}
+.txt-blue{
+	color: $blue !important;
+	*{
+		color: inherit;
+	}
+}
+.txt-blue2{
+	color: $blue2 !important;
+	*{
+		color: inherit;
+	}
+}
+.txt-blue3{
+	color: $blue3 !important;
+	*{
+		color: inherit;
+	}
+}
+.txt-blue4{
+	color: $blue4 !important;
+	*{
+		color: inherit;
+	}
+}
+.txt-black{
+	color: $black !important;
+	*{
+		color: inherit;
+	}
+}
+.txt-green{
+	color: $green !important;
+	*{
+		color: inherit;
+	}
+}
+
+h2.center, h3.center, h1.center{
+	text-align: center !important;
+}
+h2.left, h3.left, h1.left{
+	text-align: left !important;
+}
+h2.right, h3.right, h1.right{
+	text-align: right !important;
+}
+
+.bt-add{
+	background: url('../../images/icon_plus.svg') no-repeat center center;
+	width: 21px;
+	height: 21px;
+	text-indent: -9999px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/**** END BUTTON / TEXT STYLE ****/
+
+

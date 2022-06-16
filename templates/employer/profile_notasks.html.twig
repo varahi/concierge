@@ -1,0 +1,57 @@
+{% extends 'profile.html.twig' %}
+{% block title %}Hello Employer!{% endblock %}
+{% block body %}
+
+    <main id="main">
+        <div id="main-left">
+            <div class="right">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>{{ 'Tasks'|trans }}</p>
+                        </div>
+                        <div class="bottom">
+                            <form class="form-range">
+                                <div class="daterange">
+                                    <span></span>
+                                </div>
+                            </form>
+                        </div>
+                    </header>
+                    {% include 'partials/_message.html.twig' %}
+                    <article class="content">
+                        <div class="button-top">
+                            <a class="bt-blue3 task-active" href="#">{{ 'Tasks in progress'|trans }}</a>
+                            <a class="bt-blue3 task-done" href="#">{{ 'Tasks done'|trans }}</a>
+                            <a class="bt-blue3" href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
+                        </div>
+                        <div class="detail-task user-task">
+                            <p>{{ 'No tasks'|trans }}</p>
+                        </div>
+                    </article>
+                </section>
+            </div>
+            <div class="left">
+                <section class="task-item" id="task">
+                    <header>
+                        <div class="top">
+                            <p>{{ 'Claud account'|trans }}</p>
+                        </div>
+                        <div class="bottom">
+                            <div class="button-top">
+                                <p>{{ 'No tasks'|trans }}<br />
+                                    {{ 'No calendar'|trans }}
+                                </p>
+                                <p>
+                            </div>
+                        </div>
+                    </header>
+                </section>
+            </div>
+        </div>
+        <aside id="main-right">
+            <div id="calendar"></div>
+        </aside>
+    </main>
+
+{% endblock %}

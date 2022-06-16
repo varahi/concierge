@@ -1,0 +1,37 @@
+<h1>Message du site Concierge Me</h1>
+
+Cher {{ user.firstName }} {{ user.lastName }}<br />
+Votre interface propriétaire a été modifiée dans notre logiciel de gestion avec les paramètres suivants : <br /><br />
+
+<b>Date</b>: {{ date|date("d-m-Y - H:i:s") }} <br />
+
+{% if postArray.company is defined %}
+    <b>Company</b> : {{ postArray.company }}<br />
+{% endif %}
+
+{% if postArray.firstName is defined and postArray.lastName is defined %}
+    <b>Contact</b> : {{ postArray.firstName }} {{ postArray.lastName }}<br />
+{% endif %}
+
+{% if postArray.address is defined %}
+    <b>Addresse</b> : {{ postArray.address }}<br />
+{% endif %}
+
+{% if postArray.zip is defined %}
+    <b>Code Postal</b> : {{ postArray.zip }}<br />
+{% endif %}
+
+{% if postArray.city is defined %}
+    <b>Ville</b> : {{ postArray.city }}<br />
+{% endif %}
+
+{% if postArray.telephone is defined %}
+    <b>Téléphone</b> : {{ postArray.telephone }}<br />
+{% endif %}
+
+{% if postArray.email is defined %}
+    <b>Email</b> : {{ postArray.email }}<br />
+{% endif %}
+<br />
+
+<a href="{{ url('app_administrator') }}">Connectez-vous à votre interface</a>

@@ -1,0 +1,21 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				<h2>{{ 'Add note'|trans }}</h2>
+
+				{{ form_start(add_photo_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+				<fieldset>
+					<div class="input-file">
+						<label for="photo">{{ 'form.task_photo'|trans }}</label>
+						<input type="file"/>
+					</div>
+					<div class="input-submit2">
+						<input type="submit" value="{{ 'form.submit'|trans }}"/>
+					</div>
+				</fieldset>
+				{{ form_end(add_photo_form) }}
+			</div>
+		</div>
+    </div>
+</div>

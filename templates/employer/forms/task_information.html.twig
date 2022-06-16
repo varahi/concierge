@@ -1,0 +1,61 @@
+<form name="services_form" method="post" class="form-std"  action="{{ url('app_employer_profile') }}" autocomplete="off">
+    <div class="row">
+        {% if task.invoice.services is defined %}
+            <div>
+                <fieldset>
+                    <legend>{{ 'Task todo'|trans }}</legend>
+                    {% for service in task.invoice.services %}
+                        <div class="input-checkbox">
+                            <input type="checkbox" id="checkbox-task{{ service.id }}" name="services_form[services][]" value="{{ service.id }}" />
+                            <label for="checkbox-task{{ service.id }}">{{ service.name }}</label>
+                            {% if task.renter is not null %}
+                                <input type="hidden" value="{{ task.renter.id }}" name="services_form[renter]">
+                            {% else %}
+                                {% if task.invoice.renter is not null %}
+                                    <input type="hidden" value="{{ task.invoice.renter.id }}" name="services_form[renter]">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </fieldset>
+            </div>
+        {% endif %}
+
+        {#
+        @TODO: works on un-checked input
+        #}
+
+        {#
+        {% if task.housing.renter.completedServices is defined %}
+            <div>
+                <fieldset>
+                    <legend>{{ 'Accomplished tasks'|trans }}</legend>
+                    {% for cservice in task.housing.renter.completedServices %}
+                        <div class="input-checkbox">
+                            <input type="checkbox" id="checkbox-task-done{{ cservice.id }}" name="services_form[services_completed][]" value="{{ cservice.id }}" />
+                            <label for="checkbox-task-done{{ cservice.id }}">{{ cservice.name }}</label>
+                            <input type="hidden" value="{{ task.housing.renter.id }}" name="services_form[renter]">
+                        </div>
+                    {% endfor %}
+                </fieldset>
+            </div>
+        {% endif %}
+        #}
+    </div>
+
+    {% if task.renter is not null %}
+        <div class="input-submit">
+            <input type="submit" value="{{ 'form.submit'|trans }}">
+        </div>
+    {% else %}
+        {% if task.invoice ?  task.invoice.renter %}
+            <div class="input-submit">
+                <input type="submit" value="{{ 'form.submit'|trans }}">
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <input type="hidden" id="services_form__token" name="services_form[_token]" value="{{ csrf_token('task') }}">
+
+    <br /><br />
+</form>

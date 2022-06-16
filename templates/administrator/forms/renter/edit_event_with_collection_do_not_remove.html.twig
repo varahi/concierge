@@ -1,0 +1,178 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-task" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2>{{ 'Edit event'|trans }}</h2>
+                {{ form_start(edit_event_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                    <fieldset>
+						{# endDate and startDate are strings or DateTime objects #}
+						{% set difference = date(task.calendar.endDate).diff(date(task.calendar.startDate)) %}
+						{% set leftDays = difference.days %}
+						<legend>{{ 'Reservation from'|trans }} :</legend>
+						<a class="bt-delete bt-right" href="{{ path('app_delete_event', { id: task.calendar.id, task: task.id}) }}" onclick="return confirm('{{ 'Are you sure delete event'|trans }}')">
+							{{ 'Delete reservation'|trans }}
+						</a>
+						<p>{{ task.calendar.startDate|date("Y-m-d") }} au {{ task.calendar.endDate|date("Y-m-d") }}, {{ 'that is'|trans }}
+							{% if leftDays == 1 %}
+								1 {{ 'day'|trans }}
+							{% else %}
+								{{ leftDays }} {{ 'days'|trans }}
+							{% endif %}
+						</p>
+						<script>
+							$( function() {
+								$( "#date-start" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+								$( "#date-end" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+							} );
+						</script>
+						<div class="input-flex">
+							<div class="input-date">
+								<label for="date-start" class="required">{{ 'Start date'|trans }}</label>
+								<input type="text" id="date-start" name="start-date" required="required" autocomplete="0" value="{{ task.calendar.startDate|date("Y-m-d") }}">
+							</div>
+							<div class="input-date">
+								<label for="date-end" class="required">{{ 'End date'|trans }}</label>
+								<input type="text" id="date-end" name="end-date" required="required" autocomplete="0" value="{{ task.calendar.endDate|date("Y-m-d") }}">
+							</div>
+						</div>
+						<div class="input-flex">
+							{{ form_row(edit_event_form.lastName) }}
+							{{ form_row(edit_event_form.firstName) }}
+						</div>
+						{{ form_row(edit_event_form.address) }}
+						<div class="input-flex">
+							<div class="input-cp">
+								{{ form_row(edit_event_form.zip) }}
+							</div>
+							{{ form_row(edit_event_form.city) }}
+						</div>
+						<div class="input-flex">
+							{{ form_row(edit_event_form.telephone) }}
+							{{ form_row(edit_event_form.email) }}
+						</div>
+						{% if apartments is defined and apartments is not null %}
+							<div class="input-flex">
+								<div class="input-select">
+									<label for="apartments" class="required">{{ 'ASSOCIATED APARTMENTS'|trans }}</label>
+									<select name="calendar_form[apartment]" id="apartments">
+										{% for apartment in apartments %}
+											<option value="{{ apartment.id }}" {% if task.housing.id == apartment.id %} selected {% endif %}>{{ apartment.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						{% endif %}
+
+						<div class="input-number">
+							<label for="adult-number">{{ 'form.numAdults'|trans }}</label>
+							<div class="number">
+								{{ form_widget(edit_event_form.numAdults, { 'id': 'adult-number' }) }}
+							</div>
+						</div>
+						<div class="input-number">
+							<label for="little-children-number">{{ 'form.numLittleChildren'|trans }}</label>
+							<div class="number">
+								{{ form_widget(edit_event_form.numLittleChildren, { 'id': 'little-children-number' }) }}
+							</div>
+						</div>
+						<div class="input-number">
+							<label for="children-number">{{ 'form.numChildren'|trans }}</label>
+							<div class="number">
+								{{ form_widget(edit_event_form.numChildren, { 'id': 'children-number' }) }}
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<h2>{{ 'form.addService'|trans }}</h2>
+						{% if is_granted('ROLE_ADMIN') %}
+							<div class="input-flex">
+								<div>
+									<label>
+										{% if task.invoice.isRenter is defined %}
+											<input type="radio" name="calendar_form[invoice_appointed]" value="renter" {% if task.invoice.isRenter == 1 %} checked {% endif %}>
+										{% else %}
+											<input type="radio" name="calendar_form[invoice_appointed]" value="renter">
+										{% endif %}
+
+										{{ 'Renter'|trans }}
+									</label>
+								</div>
+								<div>
+									<label>
+										{% if task.invoice.isOwner is defined %}
+											<input type="radio" name="calendar_form[invoice_appointed]" value="owner" {% if task.invoice.isOwner == 1 %} checked {% endif %}>
+										{% else %}
+											<input type="radio" name="calendar_form[invoice_appointed]" value="owner">
+										{% endif %}
+										{{ 'Owner'|trans }}
+									</label>
+								</div>
+							</div>
+						{% endif %}
+
+						<div class="input-flex">
+							<div class="input-select-multiple">
+								{% if edit_event_form.invoices.children is empty %}
+									<div>
+										<div id="calendar_form_invoices">
+											<div>
+												<div id="calendar_form_invoices_0">
+													<div>
+														<label for="calendar_form_invoices_0_services">{{ 'Services'|trans }}</label>
+														<select id="calendar_form_invoices_0_services" name="calendar_form[renter_services][]" class="input-prestation" multiple="multiple">
+															{% for service in services %}
+																<option value="{{ service.id }}">{{ service.name }} - {{ service.price }} €</option>
+															{% endfor %}
+														</select>
+													</div>
+
+													<div>
+														<label for="calendar_form_invoices_0_prestations">{{ 'Prestations'|trans }}</label>
+														<select id="calendar_form_invoices_0_prestations" name="calendar_form[renter_prestations][]" class="input-prestation" multiple="multiple">
+															{% for prestation in prestations %}
+																<option value="{{ prestation.id }}">{{ prestation.name }} - {{ prestation.price }} €</option>
+															{% endfor %}
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% else %}
+									{#
+									{{ form_row(edit_event_form.invoices) }}
+									#}
+									{% for key, invoices in edit_event_form.invoices %}
+										<div class="outer-class-{{ key }}">
+											{% for key, child in invoices %}
+												<div class="inner-class-{{ key }}">
+													{{ form_label(child) }}
+													{{ form_widget(child) }}
+												</div>
+											{% endfor %}
+										</div>
+									{% endfor %}
+								{% endif %}
+							</div>
+						</div>
+						<div class="input-description">
+							{{ form_label(edit_event_form.note) }}
+							{{ form_widget(edit_event_form.note) }}
+							<span class="character">0/200</span>
+						</div>
+                        <div class="input-submit">
+                            <input type="submit" value="{{ 'form.submit'|trans }}"/>
+
+							<a href="{{ path('app_delete_event', { id: task.calendar.id, task: task.id}) }}" onclick="return confirm('{{ 'Are you sure delete event'|trans }}')"
+							   class="bt-disabled">{{ 'Delete event'|trans }}
+							</a>
+                            {#
+                            {{ form_widget(edit_task_form.submit) }}
+                            #}
+                        </div>
+                    </fieldset>
+                  {{ form_end(edit_event_form) }}
+            </div>
+        </div>
+    </div>
+</div>

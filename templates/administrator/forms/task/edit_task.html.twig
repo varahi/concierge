@@ -1,0 +1,93 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-task" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="left">
+                <div class="image">
+                    <img src="{{ asset('images/image-task.svg') }}" width="280" height="398" alt=""/>
+                </div>
+            </div>
+            <div class="right">
+                <script>
+                    $( function() {
+                        $( "#date-start" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+                        $( "#date-end" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+                    } );
+                </script>
+
+                <h2>{{ 'Edit task'|trans }}</h2>
+                {{ form_start(edit_task_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                    <fieldset>
+                        <br />
+                        <a href="{{ path('app_delete_task', {id: task.id}) }}" onclick="return confirm('{{ 'Are you sure delete reservation'|trans }}')"
+                           class="bt-delete bt-right">{{ 'Delete task'|trans }}
+                        </a>
+                        {{ form_row(edit_task_form.title) }}
+                        <div class="input-select-multiple">
+                            {{ form_row(edit_task_form.users) }}
+                        </div>
+                        {{ form_row(edit_task_form.isEvent) }}
+                        {#
+                            ToDo: set reations to services, prestatins and materials to to Owner
+                        #}
+                        {#
+                        <div class="input-select-multiple">
+                            {{ form_row(edit_task_form.prestations) }}
+                        </div>
+                        #}
+                        <div class="input-select">
+                            {{ form_row(edit_task_form.housing) }}
+                        </div>
+                        {% if task.renter %}
+                            <label for="task_form_renter">{{ 'Renter'|trans }}</label>
+                            <input value="{{ task.renter.firstName }} {{ task.renter.lastName }}" readonly disabled>
+                            <br />
+                        {% endif %}
+
+                        <div class="input-flex">
+                            <div class="input-date">
+                                <label for="date-start" class="required">{{ 'Start date'|trans }}</label>
+                                {# Here was as on old format "Y-m-d" #}
+                                <input type="text" id="date-start" name="start-date" required="required" autocomplete="0" value="{{ task.calendar.startDate|date("d-m-Y") }}">
+                            </div>
+                            <div class="input-date">
+                                <label for="date-end" class="required">{{ 'End date'|trans }}</label>
+                                <input type="text" id="date-end" name="end-date" required="required" autocomplete="0" value="{{ task.calendar.endDate|date("d-m-Y") }}">
+                            </div>
+                        </div>
+
+                        <div class="input-flex">
+                            <div class="hour-start">
+                                <label for="hour-start" class="required">{{ 'Start hour'|trans }}</label>
+                                <input type="time" id="hour-start" name="start-hour" required="required" value="{{ task.calendar.startHour|date("H:i") }}">
+                            </div>
+                            <div class="hour-end">
+                                <label for="hour-end">{{ 'End hour'|trans }}</label>
+                                <input type="time" id="hour-end" name="end-hour" value="{{ task.calendar.endHour|date("H:i") }}">
+                            </div>
+                        </div>
+
+                        <div class="input-flex">
+                            <div class="col-4">
+                                {{ form_row(edit_task_form.color) }}
+                            </div>
+                        </div>
+
+                        <div class="input-description">
+                            <label for="description">{{ 'form.task_description'|trans }}</label>
+                            {{ form_widget(edit_task_form.description) }}
+                            <span class="character">0/200</span>
+                        </div>
+
+                        <div class="input-submit">
+                            <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                            {#
+                            {{ form_widget(edit_task_form.submit) }}
+                            #}
+                        </div>
+                    </fieldset>
+                    <input type="hidden" name="task_form[calendar]" value="{{ task.calendar.id }}">
+                    {{ form_end(edit_task_form) }}
+            </div>
+        </div>
+    </div>
+</div>

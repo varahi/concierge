@@ -1,0 +1,898 @@
+/* Color */
+/* Fonts */
+/* 
+TRANSITION
+*/
+/* 
+
+SHADOW
+
+*/
+/* Browser Prefixes */
+/* Background gradient */
+/* Rotate */
+/* Scale */
+/* Translate */
+/* Skew */
+/* Transform Origin */
+/* Flex box */
+/*
+
+BOX-SIZING
+
+*/
+/* 
+
+Top center
+
+*/
+/*
+
+Horizontal center
+
+*/
+/** Datepicker **/
+/* line 6, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker {
+  width: 235px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* line 10, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-header {
+  text-align: center;
+  background-color: #C32E2E;
+  position: relative;
+}
+
+/* line 14, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-header a {
+  position: absolute;
+  cursor: pointer;
+  top: 16px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  text-indent: -9999px;
+  background: url("../images/arrow_datepicker.png") no-repeat 0 0;
+}
+
+/* line 23, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-header a.ui-datepicker-prev {
+  left: 20px;
+  background-position: 0 0;
+}
+
+/* line 27, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-header a.ui-datepicker-next {
+  right: 20px;
+  background-position: 0 100%;
+}
+
+/* line 32, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-header span {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #fff;
+}
+
+/* line 39, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-title {
+  padding: 10px 0;
+  margin: 0;
+}
+
+/* line 43, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-calendar {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #C32E2E;
+}
+
+/* line 47, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-calendar th, .ui-datepicker .ui-datepicker-calendar td {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #131313;
+  font-size: 12px;
+  color: #C32E2E;
+  -webkit-transition: all 0.3s 0s ease-in-out;
+  -moz-transition: all 0.3s 0s ease-in-out;
+  transition: all 0.3s 0s ease-in-out;
+}
+
+/* line 57, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-calendar th span, .ui-datepicker .ui-datepicker-calendar th a, .ui-datepicker .ui-datepicker-calendar td span, .ui-datepicker .ui-datepicker-calendar td a {
+  font-size: inherit;
+  font-weight: 400;
+  display: inline-block;
+  line-height: 30px;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* line 67, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-calendar th.ui-state-disabled, .ui-datepicker .ui-datepicker-calendar td.ui-state-disabled {
+  background-color: #676767;
+  color: #fff;
+}
+
+/* line 71, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-calendar th:hover, .ui-datepicker .ui-datepicker-calendar th.ui-datepicker-current-day, .ui-datepicker .ui-datepicker-calendar td:hover, .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-current-day {
+  background-color: #C32E2E;
+  color: #fff;
+}
+
+/* line 75, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-calendar th.ui-datepicker-today, .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-today {
+  background-color: #C32E2E;
+  color: #fff;
+}
+
+/* line 80, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-datepicker .ui-datepicker-calendar th {
+  background-color: #676767;
+  border: none;
+  font-weight: 400;
+  color: #fff;
+}
+
+/** End Datepicker **/
+/** Select **/
+/* line 93, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.input-select, .powermail_fieldwrap_type_select .powermail_field {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* line 100, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-button {
+  display: inline-block;
+  position: relative;
+  color: #000 !important;
+  font-size: 16px !important;
+  width: 100% !important;
+  cursor: pointer;
+  margin: 0 !important;
+  border: 2px solid #EAEAEA;
+  font-family: "Roboto", sans-serif;
+  border-radius: 4px;
+}
+
+/* line 111, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-button.ui-corner-top {
+  border-bottom: none;
+}
+
+/* line 115, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-button span.ui-selectmenu-text {
+  font-size: inherit !important;
+  color: inherit !important;
+  background-color: #fff;
+  padding: 15px 40px 15px 15px;
+  display: block;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* line 124, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-button span.ui-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  background: url("../../images/arrow_down.svg") no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+  right: 10px;
+  top: 45%;
+  top: calc(50% - 11px);
+  margin: 0 !important;
+}
+
+/* line 137, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-menu.ui-selectmenu-open {
+  display: block;
+  border-bottom: none;
+}
+
+/* line 141, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-menu {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0px !important;
+  right: 0;
+  z-index: 15;
+}
+
+/* line 149, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-menu ul {
+  width: 100% !important;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 10px 20px;
+  border: 2px solid #EAEAEA;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  background-color: #fff;
+}
+
+/* line 159, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-menu ul li {
+  cursor: pointer;
+  margin: 0 !important;
+  border-top: none;
+  float: none !important;
+  text-align: left !important;
+  color: #000 !important;
+  font-size: 14px !important;
+  font-family: "Heebo", sans-serif;
+  list-style: none;
+}
+
+/* line 169, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-menu ul li.ui-state-disabled {
+  display: none;
+}
+
+/* line 172, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-menu ul li:hover {
+  text-decoration: underline;
+}
+
+/* line 176, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-selectmenu-menu ul li:before {
+  display: none !important;
+}
+
+/** End Select **/
+/** Dialog **/
+/* line 182, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.lightbox-std {
+  display: none;
+}
+
+/* line 186, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* line 196, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.ui-dialog {
+  width: auto !important;
+  max-width: 90%;
+  height: auto !important;
+  z-index: 999;
+  position: absolute;
+}
+
+/* line 205, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block .ui-dialog-title, .ui-dialog .ui-dialog-title {
+  display: none;
+}
+
+/* line 208, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block .ui-dialog-titlebar-close, .ui-dialog .ui-dialog-titlebar-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  z-index: 1;
+  background: url("../../images/icon_close.svg") no-repeat center center;
+  border: none;
+  padding: 0;
+  min-width: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* line 221, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block .ui-dialog-titlebar-close .ui-button-text, .ui-dialog .ui-dialog-titlebar-close .ui-button-text {
+  display: none;
+}
+
+/* line 226, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #add-task, .ui-dialog #add-task {
+  width: 750px !important;
+}
+
+/* line 229, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #add-task .content-lightbox .left, .ui-dialog #add-task .content-lightbox .left {
+  padding-left: 20px;
+}
+
+/* line 233, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #add-task .content-lightbox .right h2, .ui-dialog #add-task .content-lightbox .right h2 {
+  display: inline-block;
+  padding-right: 40px;
+  background: url("../../images/icon_notification.png") no-repeat right center;
+}
+
+/* line 241, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #add-appartment, .ui-dialog #add-appartment {
+  width: 730px !important;
+}
+
+/* line 244, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #edit-owner,
+.white-popup-block #information-owner, .ui-dialog #edit-owner,
+.ui-dialog #information-owner {
+  width: 730px !important;
+  padding: 50px 0;
+}
+
+/* line 249, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #add-owner, .ui-dialog #add-owner {
+  width: 1150px !important;
+}
+
+/* line 252, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #list-service, .ui-dialog #list-service {
+  max-width: 100%;
+  width: 1220px !important;
+  padding: 50px 0;
+}
+
+/* line 257, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #add-employee, .ui-dialog #add-employee {
+  width: 700px !important;
+  padding: 50px 0;
+}
+
+/* line 261, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #edit-tenant, .ui-dialog #edit-tenant {
+  max-width: 100%;
+  width: 1300px !important;
+  padding: 50px 0;
+}
+
+/* line 266, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #lightbox-settings, .white-popup-block #create-room, .white-popup-block #create-equipment, .white-popup-block #delete-room, .ui-dialog #lightbox-settings, .ui-dialog #create-room, .ui-dialog #create-equipment, .ui-dialog #delete-room {
+  width: auto !important;
+  padding: 50px 0;
+}
+
+/* line 269, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #lightbox-settings a, .white-popup-block #create-room a, .white-popup-block #create-equipment a, .white-popup-block #delete-room a, .ui-dialog #lightbox-settings a, .ui-dialog #create-room a, .ui-dialog #create-equipment a, .ui-dialog #delete-room a {
+  display: block;
+  text-align: center;
+}
+
+/* line 274, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment,
+.white-popup-block #edit-equipment, .ui-dialog #detail-equipment,
+.ui-dialog #edit-equipment {
+  max-width: 100%;
+  width: 1240px !important;
+  padding: 0px 0;
+}
+
+/* line 280, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std input[type="text"], .white-popup-block #detail-equipment .form-std input[type="number"], .white-popup-block #detail-equipment .form-std textarea,
+.white-popup-block #edit-equipment .form-std input[type="text"],
+.white-popup-block #edit-equipment .form-std input[type="number"],
+.white-popup-block #edit-equipment .form-std textarea, .ui-dialog #detail-equipment .form-std input[type="text"], .ui-dialog #detail-equipment .form-std input[type="number"], .ui-dialog #detail-equipment .form-std textarea,
+.ui-dialog #edit-equipment .form-std input[type="text"],
+.ui-dialog #edit-equipment .form-std input[type="number"],
+.ui-dialog #edit-equipment .form-std textarea {
+  background-color: #EAEAEA;
+}
+
+/* line 283, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std .ui-selectmenu-button span.ui-selectmenu-text,
+.white-popup-block #edit-equipment .form-std .ui-selectmenu-button span.ui-selectmenu-text, .ui-dialog #detail-equipment .form-std .ui-selectmenu-button span.ui-selectmenu-text,
+.ui-dialog #edit-equipment .form-std .ui-selectmenu-button span.ui-selectmenu-text {
+  background-color: #EAEAEA;
+}
+
+/* line 286, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std .ui-selectmenu-menu ul,
+.white-popup-block #edit-equipment .form-std .ui-selectmenu-menu ul, .ui-dialog #detail-equipment .form-std .ui-selectmenu-menu ul,
+.ui-dialog #edit-equipment .form-std .ui-selectmenu-menu ul {
+  background-color: #EAEAEA;
+}
+
+/* line 289, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std textarea,
+.white-popup-block #edit-equipment .form-std textarea, .ui-dialog #detail-equipment .form-std textarea,
+.ui-dialog #edit-equipment .form-std textarea {
+  height: 158px;
+}
+
+/* line 292, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std .input-file,
+.white-popup-block #edit-equipment .form-std .input-file, .ui-dialog #detail-equipment .form-std .input-file,
+.ui-dialog #edit-equipment .form-std .input-file {
+  margin-left: 20px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 297, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std .input-file input,
+.white-popup-block #edit-equipment .form-std .input-file input, .ui-dialog #detail-equipment .form-std .input-file input,
+.ui-dialog #edit-equipment .form-std .input-file input {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  left: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* line 306, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std .input-file .bt-add,
+.white-popup-block #edit-equipment .form-std .input-file .bt-add, .ui-dialog #detail-equipment .form-std .input-file .bt-add,
+.ui-dialog #edit-equipment .form-std .input-file .bt-add {
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+  display: block;
+  background: url("../../images/icon_plus.svg") no-repeat center center;
+}
+
+/* line 314, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std .input-submit,
+.white-popup-block #edit-equipment .form-std .input-submit, .ui-dialog #detail-equipment .form-std .input-submit,
+.ui-dialog #edit-equipment .form-std .input-submit {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  margin: 0 -10px;
+}
+
+/* line 317, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std .input-submit input, .white-popup-block #detail-equipment .form-std .input-submit button,
+.white-popup-block #edit-equipment .form-std .input-submit input,
+.white-popup-block #edit-equipment .form-std .input-submit button, .ui-dialog #detail-equipment .form-std .input-submit input, .ui-dialog #detail-equipment .form-std .input-submit button,
+.ui-dialog #edit-equipment .form-std .input-submit input,
+.ui-dialog #edit-equipment .form-std .input-submit button {
+  margin: 0 10px;
+}
+
+/* line 321, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #detail-equipment .form-std h2,
+.white-popup-block #edit-equipment .form-std h2, .ui-dialog #detail-equipment .form-std h2,
+.ui-dialog #edit-equipment .form-std h2 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 327, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block #add-element, .ui-dialog #add-element {
+  padding: 50px 0;
+}
+
+/* line 331, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std, .white-popup-block .lightbox-std, .ui-dialog ._lightbox-std, .ui-dialog .lightbox-std {
+  background-color: #fff;
+  /* border: 1px solid #707070; */
+  /* padding: 50px 40px 50px 0; */
+}
+
+/* line 335, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox, .white-popup-block .lightbox-std .content-lightbox, .ui-dialog ._lightbox-std .content-lightbox, .ui-dialog .lightbox-std .content-lightbox {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* line 338, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left, .white-popup-block .lightbox-std .content-lightbox .left, .ui-dialog ._lightbox-std .content-lightbox .left, .ui-dialog .lightbox-std .content-lightbox .left {
+  flex: none;
+  margin: auto 30px auto 0;
+}
+
+/* line 342, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .right, .white-popup-block .lightbox-std .content-lightbox .right, .ui-dialog ._lightbox-std .content-lightbox .right, .ui-dialog .lightbox-std .content-lightbox .right {
+  flex: 1;
+}
+
+/* line 345, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .center, .white-popup-block .lightbox-std .content-lightbox .center, .ui-dialog ._lightbox-std .content-lightbox .center, .ui-dialog .lightbox-std .content-lightbox .center {
+  padding: 0px 80px;
+  width: 100%;
+}
+
+/* line 350, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox header, .white-popup-block .lightbox-std .content-lightbox header, .ui-dialog ._lightbox-std .content-lightbox header, .ui-dialog .lightbox-std .content-lightbox header {
+  background-color: #5BB1FD;
+  height: 145px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  padding: 0 40px;
+}
+
+/* line 355, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox header .title, .white-popup-block .lightbox-std .content-lightbox header .title, .ui-dialog ._lightbox-std .content-lightbox header .title, .ui-dialog .lightbox-std .content-lightbox header .title {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  margin: auto 0;
+}
+
+/* line 363, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .content, .white-popup-block .lightbox-std .content-lightbox .content, .ui-dialog ._lightbox-std .content-lightbox .content, .ui-dialog .lightbox-std .content-lightbox .content {
+  padding: 50px 40px;
+}
+
+/* line 367, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail, .white-popup-block .lightbox-std .content-lightbox .left-detail, .ui-dialog ._lightbox-std .content-lightbox .left-detail, .ui-dialog .lightbox-std .content-lightbox .left-detail {
+  flex: 1;
+  width: 50%;
+}
+
+/* line 370, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content, .white-popup-block .lightbox-std .content-lightbox .left-detail .content, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content, .ui-dialog .lightbox-std .content-lightbox .left-detail .content {
+  background-color: #F4F4F4;
+}
+
+/* line 372, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content h2, .white-popup-block .lightbox-std .content-lightbox .left-detail .content h2, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content h2, .ui-dialog .lightbox-std .content-lightbox .left-detail .content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  margin: 0 0 20px 0;
+  color: #707070;
+  position: relative;
+}
+
+/* line 380, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .bt-delete, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .bt-delete, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .bt-delete, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .bt-delete {
+  width: 30px;
+  height: 30px;
+  background: url("../../images/icon_delete.svg") no-repeat center center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-indent: -9999px;
+  display: block;
+}
+
+/* line 390, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .description, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .description, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .description, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .description {
+  background-color: #EAEAEA;
+  border-radius: 8px;
+  padding: 15px 15px 1px 15px;
+  margin: 0 0 20px 0;
+  position: relative;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* line 398, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .description .col, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .description .col, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .description .col, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .description .col {
+  flex: 1;
+}
+
+/* line 401, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .description p, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .description p, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .description p, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .description p {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #707070;
+}
+
+/* line 406, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .description .txt-descr, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .description .txt-descr, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .description .txt-descr, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .description .txt-descr {
+  width: 60%;
+}
+
+/* line 409, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .description .bt-edit, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .description .bt-edit, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .description .bt-edit, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .description .bt-edit {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+/* line 415, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo {
+  padding: 10px;
+  border: 2px solid #EAEAEA;
+  border-radius: 8px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* line 421, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo .txt, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo .txt, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo .txt, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo .txt {
+  display: block;
+  flex: none;
+  width: 100%;
+}
+
+/* line 426, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo .photo, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo .photo {
+  flex: none;
+  width: 198px;
+  position: relative;
+}
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo img, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo .photo img, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo img, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo .photo img{
+	max-width: 100%;
+	height: auto;
+}
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 20px;
+	height: 20px;
+	background-color: #000;
+}
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close button, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close button, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close button, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo .photo .close button{
+	padding: 0;
+	  background: url("../../images/icon_close_white.svg") no-repeat center center;
+	  background-color: transparent;
+	  width: 100%;
+	  height: 100%;
+	  display: block;
+	  border: none;
+}
+
+/* line 429, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo:nth-child(2), .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo .photo:nth-child(2), .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo:nth-child(2), .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo .photo:nth-child(2) {
+  margin: 15px -50px 0 -50px;
+  position: relative;
+  z-index: 1;
+}
+
+/* line 438, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .right-detail, .white-popup-block .lightbox-std .content-lightbox .right-detail, .ui-dialog ._lightbox-std .content-lightbox .right-detail, .ui-dialog .lightbox-std .content-lightbox .right-detail {
+  flex: 1;
+}
+
+/* line 440, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .right-detail .content, .white-popup-block .lightbox-std .content-lightbox .right-detail .content, .ui-dialog ._lightbox-std .content-lightbox .right-detail .content, .ui-dialog .lightbox-std .content-lightbox .right-detail .content {
+  height: 80%;
+  height: -webkit-calc(100% - 145px);
+  height: calc(100% - 145px);
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+/* line 445, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .right-detail .content > div, .white-popup-block .lightbox-std .content-lightbox .right-detail .content > div, .ui-dialog ._lightbox-std .content-lightbox .right-detail .content > div, .ui-dialog .lightbox-std .content-lightbox .right-detail .content > div {
+  margin: auto;
+}
+
+/* line 447, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .right-detail .content > div img, .white-popup-block .lightbox-std .content-lightbox .right-detail .content > div img, .ui-dialog ._lightbox-std .content-lightbox .right-detail .content > div img, .ui-dialog .lightbox-std .content-lightbox .right-detail .content > div img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 454, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .row, .white-popup-block .lightbox-std .content-lightbox .row, .ui-dialog ._lightbox-std .content-lightbox .row, .ui-dialog .lightbox-std .content-lightbox .row {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 -35px;
+}
+
+/* line 458, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .row .col, .white-popup-block .lightbox-std .content-lightbox .row .col, .ui-dialog ._lightbox-std .content-lightbox .row .col, .ui-dialog .lightbox-std .content-lightbox .row .col {
+  flex: none;
+  width: auto;
+  padding: 0 35px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+}
+
+/* line 464, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .row .col .bottom, .white-popup-block .lightbox-std .content-lightbox .row .col .bottom, .ui-dialog ._lightbox-std .content-lightbox .row .col .bottom, .ui-dialog .lightbox-std .content-lightbox .row .col .bottom {
+  margin-top: auto;
+}
+
+/* line 466, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .row .col .bottom a, .white-popup-block .lightbox-std .content-lightbox .row .col .bottom a, .ui-dialog ._lightbox-std .content-lightbox .row .col .bottom a, .ui-dialog .lightbox-std .content-lightbox .row .col .bottom a {
+  margin-top: 60px;
+}
+
+/* line 474, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 {
+  margin-top: 45px;
+}
+
+/* line 477, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit.text-center input, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit.text-center input, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit.text-center input, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit.text-center input, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input {
+  width: 540px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* line 483, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit input, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit input, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit input, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit input, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input {
+  color: #fff;
+  width: 100%;
+  padding: 15px 15px;
+  border: none;
+}
+
+/* line 489, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"], .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"], .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"], .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"], .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"], .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"], .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"], .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"] {
+  margin-top: 20px;
+  background-color: #fff;
+  color: #000000;
+  border: 1px solid #B6B2B2;
+}
+
+/* line 494, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:hover, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"].active, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:focus, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:hover, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"].active, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:focus, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:hover, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"].active, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:focus, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:hover, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"].active, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:focus, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:hover, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"].active, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:focus, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:hover, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"].active, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:focus, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:hover, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"].active, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit input[type="reset"]:focus, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:hover, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"].active, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 input[type="reset"]:focus {
+  background-color: #B6B2B2;
+}
+
+/* line 498, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit button, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit button, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit button, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit button, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button {
+  color: #fff;
+  width: 100%;
+  padding: 15px 15px;
+  border: none;
+  margin-top: 20px;
+  background-color: #B8BCC1;
+}
+
+/* line 505, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit button:hover, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit button:active, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit button:focus, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:hover, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:active, .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:focus, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit button:hover, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit button:active, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit button:focus, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:hover, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:active, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:focus, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit button:hover, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit button:active, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit button:focus, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:hover, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:active, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:focus, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit button:hover, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit button:active, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit button:focus, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:hover, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:active, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 button:focus {
+  background-color: #9A9A9A;
+}
+
+/* line 510, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2 {
+  margin-top: 0;
+}
+
+/* line 515, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox table, .white-popup-block .lightbox-std .content-lightbox table, .ui-dialog ._lightbox-std .content-lightbox table, .ui-dialog .lightbox-std .content-lightbox table {
+  margin: 0 -15px;
+}
+
+/* line 517, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox table td, .white-popup-block .lightbox-std .content-lightbox table td, .ui-dialog ._lightbox-std .content-lightbox table td, .ui-dialog .lightbox-std .content-lightbox table td {
+  padding: 3px 15px;
+  font-size: 16px;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+}
+
+/* line 526, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox ul li, .white-popup-block .lightbox-std .content-lightbox ul li, .ui-dialog ._lightbox-std .content-lightbox ul li, .ui-dialog .lightbox-std .content-lightbox ul li {
+  list-style: none;
+  margin: 0;
+  font-size: 16px;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+}
+
+/* line 534, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox p, .white-popup-block ._lightbox-std .content-lightbox h2, .white-popup-block ._lightbox-std .content-lightbox h3, .white-popup-block .lightbox-std .content-lightbox p, .white-popup-block .lightbox-std .content-lightbox h2, .white-popup-block .lightbox-std .content-lightbox h3, .ui-dialog ._lightbox-std .content-lightbox p, .ui-dialog ._lightbox-std .content-lightbox h2, .ui-dialog ._lightbox-std .content-lightbox h3, .ui-dialog .lightbox-std .content-lightbox p, .ui-dialog .lightbox-std .content-lightbox h2, .ui-dialog .lightbox-std .content-lightbox h3 {
+  color: #707070;
+}
+
+/* line 537, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox h2, .white-popup-block ._lightbox-std .content-lightbox h3, .white-popup-block .lightbox-std .content-lightbox h2, .white-popup-block .lightbox-std .content-lightbox h3, .ui-dialog ._lightbox-std .content-lightbox h2, .ui-dialog ._lightbox-std .content-lightbox h3, .ui-dialog .lightbox-std .content-lightbox h2, .ui-dialog .lightbox-std .content-lightbox h3 {
+  font-size: 32px;
+  font-family: "Roboto", sans-serif;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+/* line 543, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .title, .white-popup-block .lightbox-std .content-lightbox .title, .ui-dialog ._lightbox-std .content-lightbox .title, .ui-dialog .lightbox-std .content-lightbox .title {
+  font-size: 20px;
+  color: #707070;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+}
+
+/* line 549, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox p, .white-popup-block .lightbox-std .content-lightbox p, .ui-dialog ._lightbox-std .content-lightbox p, .ui-dialog .lightbox-std .content-lightbox p {
+  font-size: 16px;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+}
+
+/* line 554, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox iframe, .white-popup-block .lightbox-std .content-lightbox iframe, .ui-dialog ._lightbox-std .content-lightbox iframe, .ui-dialog .lightbox-std .content-lightbox iframe {
+  width: 100%;
+}
+
+/* line 557, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .appartment, .white-popup-block .lightbox-std .content-lightbox .appartment, .ui-dialog ._lightbox-std .content-lightbox .appartment, .ui-dialog .lightbox-std .content-lightbox .appartment {
+  padding: 15px 15px;
+  border-radius: 8px;
+  border: 2px solid #EAEAEA;
+  margin: 0 0 10px 0;
+}
+
+/* line 562, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.white-popup-block ._lightbox-std .content-lightbox .appartment p, .white-popup-block .lightbox-std .content-lightbox .appartment p, .ui-dialog ._lightbox-std .content-lightbox .appartment p, .ui-dialog .lightbox-std .content-lightbox .appartment p {
+  margin: 0;
+}
+
+/* line 570, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.select2-dropdown {
+  border: 1px solid #EFEFEF !important;
+}
+
+/* line 574, ../site/templates/default/sass/scss/jquery-ui-1.11.scss */
+.select2-container--default .select2-results > .select2-results__options li {
+  list-style: none;
+  margin: 0;
+}
+
+/** End Dialog **/
+
+/*# sourceMappingURL=jquery-ui-1.11.css.map */

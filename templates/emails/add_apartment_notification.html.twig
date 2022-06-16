@@ -1,0 +1,37 @@
+<h1>Message du site Concierge Me</h1>
+
+Cher
+{% if housing.user.firstName is defined or housing.user.lastName is defined %}
+    {{ housing.user.firstName }} {{ housing.user.lastName }},
+{% else %}
+    {{ housing.user.contactPerson }},
+{% endif %}
+
+<br />
+
+Nous avons ajouté un appartement dans notre logiciel avec les informations ci-dessous: <br /><br />
+
+{% if housing.name is defined %}
+    <b>Titre du logement</b> : {{ housing.name }}<br />
+{% endif %}
+
+{% if housing.address is defined %}
+    <b>Adresse</b>: {{ housing.address }}<br />
+{% endif %}
+
+{% if housing.zip is defined %}
+    <b>Code postal</b>: {{ housing.zip }}<br />
+{% endif %}
+
+{% if housing.city is defined %}
+    <b>Ville</b>: {{ housing.city }}<br />
+{% endif %}
+
+{% if housing.packs is defined %}
+    <b>Pack sélectionné</b>: {{ housing.packs.name }} - {{ housing.packs.total|format_currency('EUR')  }}
+{% endif %}
+
+<br /><br />
+
+Date: {{ date|date("d-m-Y - H:i:s") }} <br /><br />
+<a href="{{ url('app_administrator') }}">Connectez-vous à votre interface</a>

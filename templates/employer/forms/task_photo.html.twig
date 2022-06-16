@@ -1,0 +1,26 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2>{{ 'Add photo'|trans }} for task #{{ task.id }}</h2>
+
+                {{ form_start(task_photo_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    <div class="input-description">
+                        {% if task.photo %}
+                            <a href="{{ asset('uploads/files/' ~ task.photo) }}" target="_blank">
+                                <img src="{{ asset('uploads/files/' ~ task.photo) }}" width="500" />
+                            </a>
+                        {% endif %}
+                        <label for="note">{{ 'Photo'|trans }}</label>
+                        {{ form_widget(task_photo_form.photo) }}
+                    </div>
+                    <div class="input-submit2">
+                        <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                    </div>
+                </fieldset>
+                {{ form_end(task_photo_form) }}
+            </div>
+        </div>
+    </div>
+</div>

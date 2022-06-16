@@ -1,0 +1,55 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public_html/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+.env
+.env.test
+.htpasswd/
+DEADJOE
+backup/
+bin/
+logs/
+phpunit.xml.dist
+private_html
+stats/
+symfony.lock
+tests/
+migrations/
+config/services.yaml
+
+composer.phar
+public_html/uploads
+.php_cs.cache
+php-cs-fixer
+
+config/services.yaml
+config/routes/framework.yaml
+docker-compose.override.yml
+docker-compose.yml
+public_html/cgi-bin/_.htaccess
+public_html/index.html
+.php-cs-fixer.cache
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public_html/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###

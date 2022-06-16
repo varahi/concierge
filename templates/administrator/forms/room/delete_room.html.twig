@@ -1,0 +1,29 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+        <div class="center">
+            <h2>{{ 'Delete room'|trans }}</h2>
+
+            {% if rooms %}
+                {{ form_start(delete_room_form, {'attr' : {'class': 'form-std',  'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    <label for="delete_room_form_rooms">Quelle pièce voulez-vous supprimer ?</label>
+                    <div class="input-select">
+                        <select name="delete_room_form[rooms][]" required="required" id="delete_room_form_rooms">
+                            <option selected disabled value=''>{{ 'Choose room'|trans }}</option>
+                            {% for room in rooms %}
+                                <option value="{{ room.id }}">{{ room.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-submit2">
+                        <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                    </div>
+                </fieldset>
+                {{ form_end(delete_room_form) }}
+            {% else %}
+                <p> {{ 'No rooms'|trans }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+</div>

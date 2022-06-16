@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="kwWoe65" resname="folder_edit_success">
+        <source>folder_edit_success</source>
+        <target>__folder_edit_success</target>
+      </trans-unit>
+      <trans-unit id="0F9NA7e" resname="Pack added">
+        <source>Pack added</source>
+        <target>Pack ajouté</target>
+      </trans-unit>
+      <trans-unit id="Z120YNG" resname="Material added">
+        <source>Material added</source>
+        <target>Matériel ajouté</target>
+      </trans-unit>
+      <trans-unit id="rNYT1m7" resname="Service added">
+        <source>Service added</source>
+        <target>Service ajouté</target>
+      </trans-unit>
+      <trans-unit id="Sm_IPf9" resname="Please login">
+        <source>Please login</source>
+        <target>Veuillez vous connecter</target>
+      </trans-unit>
+      <trans-unit id="EPtS.xQ" resname="Employer disabled">
+        <source>Employer disabled</source>
+        <target>Employeur désactivé</target>
+      </trans-unit>
+      <trans-unit id="YpLL4SZ" resname="Mismatch password">
+        <source>Mismatch password</source>
+        <target>Votre mot de passe ne correspond pas à la confirmation</target>
+      </trans-unit>
+      <trans-unit id="g9tG9dl" resname="User exist">
+        <source>User exist</source>
+        <target>L'utilisateur avec le même e-mail existe déjà</target>
+      </trans-unit>
+      <trans-unit id="jHmtmAs" resname="Alert added">
+        <source>Alert added</source>
+        <target>Vous ajoutez une nouvelle alerte </target>
+      </trans-unit>
+      <trans-unit id="PTQrFkt" resname="Photo added">
+        <source>Photo added</source>
+        <target>Vous ajoutez une photo à la tâche</target>
+      </trans-unit>
+      <trans-unit id="fr3kuGE" resname="Task updated">
+        <source>Task updated</source>
+        <target>Tâche mise à jour</target>
+      </trans-unit>
+      <trans-unit id="uDy3j8Y" resname="You are created new employer">
+        <source>You are created new employer</source>
+        <target>Le nouvel employé à bien été créé</target>
+      </trans-unit>
+      <trans-unit id="nn3Jcqh" resname="Prestation added">
+        <source>Prestation added</source>
+        <target>Prestation ajoutée</target>
+      </trans-unit>
+      <trans-unit id="JvkqmUn" resname="Prestation edited">
+        <source>Prestation edited</source>
+        <target>Prestation modifiée</target>
+      </trans-unit>
+      <trans-unit id="DqbZMiM" resname="Prestation removed">
+        <source>Prestation removed</source>
+        <target>Prestation supprimée</target>
+      </trans-unit>
+      <trans-unit id="QELhCxF" resname="Pack edited">
+        <source>Pack edited</source>
+        <target>Pack édité</target>
+      </trans-unit>
+      <trans-unit id="cSDqI8i" resname="Pack removed">
+        <source>Pack removed</source>
+        <target>Pack supprimé</target>
+      </trans-unit>
+      <trans-unit id="Kd62XrT" resname="Material edited">
+        <source>Material edited</source>
+        <target>Matériel édité</target>
+      </trans-unit>
+      <trans-unit id="rD0cfNo" resname="Material removed">
+        <source>Material removed</source>
+        <target>Matériel enlevé</target>
+      </trans-unit>
+      <trans-unit id="sXtO2Df" resname="Service edited">
+        <source>Service edited</source>
+        <target>Service modifié</target>
+      </trans-unit>
+      <trans-unit id="WsnCsx0" resname="Service removed">
+        <source>Service removed</source>
+        <target>Service supprimé</target>
+      </trans-unit>
+      <trans-unit id="Incorrect date" resname="Incorrect date">
+        <source>You should enter date format dd-mm-yyyy</source>
+        <target>Vous devez saisir le format de date mm-jj-aaaa</target>
+      </trans-unit>
+      <trans-unit id="Invoice created" resname="Invoice created">
+        <source>Invoice created</source>
+        <target>Facture créée</target>
+      </trans-unit>
+      <trans-unit id="Invoice deleted" resname="Invoice deleted">
+        <source>Invoice deleted</source>
+        <target>Facture supprimée</target>
+      </trans-unit>
+      <trans-unit id="Invoice updated" resname="Invoice updated">
+        <source>Invoice updated</source>
+        <target>Facture mise à jour</target>
+      </trans-unit>
+      <trans-unit id="Renter date busy" resname="Renter date busy">
+        <source>The renter for this date is already busy</source>
+        <target>Le locataire pour cette date est déjà occupé</target>
+      </trans-unit>
+      <trans-unit id="Renter created" resname="Renter created">
+        <source>Renter created</source>
+        <target>Locataire créé</target>
+      </trans-unit>
+      <trans-unit id="Event deleted" resname="Event deleted">
+        <source>Event deleted</source>
+        <target>Événement supprimé</target>
+      </trans-unit>
+      <trans-unit id="Event updated" resname="Event updated">
+        <source>Event updated</source>
+        <target>Événement mis à jour</target>
+      </trans-unit>
+      <trans-unit id="99LCvOf" resname="Your apartment updated">
+        <source>Your apartment updated</source>
+        <target>Votre appartement a été mis à jour</target>
+      </trans-unit>
+      <trans-unit id="0ooRsS4" resname="Equipment updated">
+        <source>Equipment updated</source>
+        <target>Votre équipement a été mis à jour</target>
+      </trans-unit>
+      <trans-unit id="MUWPP6p" resname="Equipment removed">
+        <source>Equipment removed</source>
+        <target>Équipement retiré</target>
+      </trans-unit>
+      <trans-unit id="ujB4vsj" resname="Task changed">
+        <source>Task changed</source>
+        <target>Concierge Me - Votre tâche a été modifiée</target>
+      </trans-unit>
+      <trans-unit id="Task deleted" resname="Task deleted">
+        <source>Task deleted</source>
+        <target>Tâche supprimée</target>
+      </trans-unit>
+      <trans-unit id="Can upload only pdf" resname="Can upload only pdf">
+        <source>You can upload only PDF files</source>
+        <target>Vous ne pouvez télécharger que des fichiers PDF</target>
+      </trans-unit>
+      <trans-unit id="New equipment created" resname="New equipment created">
+        <source>New equipment created</source>
+        <target>Nouvel équipement créé</target>
+      </trans-unit>
+      <trans-unit id="Your date expired" resname="Your date expired">
+        <source>Your demo access date is expired</source>
+        <target>Votre date d'accès à la démo est expirée</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

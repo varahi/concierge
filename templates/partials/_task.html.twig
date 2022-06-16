@@ -1,0 +1,124 @@
+<div class="task{% if task.isArchived == 1 %} isdone{% else %} isvalid{% endif %}">
+    <div class="content">
+        <div class="left">
+
+            <div class="input-checkbox">
+                {% if task.isArchived == 1 %}
+                    <input type="checkbox" name="" id="chk1" checked class="task-checkbox task-checkbox-archived-{{ task.id }}" />
+                    <div class="tooltip-checkbox">
+                        <div class="tooltip-content">
+                            <p>{{ 'Move to active'|trans }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <input type="checkbox" name=""  id="chk1" class="task-checkbox task-checkbox-{{ task.id }}" />
+                    <div class="tooltip-checkbox">
+                        <div class="tooltip-content">
+                            <p>{{ 'Move to archive'|trans }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <a class="bt-edit ajax-popup-link" href="{{ path('app_edit_task', { task: task.id}) }}" title="{{ 'Edit task'|trans }}">{{ 'Edit'|trans }}</a>
+            {% if task.notification == 1 %}
+                <a class="bt-notification ajax-notification-{{ task.id }}"
+                   href="{{ path('app_set_notification', {task:task.id, notification: 0}) }}" title="{{ 'Set Notification'|trans }}">
+                    {{ 'Notification'|trans }}
+                </a>
+            {% else %}
+                <a class="bt-notification active ajax-notification-actived-{{ task.id }}"
+                   href="{{ path('app_set_notification', { task: task.id, notification: 1}) }}" title="{{ 'Remove Notification'|trans }}">
+                    {{ 'Notification'|trans }}
+                </a>
+            {% endif %}
+
+        </div>
+        <div class="info">
+            <div class="title">
+                <p>
+                    {% if task.isSingle == 1 %}
+                        <span {% if task.color %}class="single-task-title" style="background-color:{{ task.color }}" {% endif %}>{{ task.title }}</span>
+                    {% else %}
+                        <span>{{ task.housing.name }}</span>
+                    {% endif %}<br />
+
+                    {% if task.isSingle == 1 %}<br />
+                        {% if task.housing %}
+                            <span style="font-weight: 600; font-size: 15px; padding-bottom: 20px;">
+                                {{ 'Apartment'|trans }}: {{task.housing.name}} {% if task.housing.user.company %} - {{ task.housing.user.company }} {% endif %}
+                            </span>
+                            <br />
+                        {% endif %}
+                        {{ task.calendar.startHour|date("H:i") }}
+                        {% if task.calendar.endHour is not null %} - {{ task.calendar.endHour|date("H:i") }} {% endif %}
+                    {% else %}
+                        {% if task.isEntry == 1 %}
+                            <span class="task-title block-green">{{ 'Entry task'|trans }}</span><br /><br />
+                            {# {{ 'Start hour'|trans }} #}
+                            {{ task.calendar.startDate|date("d-m-Y") }} {{ task.calendar.startHour|date("H:i") }}
+                        {% else %}
+                            {#
+                                Check if task is prestation
+                            #}
+                            {% if task.isPrestation == 1 %}
+                                <span class="task-title block-red" {% if task.color %} style="background-color:{{ task.color }}" {% endif %}>{{ task.title }}</span><br /><br />
+                                {{ task.endDate|date("d-m-Y") }} {{ task.calendar.endHour|date("H:i") }}
+                            {% else %}
+                                <span class="task-title block-red">{{ 'Leaving task'|trans }}</span><br /><br />
+                                {{ task.endDate|date("d-m-Y") }} {{ task.calendar.endHour|date("H:i") }}
+                            {% endif %}
+
+                        {% endif %}
+                    {% endif %}
+                </p>
+                {% if task.users|length > 0 %}
+                    {% for user in task.users %}
+                        <div class="image" {% if user.color %} style="background-color:{{ user.color }}" {% endif %}>
+                            <span {% if user.color %} style="background-color:{{ user.color }}" {% endif %}>{{ user.firstName|slice(0, 1) }}</span>
+							<span class="fullname" {% if user.color %} style="background-color:{{ user.color }}" {% endif %}>{{ user.firstName}}</span>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% if task.housing and task.housing.employer %}
+                        <div class="image" style="background-color: {{ task.housing.employer.color }}">
+                            <span>{{ task.housing.employer.firstName|slice(0, 1) }}</span>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            {% if task.invoice.services is defined %}
+                <div class="keyword">
+                    {# Services #}
+                    {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                            {% if contain.service is not null %}
+                                <p>{{ contain.service.name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    {# Prestations #}
+                    {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                            {% if contain.prestation is not null %}
+                                <p>{{ contain.prestation.name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if task.note %}
+                <div class="info-note">
+                    <a class="bt-infonote ajax-popup-link" title="{{ 'View task note'|trans }}"
+                       href="{{ path('app_task_note', { task: task.id}) }}">{{ 'Note'|trans }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="ajax-alert ajax-archive-result-{{ task.id }}" style="color: #1800B5;"></div>
+<div class="ajax-alert ajax-notification-result-{{ task.id }}" style="color: #1800B5;"></div>
+{% include 'partials/_task_scripts.html.twig' %}

@@ -1,0 +1,441 @@
+/* Color */
+/* Fonts */
+/* 
+TRANSITION
+*/
+/* 
+
+SHADOW
+
+*/
+/* Browser Prefixes */
+/* Background gradient */
+/* Rotate */
+/* Scale */
+/* Translate */
+/* Skew */
+/* Transform Origin */
+/* Flex box */
+/*
+
+BOX-SIZING
+
+*/
+/* 
+
+Top center
+
+*/
+/*
+
+Horizontal center
+
+*/
+/**** RESPONSIVE STYLE >320px ****/
+@media screen and (min-width: 320px) and (max-width: 1400px) {
+  /* line 8, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .bt-red, .bt-black, .bt-blue, .bt-green, .bt-border, .bt-blue2, .bt-blue3, .bt-blue4, .bt-grey {
+    font-size: 14px;
+  }
+  /* line 12, ../site/templates/default/sass/scss/styles.responsive.scss */
+  div, a, p, span, td, th, caption, li, h1, h2, h3, h4, legend, input, label, textarea, section, main, aside, article, ul {
+    font-size: 14px;
+  }
+  /* line 17, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login .content-inner {
+    padding: 0 20px;
+    padding-top: 60px;
+  }
+  /* line 21, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login h1 {
+    font-size: 32px;
+    margin: 0 0 20px 0;
+  }
+  /* line 25, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login .form-std {
+    padding: 20px;
+  }
+  /* line 27, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login .form-std label {
+    font-size: 16px;
+  }
+  /* line 30, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login .form-std input {
+    font-size: 14px;
+  }
+  /* line 33, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login .form-std .input-submit input {
+    font-size: 14px;
+    width: 100%;
+    max-width: 330px;
+  }
+  /* line 39, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login .button-bottom {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  /* line 41, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #login .button-bottom a {
+    margin: 7px;
+  }
+  /* line 47, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  /* line 49, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main h2 {
+    font-size: 22px;
+  }
+  /* line 53, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main .table-std td, #main .table-std th {
+    font-size: 14px;
+  }
+  /* line 58, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-right {
+    width: 100%;
+    max-width: 100%;
+  }
+  /* line 62, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  /* line 66, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left header .top {
+    height: 70px;
+  }
+  /* line 68, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left header .top p {
+    font-size: 18px;
+  }
+  /* line 72, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left header .bottom {
+    padding: 10px 0;
+  }
+  /* line 74, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left header .bottom .button-top a {
+    font-size: 12px;
+    margin: 5px;
+    min-width: 0;
+  }
+  /* line 81, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left .content {
+    padding: 20px;
+  }
+  /* line 83, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left .content .list-user {
+    padding: 0;
+  }
+  /* line 85, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left .content .list-user > .item .title {
+    width: 180px;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  /* line 88, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left .content .list-user > .item .title p {
+    font-size: 14px;
+  }
+  /* line 93, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left .content .list-task .task {
+    padding: 5px 0px;
+  }
+  /* line 95, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left .content .list-task .task .title p {
+    font-size: 12px;
+  }
+  /* line 101, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right {
+    width: 100%;
+    /* max-width: 415px; */
+  }
+  /* line 105, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right header .top {
+    height: 70px;
+  }
+  /* line 107, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right header .top p {
+    font-size: 18px;
+  }
+  /* line 111, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right header .bottom {
+    height: auto;
+    padding: 20px;
+  }
+  /* line 117, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right .content .button-top a {
+    font-size: 12px;
+  }
+  /* line 122, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right .content .detail-task .task-date .date p {
+    font-size: 18px;
+  }
+  /* line 125, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right .content .detail-task .task-date .task .info .title p {
+    font-size: 12px;
+  }
+  /* line 127, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right .content .detail-task .task-date .task .info .title p span {
+    font-size: 16px;
+  }
+  /* line 135, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice {
+    width: 100%;
+  }
+  /* line 138, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice header .top {
+    height: 70px;
+    padding: 0 20px;
+  }
+  /* line 141, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice header .top p {
+    font-size: 18px;
+  }
+  /* line 146, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice {
+    padding: 20px;
+  }
+  /* line 148, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice h2 {
+    font-size: 24px;
+  }
+  /* line 151, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice .row {
+    margin: 0;
+  }
+  /* line 153, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice .row > div {
+    padding: 0;
+    flex: none;
+    width: 100%;
+  }
+  /* line 158, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice .row .column-invoice {
+    margin: 20px;
+  }
+  /* line 160, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice .row .column-invoice .title {
+    font-size: 18px;
+  }
+  /* line 167, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice .table-invoice thead th {
+    font-size: 12px;
+  }
+  /* line 171, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice .table-invoice td {
+    font-size: 12px;
+  }
+  /* line 174, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right-invoice .content .detail-invoice .table-invoice tfoot .txt-blue4 {
+    font-size: 18px;
+  }
+  /* line 184, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #detail-appartment header .top {
+    height: 70px;
+    padding: 0 20px;
+  }
+  /* line 187, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #detail-appartment header .top p {
+    font-size: 18px;
+  }
+  /* line 191, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #detail-appartment header .bottom {
+    padding: 40px 20px;
+  }
+  /* line 196, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #detail-appartment .row > div {
+    margin: 0 0 20px 0;
+  }
+  /* line 200, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #detail-appartment .content {
+    padding: 35px 20px;
+  }
+  /* line 207, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-center header .top {
+    height: 70px;
+  }
+  /* line 209, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-center header .top p {
+    font-size: 18px;
+  }
+  /* line 215, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-center .content .left-image {
+    width: 100%;
+  }
+  /* line 219, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-center .row {
+    width: auto;
+    margin: 0;
+  }
+  /* line 222, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-center .row > div {
+    padding: 0;
+  }
+  /* line 228, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .bt-view, .bt-edit, .bt-settings2, .bt-invoice {
+    margin-left: 10px;
+  }
+  /* line 235, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std, .white-popup-block .lightbox-std, .ui-dialog ._lightbox-std, .ui-dialog .lightbox-std {
+    max-width: 100%;
+  }
+  /* line 238, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox header, .white-popup-block .lightbox-std .content-lightbox header, .ui-dialog ._lightbox-std .content-lightbox header, .ui-dialog .lightbox-std .content-lightbox header {
+    height: 70px;
+  }
+  /* line 240, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox header .title, .white-popup-block .lightbox-std .content-lightbox header .title, .ui-dialog ._lightbox-std .content-lightbox header .title, .ui-dialog .lightbox-std .content-lightbox header .title {
+    font-size: 24px;
+  }
+  /* line 245, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .left-detail .content, .white-popup-block .lightbox-std .content-lightbox .left-detail .content, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content, .ui-dialog .lightbox-std .content-lightbox .left-detail .content {
+    padding: 20px;
+  }
+  /* line 247, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .left-detail .content h2, .white-popup-block .lightbox-std .content-lightbox .left-detail .content h2, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content h2, .ui-dialog .lightbox-std .content-lightbox .left-detail .content h2 {
+    font-size: 20px;
+  }
+  /* line 251, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo, .white-popup-block .lightbox-std .content-lightbox .left-detail .content .list-photo .photo, .ui-dialog ._lightbox-std .content-lightbox .left-detail .content .list-photo .photo, .ui-dialog .lightbox-std .content-lightbox .left-detail .content .list-photo .photo {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 20px 0 !important;
+  }
+  /* line 259, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .left, .white-popup-block .lightbox-std .content-lightbox .left, .ui-dialog ._lightbox-std .content-lightbox .left, .ui-dialog .lightbox-std .content-lightbox .left {
+    margin: 0;
+    padding: 0;
+  }
+  /* line 262, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .left .image, .white-popup-block .lightbox-std .content-lightbox .left .image, .ui-dialog ._lightbox-std .content-lightbox .left .image, .ui-dialog .lightbox-std .content-lightbox .left .image {
+    display: none;
+  }
+  /* line 266, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .right, .white-popup-block .lightbox-std .content-lightbox .right, .ui-dialog ._lightbox-std .content-lightbox .right, .ui-dialog .lightbox-std .content-lightbox .right {
+    padding: 20px;
+  }
+  /* line 269, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .center, .white-popup-block .lightbox-std .content-lightbox .center, .ui-dialog ._lightbox-std .content-lightbox .center, .ui-dialog .lightbox-std .content-lightbox .center {
+    padding: 0 20px;
+  }
+  /* line 272, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox h2, .white-popup-block ._lightbox-std .content-lightbox h3, .white-popup-block .lightbox-std .content-lightbox h2, .white-popup-block .lightbox-std .content-lightbox h3, .ui-dialog ._lightbox-std .content-lightbox h2, .ui-dialog ._lightbox-std .content-lightbox h3, .ui-dialog .lightbox-std .content-lightbox h2, .ui-dialog .lightbox-std .content-lightbox h3 {
+    font-size: 20px;
+  }
+  /* line 275, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .row, .white-popup-block .lightbox-std .content-lightbox .row, .ui-dialog ._lightbox-std .content-lightbox .row, .ui-dialog .lightbox-std .content-lightbox .row {
+    margin: 0 -20px;
+  }
+  /* line 277, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .row .col, .white-popup-block .lightbox-std .content-lightbox .row .col, .ui-dialog ._lightbox-std .content-lightbox .row .col, .ui-dialog .lightbox-std .content-lightbox .row .col {
+    margin-bottom: 40px;
+  }
+  /* line 279, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .row .col .bottom a, .white-popup-block .lightbox-std .content-lightbox .row .col .bottom a, .ui-dialog ._lightbox-std .content-lightbox .row .col .bottom a, .ui-dialog .lightbox-std .content-lightbox .row .col .bottom a {
+    margin-top: 20px;
+  }
+  /* line 284, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .title, .white-popup-block .lightbox-std .content-lightbox .title, .ui-dialog ._lightbox-std .content-lightbox .title, .ui-dialog .lightbox-std .content-lightbox .title {
+    font-size: 20px;
+  }
+  /* line 287, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox p, .white-popup-block ._lightbox-std .content-lightbox ul li, .white-popup-block .lightbox-std .content-lightbox p, .white-popup-block .lightbox-std .content-lightbox ul li, .ui-dialog ._lightbox-std .content-lightbox p, .ui-dialog ._lightbox-std .content-lightbox ul li, .ui-dialog .lightbox-std .content-lightbox p, .ui-dialog .lightbox-std .content-lightbox ul li {
+    font-size: 14px;
+  }
+  /* line 290, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox table, .white-popup-block .lightbox-std .content-lightbox table, .ui-dialog ._lightbox-std .content-lightbox table, .ui-dialog .lightbox-std .content-lightbox table {
+    margin: 0 -10px;
+  }
+  /* line 292, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox table td, .white-popup-block ._lightbox-std .content-lightbox table th, .white-popup-block .lightbox-std .content-lightbox table td, .white-popup-block .lightbox-std .content-lightbox table th, .ui-dialog ._lightbox-std .content-lightbox table td, .ui-dialog ._lightbox-std .content-lightbox table th, .ui-dialog .lightbox-std .content-lightbox table td, .ui-dialog .lightbox-std .content-lightbox table th {
+    font-size: 14px;
+    padding: 3px 10px;
+  }
+  /* line 297, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .white-popup-block ._lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input, .white-popup-block .lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input, .ui-dialog ._lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input, .ui-dialog .lightbox-std .content-lightbox .form-std fieldset .input-submit2.text-center input {
+    width: 100%;
+  }
+  /* line 306, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std fieldset legend {
+    font-size: 18px;
+  }
+  /* line 310, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std label {
+    font-size: 14px;
+  }
+  /* line 313, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std input, .form-std textarea {
+    font-size: 14px;
+  }
+  /* line 316, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-flex {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  /* line 318, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-flex .col-4, .form-std .input-flex .col-8 {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+  /* line 323, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-date {
+    flex: 1;
+  }
+  /* line 326, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-col-3 {
+    column-count: 1;
+  }
+  /* line 329, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-checkbox label {
+    font-size: 14px;
+  }
+  /* line 332, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-number label {
+    /* width: 150px; */
+  }
+  /* line 335, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-prestation .input-checkbox {
+    min-width: 100px;
+  }
+  /* line 337, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .form-std .input-prestation .input-checkbox label {
+    font-size: 14px;
+  }
+  /* line 343, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .ui-selectmenu-button {
+    font-size: 14px !important;
+  }
+  /* line 346, ../site/templates/default/sass/scss/styles.responsive.scss */
+  .table-owner {
+    margin: 0 0 25px 0 !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1400px) {
+  /* line 352, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .left {
+    flex: 1;
+  }
+  /* line 355, ../site/templates/default/sass/scss/styles.responsive.scss */
+  #main-left .right {
+    max-width: 415px;
+  }
+}
+
+/*# sourceMappingURL=styles.responsive.css.map */

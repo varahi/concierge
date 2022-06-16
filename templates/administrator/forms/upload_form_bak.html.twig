@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col col-lg-8 col-lg-offset-2 col-md-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                <div class="hr-line-dashed"></div>
+                <div id="filesProto" data-prototype="{{ form_widget(equipment_form.documents.vars.prototype)|e }}"></div>
+
+                <div class="row">
+                    <div class="col col-xs-12" id="filesBox">
+                        {% set pos = 0 %}
+                        {% for doc in equipment_form.documents %}
+                            <div class="row">
+                                <div class="col col-xs-1" id="jsRemove{{ pos }}" style="">
+                                    <button type="button" class="btn btn-danger" onclick="removeFile($(this));"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="col col-xs-11" id="jsPreview{{ pos }}">
+                                    <img src="{{ asset('uploads/documents/' ~ suffixDirectoryName ~ doc.vars.value.imageName) }}" width="50" />
+                                    {{ doc.vars.value.name }}
+                                </div>
+
+                                <div style="display:none">
+                                    {{ form_widget(doc) }}
+                                </div>
+                            </div>
+                            {% set pos = pos + 1 %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var fileCount = '{{ equipment_form.documents|length }}';
+    var removeButton = "<button type='button' class='btn btn-danger btn-xs' onclick='removeFile($(this));'><i class='fa fa-times' aria-hidden='true'></i></button>";
+
+    function removeFile(ob)
+    {
+        ob.parent().parent().remove();
+    }
+
+    function createAddFile(fileCount)
+    {
+        // grab the prototype template
+        var newWidget = $("#filesProto").attr('data-prototype');
+        // replace the "__name__" used in the id and name of the prototype
+        newWidget = newWidget.replace(/__name__/g, fileCount);
+
+        newWidget = "<div style='display:none'>" + newWidget + "</div>";
+
+        hideStuff = "";
+        hideStuff += "<div class='col col-xs-1' id='jsRemove" + fileCount + "' style='display: none;'>";
+        hideStuff += removeButton;
+        hideStuff += "</div>";
+
+        hideStuff += "<div class='col col-xs-11' id='jsPreview" + fileCount + "'>";
+        hideStuff += "</div>";
+
+        hideStuff += "<div class='col col-xs-12'>";
+        hideStuff += "<button type='button' id='jsBtnUpload" + fileCount + "' class='btn btn-warning'>";
+        hideStuff += "<i class='fa fa-plus'></i> {{ 'Choose file' | trans }}";
+        hideStuff += "</button>";
+        hideStuff += "</div>";
+
+        $("#filesBox").append("<div class='row'>" + hideStuff + newWidget + "</div>");
+
+        // On click => Simulate file behaviour
+        $("#jsBtnUpload" + fileCount).on('click', function(e){
+            $('#folder_documents_' + fileCount + '_file').trigger('click');
+        });
+
+        // Once the file is added
+        $('#folder_documents_' + fileCount + '_file').on('change', function() {
+            // Show its name
+            fileName = $(this).prop('files')[0].name;
+            $("#jsPreview" + fileCount).append(fileName);
+            // Hide the add file button
+            $("#jsBtnUpload" + fileCount).hide();
+            // Show the remove file button
+            $("#jsRemove" + fileCount).show();
+
+            // Create another instance of add file button and company
+            createAddFile(parseInt(fileCount)+1);
+        });
+    }
+
+    $(document).ready(function(){
+        createAddFile(fileCount);
+        fileCount++;
+    });
+</script>

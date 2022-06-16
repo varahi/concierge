@@ -1,0 +1,23 @@
+{#
+<form class="form-search" autocomplete="off" action="{{ path('app_administrator') }}">
+{{ path(app.request.attributes.get('_route')) }}
+#}
+<form class="form-search" autocomplete="off" action="">
+    <div>
+        <input
+                type="text"
+                name="q"
+
+                {% if routeName == 'app_administrator' %}
+                    placeholder="{{ 'Owner or apartment'|trans }}"
+                {% endif %}
+                {% if routeName == 'app_employer_page' %}
+                    placeholder="{{ 'Employers'|trans }}"
+                {% endif %}
+
+                aria-label="{{ 'Search'|trans }}"
+                value="{{ searchString }}"
+        />
+        <input type="submit" value="{{ 'Search'|trans }}"/>
+    </div>
+</form>

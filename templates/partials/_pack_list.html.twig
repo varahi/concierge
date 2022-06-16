@@ -1,0 +1,20 @@
+{% if pack.params is empty %}
+    {# empty array pack.params #}
+{% else %} -
+    {% for param in pack.params %}
+        {% if loop.last == false %}
+            {% if param.prestation.shortName %}
+                {{ param.prestation.shortName }} /
+            {% else %}
+                {{ param.prestation.name }} /
+            {% endif %}
+        {% else %}
+            {% if param.prestation.shortName %}
+                {{ param.prestation.shortName }}
+            {% else %}
+                {{ param.prestation.name }}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    <span class="price">{% if pack.total %} {{ pack.total|format_currency('EUR')  }}{% endif %}</span>
+{% endif %}

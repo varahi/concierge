@@ -1,0 +1,62 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding lightbox-settings">
+    <div class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				{% if add_service is defined %}
+					<h2>{{ 'Create a Service'|trans }}</h2>
+				{% endif %}
+				{% if edit_service is defined %}
+					<h2>{{ 'Edit Service'|trans }}</h2>
+				{% endif %}
+				{{ form_start(service_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'} } ) }}
+					<fieldset>
+						<div class="input-flex">
+							<div class="col-12">
+								{{ form_row(service_form.name) }}
+							</div>
+						</div>
+						<div class="input-price">
+							{{ form_row(service_form.price) }}
+						</div>
+
+						{#
+						<div class="input-flex input-radio-rental">
+							<div class="velvet">
+								<label>
+									{% if service.isRenter is defined %}
+										<input type="radio" name="service_form[isRenter]" value="renter" {% if service.isRenter == 1 %} checked {% endif %} required>
+									{% else %}
+										<input type="radio" name="service_form[isRenter]" value="renter" required>
+									{% endif %}
+									{{ 'Renter'|trans }}
+								</label>
+							</div>
+							<div class="green">
+								<label>
+									{% if service.isOwner is defined %}
+										<input type="radio" name="service_form[isRenter]" value="owner" {% if service.isOwner == 1 %} checked {% endif %}>
+									{% else %}
+										<input type="radio" name="service_form[isRenter]" value="owner">
+									{% endif %}
+									{{ 'Owner'|trans }}
+								</label>
+							</div>
+						</div>
+						#}
+
+						<div class="input-checkbox">
+							{{ form_row(service_form.isRenter) }}
+						</div>
+						<div class="input-checkbox">
+							{{ form_row(service_form.isOwner) }}
+						</div>
+
+						<div class="input-submit">
+							<input type="submit" value="{{ 'form.submit'|trans }}"/>
+						</div>
+                    </fieldset>
+                {{ form_end(service_form) }}
+			</div>
+		</div>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<div id="custom-content" class="white-popup-block">
+    <div id="list-service" class="lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <div class="row">
+
+                    <div class="col">
+                        {% if prestations %}
+                            <h2>{{ 'List of Prestations'| trans }}</h2>
+                            <ul class="list-service">
+                                {% for prestation in prestations %}
+                                    <li class="{% if prestation.isTask %}green-task{% endif %}">
+                                        {% if prestation.name %} {{ prestation.name }} {% endif %}
+                                        <span class="price">{% if prestation.price %} {{ prestation.price|format_currency('EUR')  }} {% endif %}</span>
+                                        <div class="links">
+											<a class="bt-edit ajax-popup-link close-ui-dialog"
+											   href="{{ path('app_edit_prestation', {id: prestation.id}) }}">{{ 'Edit'|trans }}
+											</a>
+											<a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+											   href="{{ path('app_delete_prestation', {id: prestation.id}) }}">{{ 'Delete'|trans }}
+											</a>
+										</div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>There is no prestations in the system</p>
+                        {% endif %}
+                        <div class="bottom">
+                            <a href="{{ path('app_add_prestation') }}" class="bt-blue4 ajax-popup-link close-ui-dialog">{{ 'Create a Prestation'| trans }}</a>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        {% if packs %}
+                            <h2>{{ 'List of Packs'| trans }}</h2>
+                            <ul class="list-service">
+                                {% for pack in packs %}
+                                    <li>{{ pack.name}}
+                                        {% include 'partials/_pack_list.html.twig' %}
+                                        <div class="links">
+											<a class="bt-edit ajax-popup-link close-ui-dialog" href="{{ path('app_edit_pack', {id: pack.id}) }}">{{ 'Edit'|trans }}</a>
+                                            <a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')" href="{{ path('app_delete_pack', {id: pack.id}) }}">{{ 'Delete'|trans }}</a>
+										</div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>There is no packs in the system</p>
+                        {% endif %}
+                        <div class="bottom">
+                            <a href="{{ path('app_add_pack') }}" class="bt-blue4 ajax-popup-link close-ui-dialog">{{ 'Create a Pack'| trans }}</a>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        {% if materials %}
+                            <h2>{{ 'List of Materials'| trans }}</h2>
+                                <ul class="list-service">
+                                    {% for material in materials %}
+                                        <li>
+                                            {{ material.name }} -
+                                            {% if material.quantity %}
+                                                {{ 'Qty'| trans }}: {{ material.quantity }}
+                                            {% endif %}
+                                            {#
+                                            <spanc lass="price">{% if material.dayPrice or  material.weekPrice %}
+                                                {{ 'Price'| trans }}: {{ material.dayPrice }}/{{ material.weekPrice}} &euro;
+                                            {% endif %}</span>
+                                            #}
+                                            <span class="price">{% if material.price %}
+                                                {{ 'Price'| trans }}: {{ material.price|format_currency('EUR')  }}
+                                            {% endif %}</span>
+											<div class="links">
+												<a class="bt-edit ajax-popup-link close-ui-dialog"
+												   href="{{ path('app_edit_material', {id: material.id}) }}">{{ 'Edit'|trans }}
+												</a>
+												<a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+												   href="{{ path('app_delete_material', {id: material.id}) }}">{{ 'Delete'|trans }}
+												</a>
+											</div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                        {% else %}
+                            <p>There is no materials in the system</p>
+                        {% endif %}
+                        <div class="bottom">
+                            <a href="{{ path('app_add_material') }}" class="bt-blue4 ajax-popup-link close-ui-dialog">{{ 'Create a Material'| trans }}</a>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        {% if services %}
+                            <h2>{{ 'Services'| trans }}</h2>
+                            <ul class="list-service">
+                                {% for service in services %}
+                                    <li>
+                                        {{ service.name }} <span class="price">{{ service.price|format_currency('EUR')  }}</span>
+                                        <div class="links">
+											<a class="bt-edit ajax-popup-link close-ui-dialog"
+											   href="{{ path('app_edit_service', {id: service.id}) }}">{{ 'Edit'|trans }}
+											</a>
+											<a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+											   href="{{ path('app_delete_service', {id: service.id}) }}">{{ 'Delete'|trans }}
+											</a>
+										</div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>There is no services in the system</p>
+                        {% endif %}
+                        <div class="bottom">
+                            <a href="{{ path('app_add_service') }}" class="bt-blue4 ajax-popup-link close-ui-dialog">{{ 'Create a Service'| trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

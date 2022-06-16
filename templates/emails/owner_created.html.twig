@@ -1,0 +1,64 @@
+<h1>Message du site Concierge Me</h1>
+
+Cher {{ user.firstName }} {{ user.lastName }},<br />
+Votre interface de propriétaire a été créée sur notre logiciel de gestion avec les paramètres suivants :<br /><br />
+
+<b>Date</b> : {{ date|date("d-m-Y - H:i:s") }} <br />
+
+{% if postArray.firstName is defined and postArray.lastName is defined %}
+    <b>Contact</b> : {{ postArray.firstName }} {{ postArray.lastName }}<br />
+{% endif %}
+
+{% if postArray.address is defined %}
+    <b>Addresse</b> : {{ postArray.address }}<br />
+{% endif %}
+
+{% if postArray.zip is defined %}
+    <b>Code Postal</b> : {{ postArray.zip }}<br />
+{% endif %}
+
+{% if postArray.city is defined %}
+    <b>Ville</b> : {{ postArray.city }}<br />
+{% endif %}
+
+{% if postArray.telephone is defined %}
+    <b>Téléphone</b> : {{ postArray.telephone }}<br />
+{% endif %}
+
+{% if postArray.email is defined %}
+    <b>Email</b> : {{ postArray.email }}<br />
+{% endif %}
+
+{% if postArray.plainPassword.first is defined %}
+    <b>Mot de passe</b> : {{ postArray.plainPassword.first }}<br />
+{% endif %}
+
+
+{#
+Currently new housing block don't used. Please don't remove it, maybe will be use in the future.
+
+<h3>With following appartment params</h3>
+
+{% if postArray.housing.title %}
+    Appartment title: {{ postArray.housing.title }}<br />
+{% endif %}
+
+{% if postArray.housing.address %}
+    Appartment address: {{ postArray.housing.address }}<br />
+{% endif %}
+
+{% if postArray.housing.zip %}
+    Appartment zip: {{ postArray.housing.zip }}<br />
+{% endif %}
+
+{% if postArray.housing.city %}
+    Appartment city: {{ postArray.housing.city }}<br />
+{% endif %}
+<br />
+
+#}
+
+
+{#
+<a href="{{ url('app_administrator') }}">Link to profile</a>
+#}

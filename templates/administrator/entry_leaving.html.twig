@@ -1,0 +1,170 @@
+{% extends 'profile.html.twig' %}
+{% block title %}Entry leaving page{% endblock %}
+{% block body %}
+
+    <script>
+        {% for employer in employers %}
+        {% if employer.task is not empty %}
+        {% for task in employer.task %}
+        function changeDateStartHour{{ task.id }}() {
+            jQuery.ajax({
+                url: "{{ path('app_set_task_starthour', { task: task.id}) }}",
+                data:'hour_start='+$("#startHour-{{ task.id }}").val(),
+                type: "POST",
+                dataType: "json",
+                success:function(data){
+                    $('span.ajax-task-hourstart-{{ task.id }}').html(data.output);
+                    //sconsole.log(data)
+                },
+            });
+            return false;
+        }
+        function changeDateEndHour{{ task.id }}() {
+            jQuery.ajax({
+                url: "{{ path('app_set_task_endthour', { task: task.id}) }}",
+                data:'hour_end='+$("#endHour-{{ task.id }}").val(),
+                type: "POST",
+                dataType: "json",
+                success:function(data){
+                    $('span.ajax-task-hourend-{{ task.id }}').html(data.output);
+                    //console.log(data)
+                },
+            });
+            return false;
+        }
+
+        {#
+        {% if task.isArchived == null %}
+        {% endif %}
+        #}
+
+
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </script>
+
+    <main id="main">
+        <div id="main-left" class="main-entryleave">
+            <div class="left">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>{{ 'Departures view'|trans }}</p>
+                        </div>
+                        <div class="bottom">
+                            <div class="filter-date">
+                                <div class="left-date">
+                                    <div class="list-employee">
+                                        <a class="bt-close" title="{{ 'Close'|trans }}" href="{{ path(app.request.attributes.get('_route')) }}">{{ 'Close'|trans }}</a>
+                                        <a class="bt-green" href="#">{{ 'All'|trans }}</a>
+                                        {% for employer in employers %}
+                                            {% if employer.apartments %}
+                                                <a class="icon-employee" data-user="{{ employer.id }}" href="#" style="background-color: {{ employer.color }}"
+                                                   title="{{ employer.firstName }} {{ employer.lastName }}">
+                                                    <span>{{ employer.firstName|slice(0, 1) }}</span>
+                                                </a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <form class="form-range">
+                                        <div class="daterange">
+                                            <span></span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="right-button">
+                                    <a class="bt-pdf" href="{{ path('app_entry_leaving_pdf', { dateStart: dateStartTimestamp, dateEnd: dateEndTimestamp}) }}"
+                                       target="_blank" title="{{ 'Download entry leaving PDF'|trans }}">{{ 'Exporter PDF'|trans }}</a>
+                                    <a class="bt-blue3 bt-home" href="{{ path('app_administrator') }}">{{ 'Customer management page'|trans }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    {% include 'partials/_message.html.twig' %}
+                    <article class="content">
+                        <div class="table">
+							<table class="table-std table-employee">
+								<thead>
+									<tr class="top">
+										<th style="width:23%;"></th>
+										<th colspan="2">{{ 'ARRIVÉES'|trans }}</th>
+										<th colspan="2">{{ 'DÉPARTS'|trans }}</th>
+									</tr>
+								</thead>
+							</table>
+                            <table class="table-std table-employee">
+                                <thead>
+                                <tr>
+                                    <th style="width:23%;"></th>
+                                    <th data-field="startDate">{{ 'Start date'|trans }}<span class="order"></span></th>
+                                    <th data-field="startHour">{{ 'Arriving time'|trans }}<span class="order"></span></th>
+                                    <th data-field="endDate">{{ 'End date'|trans }}<span class="order"></span></th>
+                                    <th data-field="endHour">{{ 'Departure time'|trans }}<span class="order"></span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% include 'administrator/partials/leftCol/_employer_time_list.html.twig' %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+            </div>
+            <div class="right">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>{{ 'Tasks'|trans }}</p>
+                        </div>
+                        <div class="bottom">
+                            <form class="form-range">
+                                <div class="daterange">
+                                    <span></span>
+                                </div>
+                            </form>
+							<a class="bt-pdf" href="{{ path('app_task_list_pdf', { dateStart: dateStartTimestamp, dateEnd: dateEndTimestamp}) }}"
+                               target="_blank" title="{{ 'Download task list PDF'|trans }}">{{ 'Exporter PDF'|trans }}</a>
+                        </div>
+                    </header>
+                    <article class="content">
+                        <div class="button-top">
+                            <a class="bt-blue2 link-dialog ajax-popup-link" href="{{ path('app_add_task') }}">{{ 'Add task'|trans }}</a>
+                            <a class="bt-blue3 task-active" href="#">{{ 'Tasks in progress'|trans }}</a>
+                            <a class="bt-blue3 task-done" href="#">{{ 'Tasks done'|trans }}</a>
+                        </div>
+
+                        {#
+                        <div class="navigation">
+                              {{ knp_pagination_render(tasks) }}
+                          </div>
+                        #}
+
+                        {% include 'administrator/partials/rightCol/_task_list.html.twig' %}
+                    </article>
+                </section>
+            </div>
+            {% include 'administrator/partials/_add_renter_form.html.twig' %}
+        </div>
+        <aside id="main-right">
+			<div class="all-width">
+				<a class="bt-arrow" href="#">{{ 'To broad'|trans }}</a>
+			</div>
+            <input type="text" id="newCalendarDate" value=""/>
+            <div id="calendar"></div>
+        </aside>
+        {% include 'administrator/partials/js/_calendar.html.twig' %}
+        {% include 'administrator/partials/js/_appartments.html.twig' %}
+        {% if owners %}
+            {% for user in owners %}
+                {% for apartment in user.apartments %}
+                    <div id="detail-appartment" class="detail-appartment-{{ apartment.id }}">
+                        {% include 'administrator/partials/lightbox/_detail_appartment.html.twig' %}
+                    </div>
+                    {% include 'administrator/partials/lightbox/_settings.html.twig' %}
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </main>
+    {% include 'administrator/partials/lightbox/list_services.html.twig' %}
+{% endblock %}

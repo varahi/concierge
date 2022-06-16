@@ -1,0 +1,21 @@
+{% extends 'login.html.twig' %}
+{% block title %}{{ 'Reset password'|trans }}{% endblock %}
+
+{% block body %}
+    <section id="login">
+        <article>
+            <div class="content-inner">
+                <h1>{{ 'Reset password'|trans }}</h1>
+                {{ form_start(resetForm, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                {{ form_row(resetForm.plainPassword) }}
+
+                <div class="input-submit">
+                    <input type="submit" value="{{ 'Reset'|trans }}">
+                </div>
+
+                {{ form_end(resetForm) }}
+            </div>
+        </article>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				<h2>{{ 'Create furniture'|trans }}</h2>
+				{{ form_start(equipment_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+				<fieldset>
+					<div class="input-flex">
+						<div class="input-select">
+						{{ form_row(equipment_form.room) }}
+						</div>
+						{{ form_row(equipment_form.name) }}
+						{{ form_row(equipment_form.quantity) }}
+					</div>
+					<div class="input-flex">
+						<div class="input-select">
+						{{ form_row(equipment_form.state) }}
+						</div>
+						{{ form_row(equipment_form.description) }}
+					</div>
+					<div class="input-flex">
+						{{ include("administrator/forms/upload_form.html.twig") }}
+					</div>
+					<div class="input-submit2">
+						<input type="submit" value="{{ 'form.submit'|trans }}"/>
+					</div>
+				</fieldset>
+				{{ form_end(equipment_form) }}
+			</div>
+		</div>
+    </div>
+</div>

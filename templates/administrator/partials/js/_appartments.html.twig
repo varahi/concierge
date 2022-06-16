@@ -1,0 +1,18 @@
+{% if apartments %}
+    <script>
+        $(document).ready(function(){
+            {% for apartment in apartments %}
+            $('.bt-view-{{ apartment.id }}').click(function(){
+                if($('.detail-appartment-{{ apartment.id }}').hasClass('active')){
+                    $('.detail-appartment-{{ apartment.id }}').removeClass('active');
+                }else{
+                    $('.detail-appartment-{{ apartment.id }}').addClass('active');
+                }
+            });
+            $('.detail-appartment-{{ apartment.id }} .bt-close-{{ apartment.id }}').click(function(){
+                $('.detail-appartment-{{ apartment.id }}').removeClass('active');
+            });
+            {% endfor %}
+        });
+    </script>
+{% endif %}

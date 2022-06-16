@@ -1,0 +1,127 @@
+{% extends 'profile.html.twig' %}
+{% block title %}Hello Administrator{% endblock %}
+{% block body %}
+
+    <main id="main">
+        <div id="main-left">
+            <div class="left">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>
+								<a class="bt-settings link-dialog" data-dialog="list-service" href="">{{ 'Settings'| trans }}</a>
+								{{ 'Customer managment'| trans }}
+								<a class="bt-logout" href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
+							</p>
+                        </div>
+                        <div class="bottom">
+                            <div class="button-top">
+                                <a class="bt-blue3 link-dialog ajax-popup-link" href="{{ path('app_apartment') }}">{{ 'Add housing'| trans | raw}}</a>
+                                <a class="bt-blue3 link-dialog ajax-popup-link" href="{{ path('app_addowner') }}">{{ 'Add owner'| trans | raw}}</a>
+                                <a class="bt-blue3" href="{{ path('app_employer_page') }}">{{ 'Page employees'| trans | raw}}</a>
+                                <a class="bt-blue3" href="{{ path('app_entry_leaving') }}">{{ 'Show departures'| trans | raw}}</a>
+                            </div>
+                            {% include 'administrator/partials/_search_form.html.twig' %}
+                        </div>
+                    </header>
+                    {% include 'partials/_message.html.twig' %}
+                    <article class="content">
+                        {% if searchString is not empty %}
+                            <a class="bt-blue3" href="{{ path(app.request.attributes.get('_route')) }}">{{ 'Reset'|trans}}</a><br /><br />
+                        {% endif %}
+
+                        <div class="button">
+                            <a class="bt-pdf2 bt-pdf-text" href="{{ path('app_owners_csv') }}" target="_blank" title="Download owners list">{{ 'Exporter Excel'|trans }}</a>
+                        </div>
+
+                        {#
+                        <div id="owner-list"></div>
+                        #}
+
+                        {% include 'administrator/partials/leftCol/_owners_list.html.twig' %}
+                        {% include 'administrator/partials/leftCol/_agencies_list.html.twig' %}
+
+                    </article>
+                </section>
+            </div>
+            <div class="right">
+                <section>
+
+                    <header>
+                        <div class="top">
+                            <p>{{ 'Tasks'|trans }}</p>
+                        </div>
+                        <div class="bottom">
+                            <form class="form-range">
+                                <div class="daterange">
+                                    <span></span>
+                                </div>
+                            </form>
+                        </div>
+                    </header>
+                    <article class="content">
+                        <div class="button-top">
+                            {#
+                            <a class="bt-blue2 link-dialog" data-dialog="add-task" href="#">Ajouter une tâche</a>
+                            #}
+                            <a class="bt-blue2 link-dialog ajax-popup-link" href="{{ path('app_add_task') }}">{{ 'Add task'|trans }}</a>
+                            <a class="bt-blue3 task-active" href="#">{{ 'Tasks in progress'|trans }}</a>
+                            <a class="bt-blue3 task-done" href="#">{{ 'Tasks done'|trans }}</a>
+                        </div>
+                        {% include 'administrator/partials/rightCol/_task_list.html.twig' %}
+
+                        {#
+                        {% include 'administrator/partials/rightCol/_task_list_without_leaving.html.twig' %}
+                        #}
+
+                        {#
+                        {% for index,calendar in calendars %}
+                                 {% if calendar.__isInitialized__ is defined %}
+                                     {{ dump(calendar) }}
+                                     {{ calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}<br />
+                                 {% endif %}
+                             {% endfor %}
+                        #}
+
+                    </article>
+                </section>
+            </div>
+            {% include 'administrator/partials/_add_renter_form.html.twig' %}
+        </div>
+
+        <aside id="main-right">
+			<div class="all-width">
+				<a class="bt-arrow" href="#">Elargir</a>
+			</div>
+			{#<input type="text" id="newCalendarDate" value=""/>#}
+			<form id="newCalendarDate" class="form-range">
+				<div class="daterange">
+					<span></span>
+				</div>
+			</form>
+            <div id="calendar"></div>
+        </aside>
+
+        {#
+        {% set letter = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'] %}
+        {% for index,task in tasks %}
+           {% set nom_item = 'Item'~letter[index] %}
+            {{ nom_item }}
+        {% endfor %}
+        #}
+
+        {% include 'administrator/partials/js/_calendar.html.twig' %}
+        {% include 'administrator/partials/js/_appartments.html.twig' %}
+        {% if owners %}
+            {% for user in owners %}
+                {% for apartment in user.apartments %}
+                    <div id="detail-appartment" class="detail-appartment-{{ apartment.id }}">
+                        {% include 'administrator/partials/lightbox/_detail_appartment.html.twig' %}
+                    </div>
+                    {% include 'administrator/partials/lightbox/_settings.html.twig' %}
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </main>
+    {% include 'administrator/partials/lightbox/list_services.html.twig' %}
+{% endblock %}

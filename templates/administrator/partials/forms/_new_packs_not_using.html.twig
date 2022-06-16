@@ -1,0 +1,39 @@
+<div class="add-newPack text-center">
+    <a class="bt-blue" href="#">{{ 'New pack'|trans }}</a>
+</div>
+
+<div class="input-newPack input-hidden">
+    <div class="input-flex">
+        <div class="col-8">
+            <label>{{ 'New pack'|trans }}</label>
+        </div>
+        <div class="col-4">
+            <label>{{ 'New quantity'|trans }}</label>
+        </div>
+    </div>
+    <div class="input-flex input-newLine">
+        <div class="col-8">
+            <div class="input-flex">
+                <div class="input-select">
+                    <select name="calendar_form[new_pack][]" >
+                        <option value="">{{ 'New Contain'|trans }}</option>
+
+                        {% for pack in packs %}
+                            <option value="{{ pack.id }}" {% if pack.isRenter == 1 %} class="velvet" {% endif %} {% if pack.isOwner == 1 %} class="green" {% endif %}>
+								{{ pack.name }}
+                                {% if pack.price is defined and pack.price is not null %} - {{ pack.price }} &#8364;{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="input-flex">
+                <div>
+                    <input type="number" id="new_quantity" name="calendar_form[new_pack_quantity][]" placeholder="{{ 'Enter value' }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

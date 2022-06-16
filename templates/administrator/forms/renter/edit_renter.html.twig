@@ -1,0 +1,173 @@
+<div id="custom-content" class="white-popup-block">
+    <div id="edit-tenant" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2 class="text-center">{{ 'Modify a renter'|trans }}</h2>
+                {{ form_start(edit_renter_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <input type="hidden" name="task" value="{{ taskId }}">
+                <script>
+                    $( function() {
+                        $( ".date-start" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+                        $( ".date-end" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+                    } );
+                </script>
+                <div class="row">
+                    <div class="col-6">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-flex">
+                                        {{ form_row(edit_renter_form.startDate) }}
+                                        {{ form_row(edit_renter_form.startHour) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-flex">
+                                        {{ form_row(edit_renter_form.endDate) }}
+                                        {{ form_row(edit_renter_form.endHour) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>{{ 'Informations de contact'|trans }}</legend>
+                            <div class="input-flex">
+                                <div>
+                                    {{ form_row(edit_renter_form.lastName) }}
+                                </div>
+                                <div>
+                                    {{ form_row(edit_renter_form.firstName) }}
+                                </div>
+                            </div>
+                            <div>
+                                {{ form_row(edit_renter_form.address) }}
+                            </div>
+                            <div class="input-flex">
+                                <div class="input-cp">
+                                    {{ form_row(edit_renter_form.zip) }}
+                                </div>
+                                <div>
+                                    {{ form_row(edit_renter_form.city) }}
+                                </div>
+                            </div>
+                            <div class="input-flex">
+                                <div>
+                                    {{ form_row(edit_renter_form.telephone) }}
+                                </div>
+                                <div>
+                                    {{ form_row(edit_renter_form.email) }}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="col-6">
+                        <fieldset>
+                            <div class="input-number">
+                                {{ form_label(edit_renter_form.numAdults) }}
+                                <div class="number">
+                                    <button class="minus">-</button>
+                                    {{ form_widget(edit_renter_form.numAdults) }}
+                                    <button class="plus">+</button>
+                                </div>
+                            </div>
+                            <div class="input-number">
+                                {{ form_label(edit_renter_form.numChildren) }}
+                                <div class="number">
+                                    <button class="minus">-</button>
+                                    {{ form_widget(edit_renter_form.numChildren) }}
+                                    <button class="plus">+</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>{{ 'form.addService'|trans }}</legend>
+                            <div class="input-select-multiple">
+                                {{ form_row(edit_renter_form.services) }}
+                            </div>
+                            <div class="input-select-multiple">
+                                {{ form_row(edit_renter_form.prestations) }}
+                            </div>
+                            <div class="input-select-multiple">
+                                {{ form_row(edit_renter_form.materials) }}
+                            </div>
+                            <a class="" href="{{ path('app_pdf_test') }}" target="_blank">{{ 'Generate invoice'|trans }}</a>
+                            <br /><br />
+
+
+                            {# @TODO: implement select forms for prestation
+                            <legend>{{ 'form.addService'|trans }}</legend>
+                            {% set packId = "" %}
+                            {% for housing in renter.housing %}
+                                {% if loop.first %}
+                                    {% set packId = housing.packs.id %}
+                                {% endif %}
+                            {% endfor %}
+                            <div class="input-select-multiple">
+                                <select id="renter_form_packs" name="renter_form[packs][]" multiple>
+                                    <option disabled value="">{{ 'Please select'|trans }}</option>
+                                    {% for param in renterPack.params %}
+                                        <option value="{{ param.id }}" {% if param.packs.id == packId %} selected {% endif %}>
+                                            {{ param.prestation.name }} - {{ param.prestation.price }} &euro;
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            #}
+
+                            {#
+                            {{ form_label(edit_renter_form.services) }}
+                            {{ form_widget(edit_renter_form.services) }}
+                            #}
+                            {#
+                            <legend>Ajouter une prestation</legend>
+                            <div class="input-prestation">
+                                {% for service in services %}
+                                    <div class="input-checkbox">
+                                        <label for="presta{{ service.id }}">
+                                            <input type="checkbox" id="presta{{ service.id }}"
+                                                   name="modify_renter_form[services][]"
+                                                   value="{{ service.id }}"
+                                                    {% if service is defined %}
+                                                        checked
+                                                    {% endif %}
+                                            />
+                                            <span>{{ service.name }}</span>
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            #}
+
+                            <div class="input-description">
+                                {{ form_label(edit_renter_form.note) }}
+                                {{ form_widget(edit_renter_form.note) }}
+                                <span class="character">0/200</span>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+                <div class="input-submit text-center">
+                    <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                    {% set housingId = "" %}
+                    {% for housing in renter.housing %}
+                        {% if loop.first %}
+                            {% set housingId = housing.id %}
+                        {% endif %}
+                    {% endfor %}
+                    <a href="{{ path('app_archive_renter', { id: renter.id, housing: housingId }) }}"
+                       class="bt-disabled" onclick="return confirm('{{ 'Are you sure archived'|trans }}')" style="margin: 10px auto; width: 200px;">
+                        {{ 'Archive renter'|trans }}
+                    </a>
+                </div>
+                {{ form_end(edit_renter_form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

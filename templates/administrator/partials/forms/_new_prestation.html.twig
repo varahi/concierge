@@ -1,0 +1,45 @@
+<div class="add-newPrestation text-center">
+    <a class="bt-blue" href="#">{{ 'New prestation'|trans }}</a>
+</div>
+<div class="input-newPrestation input-hidden">
+    <div class="input-flex">
+        <div class="col-8">
+            <label>{{ 'New prestation'|trans }}</label>
+        </div>
+        <div class="col-4">
+            <label>{{ 'New quantity'|trans }}</label>
+        </div>
+    </div>
+    <div class="input-flex input-newLine">
+        <div class="col-8">
+            {# New param field #}
+            <div class="input-flex">
+                <div class="input-select">
+                    <select name="calendar_form[new_prestation][]" >
+                        <option value="">{{ 'New prestation'|trans }}</option>
+                        {% for prestation in prestations %}
+                            <option value="{{ prestation.id }}"
+                                    {% if prestation.isOwner == 1 and prestation.isRenter == 1 %}
+                                        class="velvet-green"
+                                    {% elseif prestation.isRenter == 1 %}
+                                        class="velvet"
+                                    {% else %}
+                                        class="green"
+                                    {% endif %}
+                            >
+                                {{ prestation.name }} - {% if prestation.isRenter == 1 %} Renter {% endif %} {% if prestation.isOwner == 1 %} Owner {% endif %} {{ prestation.price }} &#8364;
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="input-flex">
+                <div>
+                    <input type="number" id="new_quantity" name="calendar_form[new_prestation_quantity][]" placeholder="{{ 'Enter value' }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

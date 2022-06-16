@@ -1,0 +1,19 @@
+<div class="item">
+    {#
+    <div class="input-checkbox">
+        <input type="checkbox" name=""/>
+    </div>
+    #}
+    <div class="title">
+        <p>{{ invoice.date|date("d-m-Y") }} - {{ invoice.number }}</p>
+    </div>
+
+    <div class="button">
+        <a href="#" class="bt-pdf2">View PDF</a>
+        <a class="bt-edit" href="{{ path('app_edit_invoice', {id: invoice.id, user: user.id}) }}">{{ 'Edit'|trans }}</a>
+        <a class="btn-delete" href="{{ path('app_delete_invoice', {id: invoice.id, user: user.id}) }}"
+           style="margin: 5px 0 0 15px" onclick="return confirm('{{ 'Are you sure'|trans }}')">
+            {{ 'Delete'|trans }}
+        </a>
+    </div>
+</div>

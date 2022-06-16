@@ -1,0 +1,67 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-appartment" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2 class="text-center">{{ 'Owner\'s file'|trans }}</h2>
+                <p class="title">{{ 'Contact information'|trans }}</p>
+                <table class="table-owner">
+                    <tbody>
+                    <tr>
+                        <th>{{ 'form.company'|trans }}</th>
+                        <th>{{ 'form.contactPerson'|trans }}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if owner.company %}
+                                {{ owner.company }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if owner.contactPerson %}
+                                {{ owner.contactPerson }}
+                            {% else %}
+                                {{ owner.lastName }} {{ owner.firstName }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">{{ 'Billing address'|trans }}</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ owner.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Code postal'|trans }}</th>
+                        <th>{{ 'City'|trans }}</th>
+                    </tr>
+                    <tr>
+                        <td>{{ owner.zip }}</td>
+                        <td>{{ owner.city }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Phone'|trans }}</th>
+                        <th>{{ 'form.email'|trans }}</th>
+                    </tr>
+                    <tr>
+                        <td>{{ owner.telephone }}</td>
+                        <td>{{ owner.email }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="title">{{ 'List of housing'|trans }}</p>
+
+                {% if owner.apartments %}
+                    {% for apartment in owner.apartments %}
+                        <div class="appartment">
+                            <p>{{ apartment.name }} {% if apartment.address %} - {{ apartment.address }} {% endif %}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>{{ 'No apartments'|trans }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

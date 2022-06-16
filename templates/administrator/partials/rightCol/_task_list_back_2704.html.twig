@@ -1,0 +1,44 @@
+<div class="detail-task">
+    {% if tasks %}
+        {% for index,calendar in calendars %}
+            <div class="task-date">
+                {# Founded only this solution to check if task exists before loop #}
+                {% if calendar.__isInitialized__ is defined %}
+                    {# Entry tasks #}
+                    <div class="content-entry">
+                        <div class="date {% if calendar.isArchived == 1 %}hidden{% endif %}">
+                            <p>{{ calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}</p>
+                            {#
+                            {{ calendar.endDate|localizeddate('full', 'none', app.request.locale, null, 'dd MMM yyyy') }}
+                            #}
+                        </div>
+                        {% for task in calendar.task %}
+                            {% if task.isEntry == 1 %}
+                                {% include 'partials/_task.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    {# Leaving tasks #}
+                    <div class="content-leaving">
+                        {% if calendar.isSingle is null %}
+			    {#
+                            <div class="date {% if calendar.isArchived == 1 %}hidden{% endif %}">
+                                <p>{{ calendar.endDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}</p>
+                            </div>
+			    #}
+                            {% for task in calendar.task %}
+                                {% if task.isEntry == 0 %}
+                                    {% include 'partials/_task.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>{{ 'No tasks'|trans }}</p>
+    {% endif %}
+</div>

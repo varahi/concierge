@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "styles.variable.css",
+	"sources": [
+		"../scss/styles.variable.scss"
+	],
+	"sourcesContent": [
+		"\r\n/* Color */\r\n$grey: #676767;\r\n$grey2: #EAEAEA;\r\n$black: #131313;\r\n$red: #C32E2E;\r\n$red2: #E10A1B;\r\n$blue: #5BB1FD;\r\n$blue2: #477CD5;\r\n$blue3: #1800B5;\r\n$blue4: #0770FE;\r\n$green: #00B715;\r\n\r\n/* Fonts */\r\n$roboto: 'Roboto', sans-serif;\r\n$heebo: 'Heebo', sans-serif;\r\n$rockwell: 'rockwell', sans-serif;\r\n$rockwell_bold: 'rockwell_bold', sans-serif;"
+	],
+	"names": [],
+	"mappings": "AACA,WAAW;AAYX,WAAW"
+}

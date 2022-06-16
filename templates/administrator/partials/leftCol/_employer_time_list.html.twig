@@ -1,0 +1,38 @@
+{#
+<div class="navigation">
+    {{ knp_pagination_render(employers) }}
+</div>
+#}
+
+  {% for task in tasks %}
+      {% if task.isEntry == 1 %}
+          {% for employer in task.users %}
+              <tr data-user="{{ employer.id }}">
+                  <td class="first">
+                      {% if task.housing %}
+                          {{ task.housing.name }}
+                      {% else %}
+                          {{ task.title }}
+                      {% endif %}
+                      <span style="background-color: {{ employer.color }}">{{ employer.firstName|slice(0, 1) }}</span>
+                  </td>
+                  <td><span class="hidden">{{ task.calendar.startDate |date("Y/m/d") }}</span>{{ task.calendar.startDate |date("d-m-Y") }}</td>
+                  <td>
+                      <input type="time" name="startHour-{{ task.id }}" id="startHour-{{ task.id }}" value="{{ task.calendar.startHour |date('H:i') }}" onBlur="changeDateStartHour{{ task.id }}()"/>
+                      <span class="hidden">{{ task.calendar.startHour |date('H:i') }}</span><br />
+                      <span class="ajax-alert ajax-task-hourstart-{{ task.id }}" style="color: #1800B5;"></span>
+                  </td>
+                  <td><span class="hidden">{{ task.calendar.endDate |date("Y/m/d") }}</span>{{ task.calendar.endDate |date("d-m-Y") }}</td>
+                  <td>
+                      <input type="time" name="endHour-{{ task.id }}"  id="endHour-{{ task.id }}" value="{{ task.calendar.endHour |date('H:i') }}" onBlur="changeDateEndHour{{ task.id }}()"/>
+                      <span class="hidden">{{ task.calendar.endHour |date('H:i') }}</span><br />
+                      <span class="ajax-alert ajax-task-hourend-{{ task.id }}" style="color: #1800B5;"></span>
+                  </td>
+              </tr>
+          {% endfor %}
+          {#
+          {% if task.isArchived == null %}
+          {% endif %}
+          #}
+      {% endif %}
+  {% endfor %}

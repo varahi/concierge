@@ -1,0 +1,101 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-owner" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="left">
+                <div class="image">
+                    <img src="{{ asset('images/image-owner.svg') }}" width="500" height="603" alt="" />
+                </div>
+            </div>
+            <div class="right">
+                <h2>{{ 'Add proprietary'|trans }}</h2>
+                {{ form_start(add_owner_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'} } ) }}
+                    <fieldset>
+                        <div class="input-checkbox">
+                            <div>
+                                <label for="add_owner_form_isAgency">{{ 'Is Agency'|trans }}</label>
+                                <input type="checkbox" id="add_owner_form_isAgency" name="add_owner_form[isAgency]" />
+                            </div>
+                        </div>
+                        <div class="input-flex">
+                            <div class="col-3">
+                                {{ form_row(add_owner_form.company) }}
+                            </div>
+                            <div class="col-3">
+                                {{ form_row(add_owner_form.firstName) }}
+                            </div>
+                            <div class="col-3">
+                                {{ form_row(add_owner_form.lastName) }}
+                            </div>
+                        </div>
+
+                        {{ form_row(add_owner_form.address) }}
+                        <div class="input-flex">
+                            <div class="input-cp">
+                                {{ form_row(add_owner_form.zip) }}
+                            </div>
+                            {{ form_row(add_owner_form.city) }}
+                        </div>
+                        <div class="input-flex">
+                            <div class="col-3">
+                                {{ form_row(add_owner_form.telephone) }}
+                            </div>
+                            <div class="col-3">
+                                {{ form_row(add_owner_form.telephone2) }}
+                            </div>
+                            <div class="col-3">
+                                {{ form_row(add_owner_form.email) }}
+                            </div>
+                        </div>
+                        <div class="input-flex">
+                            {{ form_row(add_owner_form.plainPassword) }}
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+
+                        {#
+                        <legend>{{ 'Add appartaments'|trans }}</legend>
+                        <div class="input-flex">
+                            <div class="col-4">
+                                <input type="text" name="add_owner_form[housing][title]" placeholder="{{ 'Housing title'|trans }}" required />
+                            </div>
+                            <div class="col-8">
+                                <div class="input-select">
+                                    <select name="add_owner_form[pack][]">
+                                        <option selected="selected" disabled="disabled">{{ 'Associated offer'|trans }}</option>
+                                        {% for pack in packs %}
+                                            <option value="{{ pack.id }}">{{ pack.name }}
+                                                {% if pack.price %}  - {{ pack.price }} {% endif %}
+                                                {% include 'partials/_pack_list.html.twig' %}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <input type="text" name="add_owner_form[housing][address]" placeholder="{{ 'Address'|trans }}" required />
+                        </div>
+                        <div class="input-flex">
+                            <div class="input-cp">
+                                <input type="number" name="add_owner_form[housing][zip]" placeholder="{{ 'Code postal'|trans }}" required />
+                            </div>
+                            <div>
+                                <input type="text" name="add_owner_form[housing][city]" placeholder="{{ 'City'|trans }}" required />
+                            </div>
+                        </div>
+                        #}
+
+                        <div class="input-submit">
+                            <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                            {#
+                            <input type="reset" value="{{ 'Cancel'|trans }}"/>
+                            #}
+                        </div>
+                    </fieldset>
+                {{ form_end(add_owner_form) }}
+            </div>
+        </div>
+    </div>
+</div>

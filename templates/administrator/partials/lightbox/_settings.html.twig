@@ -1,0 +1,9 @@
+<div id="lightbox-settings-{{ apartment.id }}" class="lightbox-std">
+    <div class="content-lightbox">
+        <div class="center">
+            <p><a href="{{ path('app_add_room', { id: apartment.id}) }}" class="bt-blue4 ajax-popup-link close-ui-dialog">{{ 'Create room'| trans }}</a></p>
+            <p><a href="{{ path('app_add_equipment', { id: apartment.id}) }}" class="bt-blue4 ajax-popup-link close-ui-dialog">{{ 'Create furniture'| trans }}</a></p>
+            <p><a href="{{ path('app_delete_room', { id: apartment.id}) }}" class="bt-blue4 ajax-popup-link close-ui-dialog">{{ 'Delete room'| trans }}</a></p>
+        </div>
+    </div>
+</div>

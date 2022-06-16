@@ -1,0 +1,28 @@
+<div class="detail-task user-task">
+    {% if tasks %}
+        <div class="task-date">
+            {% set startDate = null %}
+            {# Entry tasks #}
+            <div class="content-entry">
+                {% for task in tasks %}
+                    {% if startDate != task.startDate %}
+                        {% set startDate = task.startDate %}
+                        <div class="date {% if task.calendar.isArchived == 1 %}hidden{% endif %}">
+                            <p> {{ task.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}</p>
+                        </div>
+                    {% endif %}
+                    {% if task.isEntry == 1 %}
+                        {#
+                        {% include 'partials/_task.html.twig' %}
+                        #}
+                        {% include 'employer/partials/_task.html.twig' %}
+                    {% else %}
+                        {% include 'employer/partials/_task.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>{{ 'No tasks'|trans }}</p>
+    {% endif %}
+</div>

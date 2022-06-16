@@ -1,0 +1,13 @@
+<div class="list-task">
+    {% for apartment in user.employerAppts %}
+        <div class="task">
+            <div class="input-checkbox"><input type="checkbox" name=""/></div>
+            <div class="title">
+                <p>{{ apartment.name }}</p>
+            </div>
+            <div class="button">
+                <a class="bt-edit link-dialog ajax-popup-link" href="{{ path('app_edit_apartment', { id: apartment.id}) }}">{{ 'Edit'|trans }}</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>

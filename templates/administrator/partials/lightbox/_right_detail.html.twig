@@ -1,0 +1,16 @@
+<div class="right-detail">
+    <header><p class="title">{{ 'Details'|trans }}</p></header>
+    <div class="content">
+		<div class="list-images">
+        {% if equipment.documents %}
+            {% for document in equipment.documents %}
+                {% if loop %}
+					<div class="image" data-number="{{loop.index}}">
+						<img src="{{ asset('uploads/documents/' ~ suffixDirectoryName ~ document.imageName) }}" width="490" height="342" />
+					</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+		</div>
+    </div>
+</div>

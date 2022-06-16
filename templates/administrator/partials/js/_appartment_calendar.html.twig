@@ -1,0 +1,152 @@
+<script>
+    $(document).ready(function(){
+        /**** CALENDAR FULL ****/
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        var view = {
+            resourceTimelineDay: {
+                type: 'resourceTimeline',
+                duration: { days: 14 },
+                dateIncrement: { days: 1 },
+                buttonText: '14 days',
+                slotDuration: '24:00',
+                slotLabelFormat: [
+                    { weekday: 'short' },
+                    { day: 'numeric' }
+                ]
+            }
+        }
+        var events = [
+            {% for task in tasks %}
+            {# Not last loop #}
+            {% if task.renter %}
+            {
+                title: '{% if task.renter.firstName is defined %} {{ task.renter.firstName }}{% endif %} {% if task.renter.lastName is defined %} {{ task.renter.lastName }}{% endif %}',
+                resourceId: '{{ task.housing.id }}',
+                start: '{{ task.calendar.startDate|date("Y-m-d") }}T{{ task.calendar.startHour|date("H:i:s") }}',
+                end: '{{ task.calendar.endDate|date("Y-m-d") }}T{{ task.calendar.endHour|date("H:i:s") }}',
+                editable: false,
+                {% if task.isArchived %}
+                backgroundColor: '#dd0000',
+                {%  else %}
+
+                {% if task.invoice %}
+                    {% if task.invoice.isRenter == 1 or task.invoice.isOwner == 1 %}
+                        {% if task.invoice.isRenter == 1 %}
+                        backgroundColor: '#00B715',
+                    {%  else %}
+                        //backgroundColor: '#b4a300',
+                        backgroundColor: '#00B715',
+                    {% endif %}
+                    {%  else %}
+                    // Default background
+                    backgroundColor: '#00B715',
+                    {% endif %}
+                {% endif %}
+
+                {% endif %}
+                url: '{{ path('app_edit_event', { id: task.id}) }}'
+            },
+            {% endif %}
+
+            {% if task.isEvent %}
+            {
+                title: '{% if task.renter.firstName is defined %} {{ task.renter.firstName }}{% endif %} {% if task.renter.lastName is defined %} {{ task.renter.lastName }}{% endif %} {% if task.title %} {{ task.title }}{% endif %}',
+                resourceId: '{{ task.housing.id }}',
+                start: '{{ task.calendar.startDate|date("Y-m-d") }}T{{ task.calendar.startHour|date("H:i:s") }}',
+                end: '{{ task.calendar.endDate|date("Y-m-d") }}T{{ task.calendar.endHour|date("H:i:s") }}',
+                editable: false,
+                {% if task.isArchived %}
+                backgroundColor: '#dd0000',
+                {%  else %}
+                //backgroundColor: '#042eff',
+                backgroundColor: '{{ task.color }}',
+                {% endif %}
+            {#
+            url: '{{ path('app_edit_event', { id: task.id}) }}'
+            #}
+                url: '{{ path('app_edit_task', { task: task.id}) }}',
+            },
+            {% endif %}
+            {% endfor %}
+        ]
+
+
+        if($('#calendar{{ apartment.id }}').length > 0){
+            var calendarEl2 = document.getElementById('calendar{{ apartment.id }}');
+            calendar{{ apartment.id }} = new FullCalendar.Calendar(calendarEl2, {
+                locale: 'fr',
+                schedulerLicenseKey: '0585043515-fcs-1632212428',
+                headerToolbar: {
+                    left: 'title',
+                    center: '',
+                    right: 'prev,next'
+                },
+                titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
+                dayHeaderFormat: { weekday: 'short' },
+                initialView: 'dayGridMonth',
+                /*resourceAreaWidth: '170px',
+                views: view,*/
+                editable: true,
+                resourceAreaHeaderContent: ' ',
+                resources: '{{ url('app_full_calendar', {employee: app.request.get('employee')}) }}',
+                events: events,
+                eventRender: function(eventObj, $el) {
+                    console.log($el);
+                },
+                eventClick: function(info) {
+                    console.log(info.event.url);
+                    info.jsEvent.preventDefault();
+                    $.magnificPopup.open({
+                        items: {
+                            src: info.event.url,
+                        },
+                        type: 'ajax',
+                        closeOnBgClick: false,
+                        callbacks: {
+                            ajaxContentAdded: function() {
+                                $('input').iCheck();
+                                // Ajax content is loaded and appended to DOM
+                                $('.input-select select').selectmenu({
+                                    create: function( event, ui ) {
+                                        $(this).after($('#'+$(this).attr('id')+'-menu').parent());
+										$('#'+$(this).attr('id')+'-button').addClass($(this).find('option:selected').attr('class'));
+                                    },
+									open: function( event, ui ) {
+										var obj = $(this);
+										var classArray = [];
+										
+										$(this).find('option').each(function(){
+											if($(this).attr('class')){
+												classArray.push($(this).attr('class'));
+											}else{
+												classArray.push('');
+											}
+										});
+										$('#'+$(this).attr('id')+'-menu li').each(function(e){
+											$(this).addClass(classArray[e]);
+										});
+										
+										$('.input-rental .input-select .ui-selectmenu-menu li').hide();
+										if($('.input-radio-rental input:checked').val() == 'owner'){
+											$('.input-rental .input-select .ui-selectmenu-menu li.green').show();
+										}
+										if($('.input-radio-rental input:checked').val() == 'renter'){
+											$('.input-rental .input-select .ui-selectmenu-menu li.velvet').show();
+										}
+									}
+                                });
+                                $('.input-select-multiple select').select2({
+                                });
+                            }
+                        }
+                    });
+
+                }
+            });
+            calendar{{ apartment.id }}.render();
+        }
+    });
+</script>

@@ -1,0 +1,46 @@
+<div class="row row-calendar">
+    {% if apartments|length > 0 %}
+        {% for appt in apartments %}
+            <div id="calendar{{ apartment.id }}" class="calendar_appartment">
+                <h3>{{ appt.name }}</h3>
+                {% for task in appt.task %}
+                    {% if task.isEntry == 1 %}
+                        {% if task.calendar.startDate %}
+                            {% if (task.calendar.endDate) >= date('-365days') and task.calendar|length > 0 %}
+                                {% if task.renter %}
+                                    <hr/>
+                                    <p><strong>{{ task.renter.firstName }} {{ task.renter.lastName }}</strong></p>
+                                {% endif %}
+                                <p class="date-calendar">
+                                    {{ task.calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }} -
+                                    {{ task.calendar.endDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}
+                                    <a href="{{ path('app_edit_event', { id: task.id}) }}" class="bt-edit ajax-popup-link close-ui-dialog">
+                                        {{ 'Edit'|trans }}
+                                    </a>
+                                </p>
+                            {% else %}
+                                {% if loop.first %}
+                                    <p>{{ 'No actual tasks'|trans }}</p>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                {% for reservation in appt.reservations %}
+                    {% if (reservation.calendar.endDate) >= date('-365days') and reservation.calendar|length > 0 %}
+                        <hr />
+                        <p style="color: #7b243b;"><strong>{{reservation.title}}</strong></p>
+                        <p class="date-calendar" style="color: #7b243b;">
+                            {{ reservation.calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }} -
+                            {{ reservation.calendar.endDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}
+                            <a href="{{ path('app_edit_reservation', { id: reservation.id}) }}" class="bt-edit ajax-popup-link close-ui-dialog">
+                                {{ 'Edit'|trans }}
+                            </a>
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

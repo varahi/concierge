@@ -1,0 +1,27 @@
+<div class="form-owner-left">
+    <form class="form-std form-range" autocomplete="off">
+        <fieldset>
+            <div class="input-flex">
+                <div class="input-select">
+                    <select id="select-id">
+                        <option value="{{ path('app_owner_profile') }}">{{ 'Choice of apartment'|trans }}</option>
+                        {% for housing in apartments %}
+                            {% if apartment is defined %}
+                                <option value="{{ path('app_detail_apartment', { id: housing.id}) }}" {% if apartment.id == housing.id %} selected {% endif %}>
+                                    Appt {{ housing.id }} - {{ housing.name }}
+                                </option>
+                            {% else %}
+                                <option value="{{ path('app_detail_apartment', { id: housing.id}) }}">
+                                    Appt {{ housing.id }} - {{ housing.name }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- <div class="daterange"> -->
+                    <!-- <span></span> -->
+                <!-- </div> -->
+            </div>
+        </fieldset>
+    </form>
+</div>

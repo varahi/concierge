@@ -1,0 +1,5 @@
+<p style="text-align: center">{{ 'You are logged in as'|trans }} <br />
+    {{ app.user.firstName }} {{ app.user.lastName }} <br />
+ {{ app.user.username }}, <br /><br />
+  <a href="{{ path('app_logout') }}" class="bt-blue3">{{ 'Logout'|trans }}</a>
+</p>

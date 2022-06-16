@@ -1,0 +1,1282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="8AAMiiu" resname="Create an employee">
+        <source>Create an employee</source>
+        <target>Créer un employé</target>
+      </trans-unit>
+      <trans-unit id=".XJGeUI" resname="Employee managment">
+        <source>Employee managment</source>
+        <target>GESTION EMPLOYÉS</target>
+      </trans-unit>
+      <trans-unit id="s6YOYaU" resname="Tasks">
+        <source>Tasks</source>
+        <target>Tâches</target>
+      </trans-unit>
+      <trans-unit id="1lKt1V6" resname="form.firstName">
+        <source>form.firstName</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="4.GPZbC" resname="form.lastName">
+        <source>form.lastName</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="Y9zriAC" resname="Phone">
+        <source>Phone</source>
+        <target>Téléphone 1</target>
+      </trans-unit>
+      <trans-unit id="ZRG3RDv" resname="Phone2">
+        <source>Phone2</source>
+        <target>Téléphone 2</target>
+      </trans-unit>
+      <trans-unit id="3IGOm9D" resname="form.email">
+        <source>form.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="yjqmSBK" resname="form.password">
+        <source>form.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="B0VCgO_" resname="form.username">
+        <source>form.username</source>
+        <target>Identifiant</target>
+      </trans-unit>
+      <trans-unit id="kohqA_C" resname="form.submit">
+        <source>form.submit</source>
+        <target>Valider</target>
+      </trans-unit>
+      <trans-unit id="eGy9ks0" resname="form.company">
+        <source>form.company</source>
+        <target>Nom de l’agence ou du propriétaire</target>
+      </trans-unit>
+      <trans-unit id="gjr5J3T" resname="form.contactPerson">
+        <source>form.contactPerson</source>
+        <target>Nom du contact</target>
+      </trans-unit>
+      <trans-unit id="XUsHqAd" resname="form.city">
+        <source>form.city</source>
+        <target>Ville</target>
+      </trans-unit>
+      <trans-unit id="5ReDtNd" resname="Bill">
+        <source>Bill</source>
+        <target>Facture</target>
+      </trans-unit>
+      <trans-unit id="vDiMq3e" resname="To see">
+        <source>To see</source>
+        <target>Voir</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Modifier</target>
+      </trans-unit>
+      <trans-unit id="gD39GF0" resname="No employers">
+        <source>No employers</source>
+        <target>Aucun employé</target>
+      </trans-unit>
+      <trans-unit id="4OYExO2" resname="Tasks in progress">
+        <source>Tasks in progress</source>
+        <target>Tâches en cours</target>
+      </trans-unit>
+      <trans-unit id="VqmlDWF" resname="Tasks done">
+        <source>Tasks done</source>
+        <target>Tâches faites</target>
+      </trans-unit>
+      <trans-unit id="a3jPxtY" resname="ASSOCIATED APARTMENTS">
+        <source>ASSOCIATED APARTMENTS</source>
+        <target>APPARTEMENTS ASSOCIÉS</target>
+      </trans-unit>
+      <trans-unit id="n9coxmy" resname="Add">
+        <source>Add</source>
+        <target>Ajouter</target>
+      </trans-unit>
+      <trans-unit id="RPcFzok" resname="EMPLOYEE ACCOUNT">
+        <source>EMPLOYEE ACCOUNT</source>
+        <target>COMPTE DE L’EMPLOYÉ</target>
+      </trans-unit>
+      <trans-unit id="qSurebY" resname="DEACTIVATE ACCOUNT">
+        <source>DEACTIVATE ACCOUNT</source>
+        <target>DÉSACTIVER LE COMPTE</target>
+      </trans-unit>
+      <trans-unit id="gWlpMQG" resname="Start date">
+        <source>Start date</source>
+        <target>Date de début</target>
+      </trans-unit>
+      <trans-unit id="FDA6oMS" resname="End date">
+        <source>End date</source>
+        <target>Date de fin</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>Vous êtes connecté en tant que</target>
+      </trans-unit>
+      <trans-unit id="5HRQ4pD" resname="Arrival date">
+        <source>Arrival date</source>
+        <target>Date d’arrivée (m-d-Y)</target>
+      </trans-unit>
+      <trans-unit id="n6HTCEM" resname="Arriving time">
+        <source>Arriving time</source>
+        <target>Heure d’arrivée</target>
+      </trans-unit>
+      <trans-unit id="TsmRxSG" resname="Date of departure">
+        <source>Date of departure</source>
+        <target>Date de départ (m-d-Y)</target>
+      </trans-unit>
+      <trans-unit id="mRfVxye" resname="Departure time">
+        <source>Departure time</source>
+        <target>Heure de départ</target>
+      </trans-unit>
+      <trans-unit id="y8cxHpU" resname="Contact information">
+        <source>Contact information</source>
+        <target>Informations de contact</target>
+      </trans-unit>
+      <trans-unit id="69jirD9" resname="Modify a renter">
+        <source>Modify a renter</source>
+        <target>Modifier un locataire</target>
+      </trans-unit>
+      <trans-unit id="dtr2HAN" resname="insert information">
+        <source>insert information</source>
+        <target>insérer des informations</target>
+      </trans-unit>
+      <trans-unit id="9S86YCo" resname="Name of Tenant">
+        <source>Name of Tenant</source>
+        <target>Nom du Locataire</target>
+      </trans-unit>
+      <trans-unit id="KPO5Uj3" resname="First Name of Tenant">
+        <source>First Name of Tenant</source>
+        <target>Prénom du locataire</target>
+      </trans-unit>
+      <trans-unit id="H1FqzEm" resname="Billing address">
+        <source>Billing address</source>
+        <target>Adresse pour facturation</target>
+      </trans-unit>
+      <trans-unit id="vnBxYSs" resname="Code postal">
+        <source>Code postal</source>
+        <target>Code postal</target>
+      </trans-unit>
+      <trans-unit id=".DP3Mkb" resname="City">
+        <source>City</source>
+        <target>Ville</target>
+      </trans-unit>
+      <trans-unit id="XPfFjsr" resname="form.placeholder.telephone">
+        <source>form.placeholder.telephone</source>
+        <target>04 92 _ _   _ _   _ _   _ _</target>
+      </trans-unit>
+      <trans-unit id="3LEx3WG" resname="form.placeholder.email">
+        <source>form.placeholder.email</source>
+        <target>em@</target>
+      </trans-unit>
+      <trans-unit id="xtxxjfO" resname="form.numAdults">
+        <source>form.numAdults</source>
+        <target>Nombre d'adultes</target>
+      </trans-unit>
+      <trans-unit id="neB1l4j" resname="form.numChildren">
+        <source>form.numChildren</source>
+        <target><![CDATA[Nombre d’enfants (< 16ans)]]></target>
+      </trans-unit>
+      <trans-unit id="b4XYmiJ" resname="form.numLittleChildren">
+        <source>form.numLittleChildren</source>
+        <target><![CDATA[Nombre d’enfants (< 6ans)]]></target>
+      </trans-unit>
+      <trans-unit id="b.Gv_uX" resname="form.note">
+        <source>form.note</source>
+        <target>Note</target>
+      </trans-unit>
+      <trans-unit id="sVIjF7X" resname="form.addService">
+        <source>form.addService</source>
+        <target>Ajouter une prestation</target>
+      </trans-unit>
+      <trans-unit id="fTG4MxO" resname="Notification">
+        <source>Notification</source>
+        <target>Notification</target>
+      </trans-unit>
+      <trans-unit id="YycjYQ8" resname="Customer page">
+        <source>Customer page</source>
+        <target>Page de gestion clients</target>
+      </trans-unit>
+      <trans-unit id="J9Aqf9T" resname="Informations de contact">
+        <source>Informations de contact</source>
+        <target>Informations de contact</target>
+      </trans-unit>
+      <trans-unit id="MgF1Xzi" resname="Add epmloyer">
+        <source>Add epmloyer</source>
+        <target><![CDATA[Ajouter <br />un employé]]></target>
+      </trans-unit>
+      <trans-unit id="JC4xL1W" resname="Show departures">
+        <source>Show departures</source>
+        <target><![CDATA[Afficher <br />départs/arrivés]]></target>
+      </trans-unit>
+      <trans-unit id="dKiDoDe" resname="Settings">
+        <source>Settings</source>
+        <target>Paramètres</target>
+      </trans-unit>
+      <trans-unit id="_3COvZD" resname="Customer managment">
+        <source>Customer managment</source>
+        <target>GESTION CLIENTS</target>
+      </trans-unit>
+      <trans-unit id="ukI6RkA" resname="Add task">
+        <source>Add task</source>
+        <target>Ajouter une tâche</target>
+      </trans-unit>
+      <trans-unit id="q36flC1" resname="Add housing">
+        <source>Add housing</source>
+        <target><![CDATA[Ajouter <br />un logement]]></target>
+      </trans-unit>
+      <trans-unit id="vHv3XjN" resname="Add owner">
+        <source>Add owner</source>
+        <target><![CDATA[Ajouter <br />un propriétaire]]></target>
+      </trans-unit>
+      <trans-unit id="fZNm.a4" resname="Add service">
+        <source>Add service</source>
+        <target><![CDATA[Ajouter <br />un service]]></target>
+      </trans-unit>
+      <trans-unit id="iFh9E_H" resname="Page employés">
+        <source>Page employés</source>
+        <target><![CDATA[Page <br />Employés]]></target>
+      </trans-unit>
+      <trans-unit id="M8cQslg" resname="Associated offer">
+        <source>Associated offer</source>
+        <target>Offre associée</target>
+      </trans-unit>
+      <trans-unit id="uGf8h_z" resname="Add proprietary">
+        <source>Add proprietary</source>
+        <target>Créer un propriétaire</target>
+      </trans-unit>
+      <trans-unit id="MBj98VF" resname="Add appartaments">
+        <source>Add appartaments</source>
+        <target>Ajouter un logement</target>
+      </trans-unit>
+      <trans-unit id="Vu_PIJV" resname="Address">
+        <source>Address</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="GXZu1sy" resname="Cancel">
+        <source>Cancel</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="atgqOSB" resname="Housing title">
+        <source>Housing title</source>
+        <target>Titre du logement</target>
+      </trans-unit>
+      <trans-unit id="IODzzAl" resname="List of Packs">
+        <source>List of Packs</source>
+        <target>Liste des Packs</target>
+      </trans-unit>
+      <trans-unit id="jRHhLgj" resname="Create a Pack">
+        <source>Create a Pack</source>
+        <target>CRÉER UN PACK</target>
+      </trans-unit>
+      <trans-unit id="b5PuKfh" resname="List of Materials">
+        <source>List of Materials</source>
+        <target>Liste des matériels</target>
+      </trans-unit>
+      <trans-unit id="qb6cPpq" resname="Qty">
+        <source>Qty</source>
+        <target>Qté</target>
+      </trans-unit>
+      <trans-unit id="k8kchR5" resname="Price">
+        <source>Price</source>
+        <target>Tarif</target>
+      </trans-unit>
+      <trans-unit id="VMMk9sE" resname="Prix">
+        <source>Prix</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="0p0runE" resname="Create a Material">
+        <source>Create a Material</source>
+        <target>CRÉER UN MATÉRIEL</target>
+      </trans-unit>
+      <trans-unit id="YE3ORF4" resname="Services">
+        <source>Services</source>
+        <target>Services</target>
+      </trans-unit>
+      <trans-unit id="qqWc2XW" resname="Prestations">
+        <source>Prestations</source>
+        <target>Prestations</target>
+      </trans-unit>
+      <trans-unit id="F_IVvr3" resname="Create a Service">
+        <source>Create a Service</source>
+        <target>CRÉER UN SERVICE</target>
+      </trans-unit>
+      <trans-unit id="wZHBnav" resname="No owners">
+        <source>No owners</source>
+        <target>Aucun propriétaire</target>
+      </trans-unit>
+      <trans-unit id="hVpMel4" resname="Edit an owner">
+        <source>Edit an owner</source>
+        <target>Editer un propriétaire</target>
+      </trans-unit>
+      <trans-unit id="pvDOHY1" resname="List of housing">
+        <source>List of housing</source>
+        <target>Liste des logements</target>
+      </trans-unit>
+      <trans-unit id="9N.Jsxi" resname="adminpanel.back_to_site">
+        <source>adminpanel.back_to_site</source>
+        <target>Back to the site</target>
+      </trans-unit>
+      <trans-unit id="9.St3k0" resname="adminpanel.user">
+        <source>adminpanel.user</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="N3MFqBS" resname="adminpanel.username">
+        <source>adminpanel.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="vd0Vjy4" resname="adminpanel.apartment">
+        <source>adminpanel.apartment</source>
+        <target>Appartement</target>
+      </trans-unit>
+      <trans-unit id="d8elQ_F" resname="adminpanel.elements">
+        <source>adminpanel.elements</source>
+        <target>Element de l'Appartement</target>
+      </trans-unit>
+      <trans-unit id="vH9QkK2" resname="Owner's file">
+        <source>Owner's file</source>
+        <target>Fiche du propriétaire</target>
+      </trans-unit>
+      <trans-unit id="QFMhQFv" resname="No apartments">
+        <source>No apartments</source>
+        <target>Il n'y a pas d'appartemnt pour ce propriétaire</target>
+      </trans-unit>
+      <trans-unit id="b1QeGyU" resname="Create task">
+        <source>Create task</source>
+        <target>Créer une tâche</target>
+      </trans-unit>
+      <trans-unit id="zxNoo9H" resname="Edit task">
+        <source>Edit task</source>
+        <target>Modifier la tâche</target>
+      </trans-unit>
+      <trans-unit id="gOnFqz0" resname="form.task_title">
+        <source>form.task_title</source>
+        <target>Titre de la tâche</target>
+      </trans-unit>
+      <trans-unit id="B00qQuf" resname="form.assigned_whom">
+        <source>form.assigned_whom</source>
+        <target>Assignée à qui ?</target>
+      </trans-unit>
+      <trans-unit id="M_45rB0" resname="form.start_hour">
+        <source>form.start_hour</source>
+        <target>Heure de début</target>
+      </trans-unit>
+      <trans-unit id="X53Z174" resname="form.end_hour">
+        <source>form.end_hour</source>
+        <target>Heure de fin</target>
+      </trans-unit>
+      <trans-unit id=".quRIL2" resname="form.task_description">
+        <source>form.task_description</source>
+        <target>Descriptif de la tâche</target>
+      </trans-unit>
+      <trans-unit id="EvwHSzC" resname="APARTMENT CONFIGURATION">
+        <source>APARTMENT CONFIGURATION</source>
+        <target>CONFIGURATION DE L’APPARTEMENT</target>
+      </trans-unit>
+      <trans-unit id="GthlhGL" resname="Owner information">
+        <source>Owner information</source>
+        <target>Information propriétaire</target>
+      </trans-unit>
+      <trans-unit id="DPV8Y_u" resname="Offer">
+        <source>Offer</source>
+        <target>Offre</target>
+      </trans-unit>
+      <trans-unit id="2NosSd8" resname="Note">
+        <source>Note</source>
+        <target>Note</target>
+      </trans-unit>
+      <trans-unit id="dlMCVux" resname="Renter information">
+        <source>Renter information</source>
+        <target>Information locataire</target>
+      </trans-unit>
+      <trans-unit id="kg5BPH1" resname="Status">
+        <source>Status</source>
+        <target>Statut</target>
+      </trans-unit>
+      <trans-unit id="akeyEQV" resname="Renter">
+        <source>Renter</source>
+        <target>Locataire</target>
+      </trans-unit>
+      <trans-unit id="eJY5BfO" resname="Dates">
+        <source>Dates</source>
+        <target>Dates</target>
+      </trans-unit>
+      <trans-unit id="M7k0ds9" resname="Time">
+        <source>Time</source>
+        <target>Heures</target>
+      </trans-unit>
+      <trans-unit id="SH1Bdt6" resname="THE APARTMENT EQUIPMENT">
+        <source>THE APARTMENT EQUIPMENT</source>
+        <target>LES ÉQUIPEMENTS DE L’APPARTEMENT</target>
+      </trans-unit>
+      <trans-unit id="TjU.raH" resname="Salon">
+        <source>Salon</source>
+        <target>Salon</target>
+      </trans-unit>
+      <trans-unit id="uZ8tISX" resname="THE ELEMENTS OF THE APARTMENT">
+        <source>THE ELEMENTS OF THE APARTMENT</source>
+        <target>LES ÉLÉMENTS DE L’APPARTEMENT</target>
+      </trans-unit>
+      <trans-unit id="nP1E5C9" resname="Add specific elements">
+        <source>Add specific elements</source>
+        <target>Ajouter des éléments spécifiques</target>
+      </trans-unit>
+      <trans-unit id="5JW01j." resname="Start hour">
+        <source>Start hour</source>
+        <target>Départ</target>
+      </trans-unit>
+      <trans-unit id="hBL70AQ" resname="End hour">
+        <source>End hour</source>
+        <target>Arrivée</target>
+      </trans-unit>
+      <trans-unit id="9BGh_2J" resname="Free">
+        <source>Free</source>
+        <target>Libre</target>
+      </trans-unit>
+      <trans-unit id="K5z3e2e" resname="Busy">
+        <source>Busy</source>
+        <target>Occupé</target>
+      </trans-unit>
+      <trans-unit id="sl_e.tO" resname="Apartment elements">
+        <source>Apartment elements</source>
+        <target>Element de l’appartement</target>
+      </trans-unit>
+      <trans-unit id="sV9iU1G" resname="Garage">
+        <source>Garage</source>
+        <target>Garage</target>
+      </trans-unit>
+      <trans-unit id="5GLMzkB" resname="Garden">
+        <source>Garden</source>
+        <target>Jardin</target>
+      </trans-unit>
+      <trans-unit id="xQRA4OQ" resname="Furniture">
+        <source>Furniture</source>
+        <target>Meublé</target>
+      </trans-unit>
+      <trans-unit id="mKEkEzn" resname="Mezzanine">
+        <source>Mezzanine</source>
+        <target>Mezzanine</target>
+      </trans-unit>
+      <trans-unit id="vxk96e4" resname="Unfurnished">
+        <source>Unfurnished</source>
+        <target>Non meublé</target>
+      </trans-unit>
+      <trans-unit id="EN9fVB2" resname="WiFi">
+        <source>WiFi</source>
+        <target>Wifi</target>
+      </trans-unit>
+      <trans-unit id="SmTWyEn" resname="Parking">
+        <source>Parking</source>
+        <target>Parking</target>
+      </trans-unit>
+      <trans-unit id="teZVL4G" resname="Underground parking">
+        <source>Underground parking</source>
+        <target>Parking en sous sol</target>
+      </trans-unit>
+      <trans-unit id="8TAkJyw" resname="Pool">
+        <source>Pool</source>
+        <target>Piscine</target>
+      </trans-unit>
+      <trans-unit id="ppxN7OF" resname="Storage">
+        <source>Storage</source>
+        <target>Rangement</target>
+      </trans-unit>
+      <trans-unit id="WDTj3iU" resname="Bathroom">
+        <source>Bathroom</source>
+        <target>Salle de bain</target>
+      </trans-unit>
+      <trans-unit id="d7yi3Xb" resname="Elevator">
+        <source>Elevator</source>
+        <target>Ascenseur</target>
+      </trans-unit>
+      <trans-unit id="PLx461k" resname="Basement">
+        <source>Basement</source>
+        <target>Sous sol</target>
+      </trans-unit>
+      <trans-unit id="I9b.zZ." resname="Parental suite">
+        <source>Parental suite</source>
+        <target>Suite parentale</target>
+      </trans-unit>
+      <trans-unit id="vlhCyJY" resname="Terrace">
+        <source>Terrace</source>
+        <target>Terrasse</target>
+      </trans-unit>
+      <trans-unit id="cc.GxnQ" resname="Veranda">
+        <source>Veranda</source>
+        <target>Véranda</target>
+      </trans-unit>
+      <trans-unit id="B7L.bFj" resname="Separate WC">
+        <source>Separate WC</source>
+        <target>WC séparé</target>
+      </trans-unit>
+      <trans-unit id="_X6doOO" resname="Other">
+        <source>Other</source>
+        <target>Autre …</target>
+      </trans-unit>
+      <trans-unit id="hTfmBpz" resname="Enter a note">
+        <source>Enter a note</source>
+        <target>Entrer une note</target>
+      </trans-unit>
+      <trans-unit id="MKv5arm" resname="Create room">
+        <source>Create room</source>
+        <target>Créer une pièce</target>
+      </trans-unit>
+      <trans-unit id="3EQlH6T" resname="Create furniture">
+        <source>Create furniture</source>
+        <target>Créer un mobilier</target>
+      </trans-unit>
+      <trans-unit id="R30ovWG" resname="Delete room">
+        <source>Delete room</source>
+        <target>Supprimer une pièce</target>
+      </trans-unit>
+      <trans-unit id="U418wC9" resname="Furniture name">
+        <source>Furniture name</source>
+        <target>Nom du mobilier</target>
+      </trans-unit>
+      <trans-unit id="ZDqpfpS" resname="Sofa">
+        <source>Sofa</source>
+        <target>Canapé</target>
+      </trans-unit>
+      <trans-unit id="G.zwpIx" resname="Choose room">
+        <source>Choose room</source>
+        <target>Choix de la pièce</target>
+      </trans-unit>
+      <trans-unit id="8hbGKbo" resname="No rooms">
+        <source>No rooms</source>
+        <target>Il n'y a pas de pièce</target>
+      </trans-unit>
+      <trans-unit id="dMAm3gJ" resname="No renter for apartment">
+        <source>No renter for apartment</source>
+        <target>Pas de locataire pour l'appartement</target>
+      </trans-unit>
+      <trans-unit id="giurjUG" resname="Quantity">
+        <source>Quantity</source>
+        <target>Quantité</target>
+      </trans-unit>
+      <trans-unit id="hTRCoXN" resname="No elements for apartment">
+        <source>No elements for apartment</source>
+        <target>Aucun élément pour cet appartement</target>
+      </trans-unit>
+      <trans-unit id="jdbXk0U" resname="Add a set of elements">
+        <source>Add a set of elements</source>
+        <target>Ajouter un ensemble d'éléments pour cet appartement</target>
+      </trans-unit>
+      <trans-unit id="_18n1UV" resname="Detail">
+        <source>Detail</source>
+        <target>Détail</target>
+      </trans-unit>
+      <trans-unit id="fyRlrHz" resname="Equipment">
+        <source>Equipment</source>
+        <target>Mobilier</target>
+      </trans-unit>
+      <trans-unit id="qNT74p6" resname="Equipment list">
+        <source>Equipment list</source>
+        <target>Fiche du mobilier</target>
+      </trans-unit>
+      <trans-unit id="aOfXher" resname="Delete equipment">
+        <source>Delete equipment</source>
+        <target>Supprimer équipement</target>
+      </trans-unit>
+      <trans-unit id="rEVn4ao" resname="Equipment photos">
+        <source>Equipment photos</source>
+        <target>Photos du mobilier</target>
+      </trans-unit>
+      <trans-unit id="RZid5J_" resname="Details">
+        <source>Details</source>
+        <target>Détails</target>
+      </trans-unit>
+      <trans-unit id="w7Kebu8" resname="Names">
+        <source>Names</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="o7UMR2c" resname="State">
+        <source>State</source>
+        <target>Etat</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="EsiFsj9" resname="Are you sure">
+        <source>Are you sure</source>
+        <target>Êtes-vous sûr de vouloir supprimer un enregistrement ?</target>
+      </trans-unit>
+      <trans-unit id="lQACl3j" resname="folder_add_success">
+        <source>folder_add_success</source>
+        <target>__folder_add_success</target>
+      </trans-unit>
+      <trans-unit id="IYTblKq" resname="Modify equipment">
+        <source>Modify equipment</source>
+        <target>Modification du mobilier</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="Js41IBn" resname="folder_add">
+        <source>folder_add</source>
+        <target>ajouter le dossier</target>
+      </trans-unit>
+      <trans-unit id="mxa0TQ4" resname="documents">
+        <source>documents</source>
+        <target>documents</target>
+      </trans-unit>
+      <trans-unit id=".cVZkLM" resname="folder_edit">
+        <source>folder_edit</source>
+        <target>folder edit</target>
+      </trans-unit>
+      <trans-unit id="fYYDwx9" resname="standard_validate">
+        <source>standard_validate</source>
+        <target>standard validate</target>
+      </trans-unit>
+      <trans-unit id="Q8wj_lK" resname="document">
+        <source>document</source>
+        <target>document</target>
+      </trans-unit>
+      <trans-unit id="SkaeTw9" resname="Please select">
+        <source>Please select</source>
+        <target>Veuillez sélectionner</target>
+      </trans-unit>
+      <trans-unit id="sJxz2dP" resname="Choose file">
+        <source>Choose file</source>
+        <target>Choisir le fichier</target>
+      </trans-unit>
+      <trans-unit id="d_cM0ZD" resname="Concierge Me - added apartment">
+        <source>Concierge Me - added apartment</source>
+        <target>Concierge me - Ajout d’un appartement</target>
+      </trans-unit>
+      <trans-unit id="RLJfRrS" resname="Concierge Me - Your profile updated">
+        <source>Concierge Me - Your profile updated</source>
+        <target>Concierge Me - Profile mis à jour</target>
+      </trans-unit>
+      <trans-unit id="DVxjZ7l" resname="Claud account">
+        <source>Claud account</source>
+        <target>COMPTE DE CLAUDE</target>
+      </trans-unit>
+      <trans-unit id="Y1ZcBIX" resname="Add note">
+        <source>Add note</source>
+        <target>Ajouter une note</target>
+      </trans-unit>
+      <trans-unit id="wGYL6IM" resname="Add photo">
+        <source>Add photo</source>
+        <target>Ajouter une photo</target>
+      </trans-unit>
+      <trans-unit id="k20P1Yc" resname="Add alert">
+        <source>Add alert</source>
+        <target>Ajouter une alerte</target>
+      </trans-unit>
+      <trans-unit id="TOBIuap" resname="Report problem">
+        <source>Report problem</source>
+        <target>Signaler un problème</target>
+      </trans-unit>
+      <trans-unit id="4jblA1l" resname="Task information">
+        <source>Task information</source>
+        <target>Information de la tâche</target>
+      </trans-unit>
+      <trans-unit id="Ig90cFS" resname="Task todo">
+        <source>Task todo</source>
+        <target>Tâches à faire</target>
+      </trans-unit>
+      <trans-unit id="uD_OZE6" resname="Accomplished tasks">
+        <source>Accomplished tasks</source>
+        <target>Tâches effectuées</target>
+      </trans-unit>
+      <trans-unit id="lnv5rk6" resname="Concierge Me - Employer created">
+        <source>Concierge Me - Employer created</source>
+        <target>Concierge Me - Emplyé créé</target>
+      </trans-unit>
+      <trans-unit id="osv2JRC" resname="New owner created">
+        <source>New owner created</source>
+        <target>Concierge Me - Nouveau propriétaire créé </target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="2DZwl3M" resname="Customer employers">
+        <source>Customer employers</source>
+        <target>Gestion employes</target>
+      </trans-unit>
+      <trans-unit id="WatUuGd" resname="Edit an employer">
+        <source>Edit an employer</source>
+        <target>Modifier un employeur</target>
+      </trans-unit>
+      <trans-unit id="Ugjur9U" resname="Show note">
+        <source>Show note</source>
+        <target>Afficher la note</target>
+      </trans-unit>
+      <trans-unit id="blR8HLY" resname="Show photo">
+        <source>Show photo</source>
+        <target>Afficher la photo</target>
+      </trans-unit>
+      <trans-unit id="2E7rrak" resname="Photo">
+        <source>Photo</source>
+        <target>Photo</target>
+      </trans-unit>
+      <trans-unit id="kMfCIDk" resname="List of Prestations">
+        <source>List of Prestations</source>
+        <target>Les Prestations</target>
+      </trans-unit>
+      <trans-unit id="sT2nRSz" resname="Create a Prestation">
+        <source>Create a Prestation</source>
+        <target>Créer un Prestation</target>
+      </trans-unit>
+      <trans-unit id="j4wvLg_" resname="Edit appartaments">
+        <source>Edit appartaments</source>
+        <target>Modifier les appartements</target>
+      </trans-unit>
+      <trans-unit id="AGOLrH6" resname="form.task_photo">
+        <source>form.task_photo</source>
+        <target>Tâche photo</target>
+      </trans-unit>
+      <trans-unit id="Vz99N48" resname="Name of the service">
+        <source>Name of the service</source>
+        <target>Nom de la prestation</target>
+      </trans-unit>
+      <trans-unit id="_a7ilLQ" resname="Edit a Prestation">
+        <source>Edit a Prestation</source>
+        <target>Modifier une prestation</target>
+      </trans-unit>
+      <trans-unit id="BmlhBRf" resname="Edit Pack">
+        <source>Edit Pack</source>
+        <target>Modifier le pack</target>
+      </trans-unit>
+      <trans-unit id="dzC3bBO" resname="Edit Material">
+        <source>Edit Material</source>
+        <target>Modifier le matériel</target>
+      </trans-unit>
+      <trans-unit id="x8Gdb0w" resname="Edit Service">
+        <source>Edit Service</source>
+        <target>Modifier le service</target>
+      </trans-unit>
+      <trans-unit id="TMk0jXm" resname="Invoice Managment">
+        <source>Invoice Managment</source>
+        <target>Gestion Factures</target>
+      </trans-unit>
+      <trans-unit id="gSwguRo" resname="Employer managment page">
+        <source>Employer managment page</source>
+        <target><![CDATA[Page de gestion <br />employé]]></target>
+      </trans-unit>
+      <trans-unit id="DWDAIXI" resname="Add invoice">
+        <source>Add invoice</source>
+        <target><![CDATA[Ajouter <br />une facture]]></target>
+      </trans-unit>
+      <trans-unit id="mDPsMrZ" resname="Invoice in progress">
+        <source>Invoice in progress</source>
+        <target><![CDATA[Facture <br />en cours]]></target>
+      </trans-unit>
+      <trans-unit id="5TSiwrR" resname="Contain">
+        <source>Contain</source>
+        <target>Contenu</target>
+      </trans-unit>
+      <trans-unit id="peymu6t" resname="Edit event">
+        <source>Edit event</source>
+        <target>Modifier l'événement </target>
+      </trans-unit>
+      <trans-unit id="f.p3JH_" resname="Pack name">
+        <source>Pack name</source>
+        <target>Nom du pack</target>
+      </trans-unit>
+      <trans-unit id="Z5fhIoR" resname="Short name service">
+        <source>Short name service</source>
+        <target>Nom court du service</target>
+      </trans-unit>
+      <trans-unit id="G7iHDMB" resname="Service name">
+        <source>Service name</source>
+        <target>Nom du service</target>
+      </trans-unit>
+      <trans-unit id="82Tj4zk" resname="Day price">
+        <source>Day price</source>
+        <target>Prix à la journée</target>
+      </trans-unit>
+      <trans-unit id="AdrGNQh" resname="Week price">
+        <source>Week price</source>
+        <target>Prix à la semaine</target>
+      </trans-unit>
+      <trans-unit id="y1pJKAe" resname="You logged as">
+        <source>You logged as</source>
+        <target>Vous êtes connecté en tant que</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Identifiant</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="59PnafP" resname="Administrator">
+        <source>Administrator</source>
+        <target>ADMINISTRATEUR</target>
+      </trans-unit>
+      <trans-unit id="SxuKo2C" resname="Owner">
+        <source>Owner</source>
+        <target>PROPRIÉTAIRE</target>
+      </trans-unit>
+      <trans-unit id="yYJwMXt" resname="Employees">
+        <source>Employees</source>
+        <target>EMPLOYÉS</target>
+      </trans-unit>
+      <trans-unit id="dKLBVde" resname="New Contain">
+        <source>New Contain</source>
+        <target>Nouveau Contenu</target>
+      </trans-unit>
+      <trans-unit id="OqNJep1" resname="New quantity">
+        <source>New quantity</source>
+        <target>Nouvelle quantité</target>
+      </trans-unit>
+      <trans-unit id="5rQQ.bA" resname="New price">
+        <source>New price</source>
+        <target>Nouveau prix</target>
+      </trans-unit>
+      <trans-unit id="XiuOllA" resname="Sign up">
+        <source>Sign up</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="PnhPxAz" resname="Packs">
+        <source>Packs</source>
+        <target>Packs</target>
+      </trans-unit>
+      <trans-unit id="AgFY.Hq" resname="Are you sure deactivate">
+        <source>Are you sure deactivate</source>
+        <target>Êtes-vous sûr de vouloir désactiver ce compte?</target>
+      </trans-unit>
+      <trans-unit id="P5yZH2O" resname="Change password">
+        <source>Change password</source>
+        <target>Changer de mot de passe</target>
+      </trans-unit>
+      <trans-unit id="dHHysis" resname="Are you sure archived">
+        <source>Are you sure archived</source>
+        <target>Êtes-vous sûr de vouloir déplacer le locataire vers les archives</target>
+      </trans-unit>
+      <trans-unit id="NpSjxyH" resname="Archive renter">
+        <source>Archive renter</source>
+        <target>Déplacer vers l'archive</target>
+      </trans-unit>
+      <trans-unit id="8s0Cxc9" resname="Choose Color">
+        <source>Choose Color</source>
+        <target>Choisir la couleur</target>
+      </trans-unit>
+      <trans-unit id="Ef9iiRG" resname="Generate invoice">
+        <source>Generate invoice</source>
+        <target>Générer la facture locataire</target>
+      </trans-unit>
+      <trans-unit id="8P9IP38" resname="TENANT INVOICING">
+        <source>TENANT INVOICING</source>
+        <target>Facturation propriétaire</target>
+      </trans-unit>
+      <trans-unit id="uDIALaK" resname="Invoice">
+        <source>Invoice</source>
+        <target>FACTURÉ À</target>
+      </trans-unit>
+      <trans-unit id="Q3rqYqW" resname="Contents">
+        <source>Contents</source>
+        <target>CONTENU</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>DÉSIGNATION</target>
+      </trans-unit>
+      <trans-unit id="5QGPyUU" resname="Unit price">
+        <source>Unit price</source>
+        <target>PRIX UNITÉ</target>
+      </trans-unit>
+      <trans-unit id="SeltfN9" resname="Amount">
+        <source>Amount</source>
+        <target>MONTANT</target>
+      </trans-unit>
+      <trans-unit id="ssUyv2U" resname="Save invoice">
+        <source>Save invoice</source>
+        <target>SAUVEGARDER LA FACTURE</target>
+      </trans-unit>
+      <trans-unit id="bK9o6ae" resname="Generate facture">
+        <source>Generate facture</source>
+        <target>GÉNÉRER LA FACTURE</target>
+      </trans-unit>
+      <trans-unit id="5rMPk5j" resname="No invoices">
+        <source>No invoices</source>
+        <target>Pas de factures</target>
+      </trans-unit>
+      <trans-unit id="jM2OHcu" resname="Invoice information">
+        <source>Invoice information</source>
+        <target>INFORMATION FACTURE</target>
+      </trans-unit>
+      <trans-unit id="GGio3Xi" resname="Add row">
+        <source>Add row</source>
+        <target>Ajouter une ligne</target>
+      </trans-unit>
+      <trans-unit id="tDTSU8m" resname="Are you sure delete row">
+        <source>Are you sure delete row</source>
+        <target>Voulez-vous supprimer cette ligne ?</target>
+      </trans-unit>
+      <trans-unit id="WuqBg.r" resname="Choice of apartment">
+        <source>Choice of apartment</source>
+        <target>Choix de l'appartement</target>
+      </trans-unit>
+      <trans-unit id="tYF1HgQ" resname="Choice of apartments">
+        <source>Choice of apartments</source>
+        <target>Choix de l'appartements</target>
+      </trans-unit>
+      <trans-unit id="y5V4ffe" resname="My reservations">
+        <source>My reservations</source>
+        <target>MES RÉSERVATIONS</target>
+      </trans-unit>
+      <trans-unit id="ybPDgkf" resname="Total">
+        <source>Total</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="hJGMZqn" resname="New invoice">
+        <source>New invoice</source>
+        <target>Nouvelle facture À</target>
+      </trans-unit>
+      <trans-unit id="NnOoTCd" resname="Entry task">
+        <source>Entry task</source>
+        <target>Etat des lieux Entrée</target>
+      </trans-unit>
+      <trans-unit id="PSCN05u" resname="Leaving task">
+        <source>Leaving task</source>
+        <target>État des lieux Sortie</target>
+      </trans-unit>
+      <trans-unit id="sHtfaON" resname="Reservation from">
+        <source>Reservation from</source>
+        <target>Réservation du</target>
+      </trans-unit>
+      <trans-unit id="XNJTXKX" resname="Enter renter">
+        <source>Enter renter</source>
+        <target>ENTRER UNE LOCATION</target>
+      </trans-unit>
+      <trans-unit id="EMIrz0x" resname="for">
+        <source>for</source>
+        <target>pour</target>
+      </trans-unit>
+      <trans-unit id="n_yRBba" resname="Are you sure delete event">
+        <source>Are you sure delete event</source>
+        <target>Êtes-vous sûr de supprimer l\'événement</target>
+      </trans-unit>
+      <trans-unit id="uHKkLtT" resname="Delete event">
+        <source>Delete event</source>
+        <target>Supprimer l'événement</target>
+      </trans-unit>
+      <trans-unit id="JWxAxe." resname="Single task">
+        <source>Single task</source>
+        <target>Tâche unique</target>
+      </trans-unit>
+      <trans-unit id="oGLnIYw" resname="Choise appartmens">
+        <source>Choise appartmens</source>
+        <target>Choix de l'appartement</target>
+      </trans-unit>
+      <trans-unit id="tFbm1a5" resname="Reservation">
+        <source>Reservation</source>
+        <target>Réservation</target>
+      </trans-unit>
+      <trans-unit id="fZ63rLE" resname="Close">
+        <source>Close</source>
+        <target>Fermer</target>
+      </trans-unit>
+      <trans-unit id="NMoOdmC" resname="Group">
+        <source>Group</source>
+        <target>Groupe</target>
+      </trans-unit>
+      <trans-unit id="tM83OXy" resname="Employer assigned">
+        <source>Employer assigned</source>
+        <target>Employé assigné à cet appartement</target>
+      </trans-unit>
+      <trans-unit id="O69VR4S" resname="Delete task">
+        <source>Delete task</source>
+        <target>Supprimer la tâche</target>
+      </trans-unit>
+      <trans-unit id="Srt.hAl" resname="Are you sure disconnect">
+        <source>Are you sure disconnect</source>
+        <target>Êtes-vous sûr de déconnecter la relation de l\'appartement avec le propriétaire ?</target>
+      </trans-unit>
+      <trans-unit id="U.TFjSM" resname="Disconect apartment">
+        <source>Disconect apartment</source>
+        <target>Dissocier L'appartement</target>
+      </trans-unit>
+      <trans-unit id="9YfUZer" resname="Are you sure delete owner">
+        <source>Are you sure delete owner</source>
+        <target>Êtes-vous sûr de vouloir supprimer le propriétaire </target>
+      </trans-unit>
+      <trans-unit id="5MaSPm7" resname="Delete owner">
+        <source>Delete owner</source>
+        <target>Supprimer le propriétaire</target>
+      </trans-unit>
+      <trans-unit id="HTkFdRv" resname="Number of rooms">
+        <source>Number of rooms</source>
+        <target>Nombre de pièces</target>
+      </trans-unit>
+      <trans-unit id="K66v4pw" resname="Number of beds">
+        <source>Number of beds</source>
+        <target>Nombre de couchage</target>
+      </trans-unit>
+      <trans-unit id="nC9HRLb" resname="No tasks">
+        <source>No tasks</source>
+        <target>Il n'y a pas de tâches disponibles</target>
+      </trans-unit>
+      <trans-unit id="RvekqKr" resname="No calendar">
+        <source>No calendar</source>
+        <target>Il n'y a pas de calendriers disponibles</target>
+      </trans-unit>
+      <trans-unit id="lJy2ljb" resname="Owner or apartment">
+        <source>Owner or apartment</source>
+        <target>Propriétaire ou appartement</target>
+      </trans-unit>
+      <trans-unit id="ScJmuqq" resname="Search">
+        <source>Search</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="0acV7m_" resname="Page employees">
+        <source>Page employees</source>
+        <target>Page employees</target>
+      </trans-unit>
+      <trans-unit id="2u52BrM" resname="Reset">
+        <source>Reset</source>
+        <target>réinitialiser </target>
+      </trans-unit>
+      <trans-unit id=".4z1Nnw" resname="Owner occupancy">
+        <source>Owner occupancy</source>
+        <target>Occupation propriétaire</target>
+      </trans-unit>
+      <trans-unit id="42Ud50A" resname="Employers">
+        <source>Employers</source>
+        <target>Employeurs</target>
+      </trans-unit>
+      <trans-unit id="RO.oWmW" resname="Booking calendar">
+        <source>Booking calendar</source>
+        <target>Calendrier des réservation</target>
+      </trans-unit>
+      <trans-unit id="GMM_NKt" resname="Edit reservation">
+        <source>Edit reservation</source>
+        <target>Modifier la réservation</target>
+      </trans-unit>
+      <trans-unit id="PysNwap" resname="Are you sure delete reservation">
+        <source>Are you sure delete reservation</source>
+        <target>Êtes-vous sûr de supprimer la réservation</target>
+      </trans-unit>
+      <trans-unit id="6zSuyKn" resname="Delete reservation">
+        <source>Delete reservation</source>
+        <target>Supprimer la réservation</target>
+      </trans-unit>
+      <trans-unit id="UKmYPOj" resname="Departures view">
+        <source>Departures view</source>
+        <target>VUE ARRIVÉS / DÉPARTS </target>
+      </trans-unit>
+      <trans-unit id="pSrOQg8" resname="All">
+        <source>All</source>
+        <target>Tous</target>
+      </trans-unit>
+      <trans-unit id="G5TRWbO" resname="Exporter PDF">
+        <source>Exporter PDF</source>
+        <target>Exporter PDF</target>
+      </trans-unit>
+      <trans-unit id="yeIce7k" resname="Customer management page">
+        <source>Customer management page</source>
+        <target>Page de gestion client</target>
+      </trans-unit>
+      <trans-unit id="vpxJUuD" resname="To broad">
+        <source>To broad</source>
+        <target>Elargir</target>
+      </trans-unit>
+      <trans-unit id="UACc4dp" resname="File">
+        <source>File</source>
+        <target>Déposer </target>
+      </trans-unit>
+      <trans-unit id="JurI_Ml" resname="Choose another file">
+        <source>Choose another file</source>
+        <target>Vous pouvez choisir de télécharger un autre fichier</target>
+      </trans-unit>
+      <trans-unit id=".RChRul" resname="Materials">
+        <source>Materials</source>
+        <target>Matériels</target>
+      </trans-unit>
+      <trans-unit id="gxvtaWl" resname="ARRIVÉES">
+        <source>ARRIVÉES</source>
+        <target>ARRIVÉES</target>
+      </trans-unit>
+      <trans-unit id="5qhSEcK" resname="DÉPARTS">
+        <source>DÉPARTS</source>
+        <target>DÉPARTS</target>
+      </trans-unit>
+      <trans-unit id="ZVm0Grz" resname="Exporter Excel">
+        <source>Exporter Excel</source>
+        <target>Exporter Excel</target>
+      </trans-unit>
+      <trans-unit id="8h2FkT_" resname="that is">
+        <source>that is</source>
+        <target>soit</target>
+      </trans-unit>
+      <trans-unit id="lEwn5bl" resname="day">
+        <source>day</source>
+        <target>journée</target>
+      </trans-unit>
+      <trans-unit id="q1EATp1" resname="days">
+        <source>days</source>
+        <target>jours</target>
+      </trans-unit>
+      <trans-unit id="Jgl1CS1" resname="Services_Quantity">
+        <source>Services_Quantity</source>
+        <target>Quantité de services</target>
+      </trans-unit>
+      <trans-unit id=".QwGf9N" resname="Prestations_Quantity">
+        <source>Prestations_Quantity</source>
+        <target>Quantité de Prestations </target>
+      </trans-unit>
+      <trans-unit id="mEJjyjl" resname="Packs_Quantity">
+        <source>Packs_Quantity</source>
+        <target>Quantité de Pracks</target>
+      </trans-unit>
+      <trans-unit id="ZiZY0n2" resname="Materials_Quantity">
+        <source>Materials_Quantity</source>
+        <target>Quantité de Materials</target>
+      </trans-unit>
+      <trans-unit id="MFIYem8" resname="Edit furniture">
+        <source>Edit furniture</source>
+        <target>Modification of furniture </target>
+      </trans-unit>
+      <trans-unit id="FfbpSdD" resname="Set Notification">
+        <source>Set Notification</source>
+        <target>Définir les notifications</target>
+      </trans-unit>
+      <trans-unit id="t3E.k0V" resname="Remove Notification">
+        <source>Remove Notification</source>
+        <target>Supprimer la notification</target>
+      </trans-unit>
+      <trans-unit id="TjwTi3Z" resname="PDF Allowed">
+        <source>PDF Allowed</source>
+        <target>PDF uniquement autorisé</target>
+      </trans-unit>
+      <trans-unit id="yWJqvFq" resname="Move to active">
+        <source>Move to active</source>
+        <target>Passer à Actif</target>
+      </trans-unit>
+      <trans-unit id="v.XIidW" resname="Move to archive">
+        <source>Move to archive</source>
+        <target>Déplacer vers les archives</target>
+      </trans-unit>
+      <trans-unit id="y3LsmFt" resname="Discount">
+        <source>Discount</source>
+        <target>Remise</target>
+      </trans-unit>
+      <trans-unit id="PklRtj7" resname="No actual tasks">
+        <source>No actual tasks</source>
+        <target>Pas de tâches réelles pour cet appartement</target>
+      </trans-unit>
+      <trans-unit id="aVfpc0T" resname="Download entry leaving PDF">
+        <source>Download entry leaving PDF</source>
+        <target>Télécharger l'entrée en laissant le PDF</target>
+      </trans-unit>
+      <trans-unit id="Se.864o" resname="Download task list PDF">
+        <source>Download task list PDF</source>
+        <target>Télécharger la liste des tâches PDF</target>
+      </trans-unit>
+      <trans-unit id="P8Ao.7s" resname="Apartment">
+        <source>Apartment</source>
+        <target>Appartement</target>
+      </trans-unit>
+      <trans-unit id="S8dLITV" resname="Task">
+        <source>Task</source>
+        <target>Tâche</target>
+      </trans-unit>
+      <trans-unit id="9X6OMqj" resname="Edit content">
+        <source>Edit content</source>
+        <target>Modifier le contenu</target>
+      </trans-unit>
+      <trans-unit id="qSLchbK" resname="Add line">
+        <source>Add line</source>
+        <target>Ajouter une ligne</target>
+      </trans-unit>
+      <trans-unit id="i0GX7xT" resname="New pack">
+        <source>New pack</source>
+        <target>Nouveau pack</target>
+      </trans-unit>
+      <trans-unit id="3_Lt6iK" resname="New material">
+        <source>New material</source>
+        <target>Nouveau matériel</target>
+      </trans-unit>
+      <trans-unit id="TQX05W4" resname="New prestation">
+        <source>New prestation</source>
+        <target>Nouvelle prestation</target>
+      </trans-unit>
+      <trans-unit id="0mdxxgL" resname="New service">
+        <source>New service</source>
+        <target>Nouveau service</target>
+      </trans-unit>
+      <trans-unit id="PrhJmDw" resname="Is renter">
+        <source>Is renter</source>
+        <target>Est locataire</target>
+      </trans-unit>
+      <trans-unit id="apeU_z3" resname="Is owner">
+        <source>Is owner</source>
+        <target>Son propriétaire</target>
+      </trans-unit>
+      <trans-unit id="zQ1sEn6" resname="Concierge Me - Agency profile updated">
+        <source>Concierge Me - Agency profile updated</source>
+        <target>Concierge Me - Profil de l'agence mis à jour</target>
+      </trans-unit>
+      <trans-unit id="5hrmgYO" resname="Edit an agency">
+        <source>Edit an agency</source>
+        <target>Modifier une agence</target>
+      </trans-unit>
+      <trans-unit id="VRfdUba" resname="Are you sure delete agency">
+        <source>Are you sure delete agency</source>
+        <target>Êtes-vous sûr de supprimer l'agence ?</target>
+      </trans-unit>
+      <trans-unit id="nmkWKra" resname="Delete agency">
+        <source>Delete agency</source>
+        <target>Supprimer l'agence</target>
+      </trans-unit>
+      <trans-unit id="fAT_f3x" resname="Is Agency">
+        <source>Is Agency</source>
+        <target>Est l'agence</target>
+      </trans-unit>
+      <trans-unit id="DizkSih" resname="Concierge me">
+        <source>Concierge me</source>
+        <target>Concierge me</target>
+      </trans-unit>
+      <trans-unit id="4O3_s6c" resname="Reset password">
+        <source>Reset password</source>
+        <target>Réinitialiser le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="cEyVZdY" resname="mail_message_reset_password">
+        <source>mail_message_reset_password</source>
+        <target>Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="u0L4zVJ" resname="Forgot password">
+        <source>Forgot password</source>
+        <target>Mot de passe oublié</target>
+      </trans-unit>
+      <trans-unit id="odTI8NF" resname="mail_message_enter_email">
+        <source>mail_message_enter_email</source>
+        <target>Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="fJt.VgS" resname="Send password">
+        <source>Send password</source>
+        <target>Envoyer le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="iqyLx.D" resname="mail_message_check_email">
+        <source>mail_message_check_email</source>
+        <target>Si un compte correspondant à votre adresse e-mail existe, un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="fIVCInG" resname="mail_message_link_expire">
+        <source>mail_message_link_expire</source>
+        <target>Ce lien expirera dans</target>
+      </trans-unit>
+      <trans-unit id="X9hGTrh" resname="mail_message_visit_link">
+        <source>mail_message_visit_link</source>
+        <target>Pour réinitialiser votre mot de passe, veuillez visiter le lien suivant</target>
+      </trans-unit>
+      <trans-unit id="p49E9Md" resname="Cheers">
+        <source>Cheers</source>
+        <target>Cheers</target>
+      </trans-unit>
+      <trans-unit id="QLlKdMz" resname="View task note">
+        <source>View task note</source>
+        <target>Afficher la note de tâche</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

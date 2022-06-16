@@ -1,0 +1,50 @@
+<div class="input-flex">
+    <div class="col-8">
+        {% if invoiceMaterials is defined and invoiceMaterials is not null %}
+            <label>{{ 'Contain'|trans }}</label>
+            {% for invoiceMaterial in invoiceMaterials %}
+                <div class="input-flex">
+                    <div class="input-select">
+                        <select name="calendar_form[material][]" id="calendar_form_material_{{ invoiceMaterial.id }}">
+                            {% for material in materials %}
+                                <option value="{{ material.id }}" {% if invoiceMaterial.id == material.id %} selected {% endif %}
+                                        {% if material.isOwner == 1 and material.isRenter == 1 %}
+                                            class="velvet-green"
+                                        {% elseif material.isRenter == 1 %}
+                                            class="velvet"
+                                        {% else %}
+                                            class="green"
+                                        {% endif %}
+                                >
+                                    {{ material.name }} {% if material.price is defined and material.price is not null %} - {% if material.isRenter == 1 %} Renter {% endif %} {% if material.isOwner == 1 %} Owner {% endif %}  {{ material.price }} &#8364;{% endif %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="col-2">
+        {% if invoiceMaterials is defined and invoiceMaterials is not null %}
+            <label class="required">{{ 'Quantity'|trans }}</label>
+            {% for invoiceContain in invoiceContains %}
+                {% if invoiceContain.material is defined and invoiceContain.material is not null %}
+                    <div class="input-flex">
+                        <div>
+                            <input type="number" id="form-std_quantity_{{ invoiceContain.id }}" width="20" name="calendar_form[material_quantity][]"
+                                   placeholder="{{ invoiceContain.quantity }}" value="{{ invoiceContain.quantity }}" required>
+                        </div>
+                        <div style="margin: auto 5px; flex: none; padding: 0;">
+                            <a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+                               href="{{ path('app_delete_invoice_contain', {id: invoiceContain.id}) }}">{{ 'Delete'|trans }}
+                            </a>
+                        </div>
+                    </div>
+                    <input type="hidden" name="calendar_form[material_contains][]" value="{{ invoiceContain.id }}">
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

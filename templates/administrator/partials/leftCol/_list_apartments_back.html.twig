@@ -1,0 +1,21 @@
+<div class="list-task">
+    {% for apartment in user.apartments %}
+        <div class="task">
+            <div class="input-checkbox">
+                <input type="checkbox" name=""/>
+            </div>
+            <div class="title">
+                <p>{% if apartment.name %} {{ apartment.name }} {% endif %}</p>
+            </div>
+            <div class="button">
+                {#
+                <a href="#" class="bt-settings2">{{ 'Bill'|trans }}</a>
+                #}
+                {% if (apartment.id is defined) and (apartment.id is not null) %}
+                    <a href="#" class="bt-settings2 _bt-view bt-view-{{ apartment.id }}" title="{{ 'APARTMENT CONFIGURATION'|trans }} {{ apartment.name }}">{{ 'To see'|trans }}</a>
+                    <a class="bt-edit link-dialog ajax-popup-link" href="{{ path('app_edit_apartment', { id: apartment.id}) }}" title="{{ 'Edit appartaments'|trans }}">{{ 'Edit'|trans }}</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

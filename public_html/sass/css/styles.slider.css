@@ -1,0 +1,154 @@
+/* Color */
+/* Fonts */
+/* 
+TRANSITION
+*/
+/* 
+
+SHADOW
+
+*/
+/* Browser Prefixes */
+/* Background gradient */
+/* Rotate */
+/* Scale */
+/* Translate */
+/* Skew */
+/* Transform Origin */
+/* Flex box */
+/*
+
+BOX-SIZING
+
+*/
+/* 
+
+Top center
+
+*/
+/*
+
+Horizontal center
+
+*/
+/** SLIDESHOW **/
+/* line 5, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* line 9, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-stage-outer {
+  position: relative;
+}
+
+/* line 14, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .item .image img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+/* line 21, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .item .caption p {
+  font-size: 14px;
+  padding: 7px 0;
+}
+
+/* line 28, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-nav {
+  height: auto;
+  z-index: 15;
+}
+
+/* line 31, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-nav.disabled {
+  display: none;
+}
+
+/* line 34, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-nav .owl-prev, .owl-carousel .owl-nav .owl-next {
+  position: static;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #676767;
+  margin-right: 25px;
+  padding: 0;
+  -webkit-transition: all 0.3s 0s ease-in-out;
+  -moz-transition: all 0.3s 0s ease-in-out;
+  transition: all 0.3s 0s ease-in-out;
+  background: url("../Images/arrow_slider.svg") no-repeat center center;
+}
+
+/* line 44, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-nav .owl-prev:hover, .owl-carousel .owl-nav .owl-next:hover {
+  background-image: url("../Images/arrow_slider_white.svg");
+  background-color: #131313;
+}
+
+/* line 48, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-nav .owl-prev span, .owl-carousel .owl-nav .owl-next span {
+  display: none;
+}
+
+/* line 52, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-nav .owl-prev {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* line 56, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-dots {
+  height: auto;
+  bottom: 00px;
+  width: 100%;
+  z-index: 15;
+  position: absolute;
+  text-align: center;
+  -webkit-transition: all 0.3s 0s ease-in-out;
+  -moz-transition: all 0.3s 0s ease-in-out;
+  transition: all 0.3s 0s ease-in-out;
+}
+
+/* line 65, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-dots.disabled {
+  display: none;
+}
+
+/* line 68, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-dots .owl-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 7.5px;
+  border-radius: 15px;
+  -webkit-transition: all 0.3s 0s ease-in-out;
+  -moz-transition: all 0.3s 0s ease-in-out;
+  transition: all 0.3s 0s ease-in-out;
+  padding: 0;
+  box-shadow: none;
+  background: none;
+  min-width: 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* line 81, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-dots .owl-dot span {
+  display: none !important;
+}
+
+/* line 84, ../site/templates/default/sass/scss/styles.slider.scss */
+.owl-carousel .owl-dots .owl-dot.active, .owl-carousel .owl-dots .owl-dot:hover {
+  background-color: #fff;
+  border: none;
+}
+
+/** FIN SLIDESHOW HOME **/
+
+/*# sourceMappingURL=styles.slider.css.map */

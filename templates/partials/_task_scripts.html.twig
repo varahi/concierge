@@ -1,0 +1,74 @@
+<script>
+    $(document).ready(function () {
+
+        // Active task will be set to archive
+        $(document).on('ifToggled', 'input.task-checkbox-{{ task.id }}', function(event){
+            that = $(this);
+            $.ajax({
+                url:'{{ path('app_set_archive', { task: task.id, archive: 1}) }}',
+                type: "POST",
+                dataType: "json",
+                data: {"archive": "1"},
+                async: true,
+                success: function (data)
+                {
+                    //console.log(data)
+                    $('div.ajax-archive-result-{{ task.id }}').html(data.output);
+                    that.attr('class', 'task-checkbox task-checkbox-archived-{{ task.id }}')
+                    that.parents('.task').removeClass('isvalid').addClass('isdone').hide();
+                    $('.task-active').trigger('click');
+                }
+            });
+            return false;
+        });
+        // Archived task will returned to active
+        $(document).on('ifToggled', 'input.task-checkbox-archived-{{ task.id }}', function(event){
+            that = $(this);
+            $.ajax({
+                url:'{{ path('app_set_archive', { task: task.id, archive: 0}) }}',
+                type: "POST",
+                dataType: "json",
+                data: {"archive": "0"},
+                async: true,
+                success: function (data)
+                {
+                    $('div.ajax-archive-result-{{ task.id }}').html(data.output);
+                    that.attr('class', 'task-checkbox task-checkbox-{{ task.id }}')
+                    that.parents('.task').removeClass('isdone').addClass('isvalid').hide();
+                    $('.task-done').trigger('click');
+                }
+            });
+            return false;
+        });
+
+        // Set active class
+        $( ".ajax-notification-{{ task.id }}" ).on( "click", function(e) {
+            e.preventDefault();
+            var $link = $(e.currentTarget);
+            $.ajax({
+                method:"POST",
+                data: {"notification": "1"},
+                success: function (data) {
+                    //console.log(data);
+                    $('.ajax-notification-result-{{ task.id }}').html(data.output);
+                    $('.ajax-notification-{{ task.id }}').addClass('active')
+                },
+                url: $link.attr('href')}).done(function(data){
+            });
+        });
+        // Set data for active class
+        $( ".ajax-notification-actived-{{ task.id }}" ).on( "click", function(e) {
+            e.preventDefault();
+            var $link = $(e.currentTarget);
+            $.ajax({
+                method:"POST",
+                data: {"notification": "0"},
+                success: function (data) {
+                    $('.ajax-notification-result-{{ task.id }}').html(data.output);
+                    $('.ajax-notification-actived-{{ task.id }}').removeClass('active')
+                },
+                url: $link.attr('href')}).done(function(data){
+            });
+        });
+    });
+</script>

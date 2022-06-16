@@ -1,0 +1,75 @@
+<div class="white-popup-block">
+	<div id="add-employee" class="_lightbox-std white-popup-block-padding">
+		<div class="content-lightbox">
+			<div class="center">
+
+				<script>
+					$( function() {
+						$( "#date-start" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+						$( "#date-end" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+					} );
+				</script>
+
+				<h2>{{ 'Create an employee'|trans }}</h2>
+
+				{{ form_start(employer_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+				<fieldset>
+					<div class="input-flex">
+						{{ form_row(employer_form.lastName) }}
+						{{ form_row(employer_form.firstName) }}
+					</div>
+					{{ form_row(employer_form.telephone) }}
+					{{ form_row(employer_form.email) }}
+					<div class="input-flex">
+						<div>
+							<input type="text" id="date-start" name="start-date" placeholder="{{ 'Start date'|trans }}" />
+						</div>
+						<div>
+							<input type="text" id="date-end" name="end-date" placeholder="{{ 'End date'|trans }}" />
+						</div>
+					</div>
+					<div class="input-flex">
+						<div class="col-4">
+							{{ form_row(employer_form.color) }}
+						</div>
+					</div>
+				</fieldset>
+
+				{#
+					Temprarily disabled this field. Because first we need to create task, and after attach task to employer.
+					We still don't know how to use existing apartment as task to employer.
+				<fieldset>
+					<legend>{{ 'ASSOCIATED APARTMENTS'|trans }} <a class="bt-add" href="#">{{ 'Add'|trans }}</a></legend>
+					<div>
+						<div class="input-select-multiple">
+							{{ form_row(employer_form.task) }}
+						</div>
+					</div>
+				</fieldset>
+				#}
+
+				<fieldset>
+					<legend>{{ 'EMPLOYEE ACCOUNT'|trans }}</legend>
+					{{ form_row(employer_form.username) }}
+					{{ form_row(employer_form.plainPassword) }}
+
+					<div class="input-submit">
+						<input type="submit" value="{{ 'form.submit'|trans }}"/>
+						<input type="reset" value="Annuler"/>
+					</div>
+					{#
+					<div class="input-submit">
+						<input type="submit" value="{{ 'form.submit'|trans }}"/>
+						<input type="reset" value="Annuler"/>
+						<button class="bt-disabled">{{ 'DEACTIVATE ACCOUNT'|trans }} </button>
+					</div>
+					#}
+				</fieldset>
+
+				{{ form_end(employer_form) }}
+
+			</div>
+		</div>
+	</div>
+</div>
+

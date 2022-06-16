@@ -1,0 +1,37 @@
+<div class="list-user">
+    {% for user in agencies %}
+        <div class="item">
+            <div class="input-checkbox">
+                <input type="checkbox" name="" data-user-pdf="{{ user.id }}"/>
+            </div>
+            <div class="title">
+                {% if user.company %}
+                    <p>{{ user.company }}</p>
+                {% else %}
+                    <p>{{ user.lastName }} {{ user.firstName }}</p>
+                {% endif %}
+            </div>
+            <div class="button">
+                <a href="{{ path('app_invoice_page', { id: user.id}) }}" class="bt-invoice">{{ 'Bill'|trans }}</a>
+                <a href="{{ path('app_show_owner_card', { id: user.id}) }}" class="bt-view ajax-popup-link">{{ 'To see'|trans }}</a>
+                <a href="{{ path('app_edit_agency', { id: user.id}) }}" class="bt-edit ajax-popup-link">{{ 'Edit'|trans }}</a>
+            </div>
+            {# Owner apartments #}
+            <div class="list-task">
+                {% for apartment in user.apartments %}
+                    {% include 'administrator/partials/leftCol/_list_apartments.html.twig' %}
+                {% endfor %}
+            </div>
+            {# Agency apartments #}
+            <div class="list-task">
+                {% for apartment in user.agencyApartments %}
+                    {% include 'administrator/partials/leftCol/_list_apartments.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        {#
+        <div class="text-center alert alert-primary">{{ 'No owners'|trans }}</div>
+        #}
+    {% endfor %}
+</div>

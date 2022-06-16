@@ -1,0 +1,113 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-appartment" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="left">
+                <div class="image">
+                    <img src="{{ asset('images/image-logement.svg') }}" width="304" height="388" alt="" />
+                </div>
+				{#
+				<p class="text-center">
+					<a class="bt-pdf" href="{{ path('app_apartment_pdf', { id: apartment.id}) }}" target="_blank" title="{{ 'Exporter PDF'|trans }}">{{ 'Exporter PDF'|trans }}</a>
+					<span>{{ 'Exporter PDF'|trans }}</span>
+				</p>
+				#}
+            </div>
+            <div class="right">
+                <h2>{{ 'Edit appartaments'|trans }}</h2>
+				{{ form_start(edit_apartment_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+					<fieldset>
+						<label>{{ 'Housing title'|trans }}</label>
+						<div>
+							<input type="text" required="required" disabled="disabled" readonly="readOnly" value="{{ apartment.name }}">
+							{#
+							{{ form_widget(edit_apartment_form.name) }}
+							#}
+						</div>
+						<div class="input-flex">
+							{{ form_row(edit_apartment_form.residence) }}
+							{{ form_row(edit_apartment_form.apartment) }}
+							{{ form_row(edit_apartment_form.logement) }}
+						</div>
+						<div class="input-flex">
+							{{ form_row(edit_apartment_form.numRooms) }}
+							{{ form_row(edit_apartment_form.numBeds) }}
+						</div>
+						{{ form_row(edit_apartment_form.address) }}
+						<div class="input-flex">
+							{{ form_row(edit_apartment_form.zip) }}
+							{{ form_row(edit_apartment_form.city) }}
+						</div>
+						<label>{{ 'Owner'|trans }}</label>
+						<div class="input-select">
+							{{ form_widget(edit_apartment_form.user) }}
+						</div>
+						<div class="input-select">
+							{{ form_row(edit_apartment_form.employer) }}
+						</div>
+						<div class="input-select-multiple">
+							{{ form_row(edit_apartment_form.agency) }}
+						</div>
+						{#
+							<label>{{ 'Renter'|trans }}</label>
+                    		<div class="input-select">
+                        		{{ form_row(edit_apartment_form.renter) }}
+                    		</div>
+						#}
+						<div>
+							<div class="input-select">
+								<label for="edit_apartment_form_packs" class="required">{{ 'Associated offer'|trans }}</label>
+								<select id="edit_apartment_form_packs" name="edit_apartment_form[packs]">
+									<option disabled value="">{{ 'Please select'|trans }}</option>
+									{% for pack in packs %}
+										{% if apartment.packs.id is defined %}
+											<option value="{{ pack.id }}" {% if apartment.packs.id == pack.id %} selected {% endif %}>
+												{{ pack.name }} {% include 'partials/_pack_list.html.twig' %}
+											</option>
+										{% else %}
+											<option value="{{ pack.id }}">
+												{{ pack.name }} {% include 'partials/_pack_list.html.twig' %}
+											</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						{#
+						<label>{{ 'State'|trans }}</label>
+						<div class="input-select">
+							{{ form_widget(edit_apartment_form.state) }}
+						</div>
+						#}
+
+						<div class="input-description big-area">
+							{{ form_row(edit_apartment_form.note) }}
+							<span class="character">0/500</span>
+						</div>
+
+						<div>
+							{% if apartment.file %}
+								<a class="bt-pdf" href="{{ asset('uploads/files/pdf/' ~ apartment.file) }}" target="_blank">
+									{#
+									<img src="{{ asset('uploads/files/pdf/' ~ apartment.file) }}" width="150" />
+									#}
+								</a><br />
+								({{ 'Choose another file'|trans }})
+							{% else %}
+								<label for="note">{{ 'File'|trans }} ({{ 'PDF Allowed'|trans }})</label>
+							{% endif %}
+							{{ form_widget(edit_apartment_form.file) }}
+						</div>
+
+						<div class="input-submit">
+							<input type="submit" name="edit_apartment_form[submit]"  id="edit_apartment_form_submit" value="{{ 'form.submit'|trans }}"/>
+							<a href="{{ path('app_delete_apartment_relation', { id: apartment.id}) }}"
+							   class="bt-disabled" onclick="return confirm('{{ 'Are you sure disconnect'|trans }}')">{{ 'Disconect apartment'|trans }}
+							</a>
+						</div>
+					</fieldset>
+				{{ form_end(edit_apartment_form) }}
+            </div>
+        </div>
+    </div>
+</div>
+

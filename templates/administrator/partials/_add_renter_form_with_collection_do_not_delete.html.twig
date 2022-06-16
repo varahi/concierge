@@ -1,0 +1,341 @@
+<script>
+    $( function() {
+        $( "#date-start" ).datepicker({
+            dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+            dayNamesMin: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+            monthNames: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"],
+            monthNamesShort: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui", "Jui", "Aoû", "Sep", "Oct", "Nov", "Dec"],
+			firstDay: 1,
+			dateFormat: '{{ scriptDateFormat }}',
+			onSelect: function( dateText, inst ){
+                $( "#date-end" ).datepicker('setDate', new Date(dateText));
+				checkAvailabilityStartDate();
+			}
+		});
+        $( "#date-end" ).datepicker({
+            dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+            dayNamesMin: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+            monthNames: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"],
+            monthNamesShort: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui", "Jui", "Aoû", "Sep", "Oct", "Nov", "Dec"],
+			firstDay: 1,
+			dateFormat: '{{ scriptDateFormat }}'
+		});
+    } );
+</script>
+
+<script>
+    function checkAvailabilityStartDate() {
+        jQuery.ajax({
+            url: "{{ path('app_check_availability_appt')}}",
+            //url: currentUrl,
+            data:'date_start='+$("#date-start").val()+'&appartments='+$('#add_renter_form_apartments').val(),
+            type: "POST",
+            dataType: "json",
+            success:function(data){
+                $("#user-availability-start-date").html(data.output);
+                //alert($("#date-start").val());
+				//console.log($('#add_renter_form_apartments').val());
+            },
+        });
+        return false;
+    }
+</script>
+
+<div class="fixed-right"><a class="bt-owner bt-blue4" href="#">{{ 'Reservation'|trans }}</a></div>
+<div id="detail-owner" class="right-owner">
+    <section>
+        <header>
+            <div class="top">
+                <p>{{ 'Enter renter'|trans }}<a class="bt-close" href="#">{{ 'Close'|trans }}</a></p>
+            </div>
+        </header>
+        <article class="content">
+            <div class="detail-invoice">
+                {{ form_start(renter_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+					<div class="input-group">
+
+                        {#
+                        Hide checkbox "Groupe" because there at least on "Choix de l'appartements"
+                        <div class="input-checkbox">
+                            <label for="group">{{ 'Group'|trans }}</label>
+                            <input type="checkbox" value="" name="" id="group" checked="checked" disabled />
+                        </div>
+                        #}
+
+						<div class="input-checkbox">
+							<label for="owner">{{ 'Owner occupancy'|trans }}</label>
+                            <input type="checkbox" name="add_renter_form[owner_occupation]" id="owner"/>
+						</div>
+					</div>
+                    <fieldset>
+                        <legend>{{ 'Reservation from'|trans }} :</legend>
+                        <div class="_option-group">
+                            <label for="add_renter_form_apartments" class="required">{{ 'Choice of apartments'|trans }}</label>
+                            <div class="input-select-multiple">
+                                <div>
+                                    <select name="add_renter_form[apartments][]" multiple="multiple" id="add_renter_form_apartments" required>
+                                        {% for housing in apartments %}
+                                            <option value="{{ housing.id }}">{{ housing.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-flex">
+                            {#
+                            <a href="{{ path('app_check_availability_appt')}}">Test</a>
+                            #}
+                            <div>
+                                <label for="date-start" class="required">{{ 'Arrival date'|trans }}</label>
+                                <input type="text" id="date-start" name="add_renter_form[startDate]" placeholder="{{ placeholderDateFormat }}" required="required" />
+                            </div>
+                            <div>
+                                <label for="date-end" class="required">{{ 'Date of departure'|trans }}</label>
+                                <input type="text" id="date-end" name="add_renter_form[endDate]" placeholder="{{ placeholderDateFormat }}" required="required" />
+                            </div>
+                            <div class="hour-start">
+                                <label for="hour-start">{{ 'Arriving time'|trans }}</label>
+                                <input type="time" id="hour-start" name="start-hour">
+                            </div>
+                            <div class="hour-end">
+                                <label for="hour-end">{{ 'Departure time'|trans }}</label>
+                                <input type="time" id="hour-end" name="end-hour">
+                            </div>
+                        </div>
+                        <div id="user-availability-start-date"></div>
+
+                        <div class="input-flex">
+                            {{ form_row(renter_form.lastName) }}
+                            {{ form_row(renter_form.firstName) }}
+                        </div>
+                        {{ form_row(renter_form.address) }}
+
+                        <div class="input-flex">
+                            <div class="input-cp">
+                                {{ form_row(renter_form.zip) }}
+                            </div>
+                            {{ form_row(renter_form.city) }}
+                        </div>
+
+                        <div class="input-flex">
+                            {{ form_row(renter_form.telephone) }}
+                            {{ form_row(renter_form.email) }}
+                        </div>
+
+                        <div class="input-flex">
+                            <div>
+                                <div class="input-number">
+                                    {{ form_label(renter_form.numAdults) }}
+                                    <div class="number">
+                                        {{ form_widget(renter_form.numAdults) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="input-number">
+                                    {{ form_label(renter_form.numChildren) }}
+                                    <div class="number">
+                                        {{ form_widget(renter_form.numChildren) }}
+                                    </div>
+                                </div>
+                                <div class="input-number">
+                                    {{ form_label(renter_form.numLittleChildren) }}
+                                    <div class="number">
+                                        {{ form_widget(renter_form.numLittleChildren) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                <fieldset>
+                    <legend>{{ 'form.addService'|trans }}</legend>
+                    <div class="input-flex">
+                        <div>
+                            <label>
+                                <input type="radio" name="calendar_form[invoice_appointed]" value="renter">
+                                {{ 'Renter'|trans }}
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="calendar_form[invoice_appointed]" value="owner">
+                                {{ 'Owner'|trans }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input-flex">
+                        <div class="col-8">
+                            <div class="input-select-multiple">
+                                <div>
+                                    <label for="calendar_form_renter_services">{{ 'Services'|trans }}</label>
+                                    <select id="calendar_form_renter_services" name="calendar_form[renter_services][]" class="input-prestation" multiple="multiple">
+                                        {% for service in services %}
+                                            <option value="{{ service.id }}">{{ service.name }} - {{ service.price }} €</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                {#
+                                {{ form_row(renter_form.services) }}
+                                #}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="calendar_form_renter_services_qty">{{ 'Services_Quantity'|trans }}</label>
+                            <input type="number" name="calendar_form[renter_services_qty]" class="input-two" id="calendar_form_renter_services_qty" value="1">
+                        </div>
+                    </div>
+
+                    <div class="input-flex">
+                        <div class="col-8">
+                            <div class="input-select-multiple">
+                                <div>
+                                    <label for="calendar_form_renter_prestations">{{ 'Prestations'|trans }}</label>
+                                    <select id="calendar_form_renter_prestations" name="calendar_form[renter_prestations][]" class="input-prestation" multiple="multiple">
+                                        {% for prestation in prestations %}
+                                            <option value="{{ prestation.id }}">{{ prestation.name }} - {{ prestation.price }} €</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {#
+                                {{ form_row(renter_form.prestations) }}
+                                #}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="calendar_form_renter_prestations_qty">{{ 'Prestations_Quantity'|trans }}</label>
+                            <input type="number" name="calendar_form[renter_prestations_qty]" class="input-two" id="calendar_form_renter_prestations_qty" value="1">
+                        </div>
+                    </div>
+
+                    <div class="input-flex">
+                        <div class="col-8">
+                            <div class="input-select-multiple">
+                                <div>
+                                    <label for="calendar_form_renter_packs">{{ 'Packs'|trans }}</label>
+                                    <select id="calendar_form_renter_packs" name="calendar_form[renter_packs][]" class="input-prestation" multiple="multiple">
+                                        {% for pack in packs %}
+                                            <option value="{{ pack.id }}">{{ pack.name }} - {{ pack.total }} €</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="calendar_form_renter_packs_qty">{{ 'Packs_Quantity'|trans }}</label>
+                            <input type="number" name="calendar_form[renter_packs_qty]" class="input-two" id="calendar_form_renter_packs_qty" value="1">
+                        </div>
+                    </div>
+
+                    <div class="input-flex">
+                        <div class="col-8">
+                            <div class="input-select-multiple">
+                                <div>
+                                    <label for="calendar_form_renter_materials">{{ 'Materials'|trans }}</label>
+                                    <select id="calendar_form_renter_materials" name="calendar_form[renter_materials][]" class="input-prestation" multiple="multiple">
+                                        {% for material in materials %}
+                                            <option value="{{ material.id }}">{{ material.name }} - {{ material.price }} €</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="calendar_form_renter_materials_qty">{{ 'Materials_Quantity'|trans }}</label>
+                            <input type="number" name="calendar_form[renter_materials_qty]" class="input-two" id="calendar_form_renter_materials_qty" value="1">
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                    {# @ToDo: set for this form and for  src/templates/owner/partials/_add_renter_form.html.twig #}
+                {#
+                <fieldset>
+                    <legend>Ajouter une prestation</legend>
+                    <div class="input-prestation">
+                        <div class="input-add">
+                            <label for="presta1">
+                                <span>Draps 90</span>
+                                <a class="bt-add2">+</a>
+                            </label>
+                            <div class="popup-prestation">
+                                <a class="bt-close" href="#">Fermer</a>
+                                <label>Quantité :</label>
+                                <input type="number" value="0" min="0"/>
+                                <span>Stock : 85</span>
+                            </div>
+                        </div>
+                        <div class="input-add">
+                            <label for="presta2">
+                                <span>Draps 140</span>
+                                <a class="bt-add2">+</a>
+                            </label>
+                            <div class="popup-prestation">
+                                <a class="bt-close" href="#">Fermer</a>
+                                <label>Quantité :</label>
+                                <input type="number" value="0" min="0"/>
+                                <span>Stock : 85</span>
+                            </div>
+                        </div>
+                        <div class="input-add">
+                            <label for="presta3">
+                                <span>Lit parapluie</span>
+                                <a class="bt-add2">+</a>
+                            </label>
+                            <div class="popup-prestation">
+                                <a class="bt-close" href="#">Fermer</a>
+                                <label>Quantité :</label>
+                                <input type="number" value="0" min="0"/>
+                                <span>Stock : 85</span>
+                            </div>
+                        </div>
+                        <div class="input-add">
+                            <label for="presta4">
+                                <span>Ménage fin de séjour</span>
+                                <a class="bt-add2">+</a>
+                            </label>
+                            <div class="popup-prestation">
+                                <a class="bt-close" href="#">Fermer</a>
+                                <label>Quantité :</label>
+                                <input type="number" value="0" min="0"/>
+                                <span>Stock : 85</span>
+                            </div>
+                        </div>
+                        <div class="input-add">
+                            <label for="presta5">
+                                <span>Chaise Haute</span>
+                                <a class="bt-add2">+</a>
+                            </label>
+                            <div class="popup-prestation">
+                                <a class="bt-close" href="#">Fermer</a>
+                                <label>Quantité :</label>
+                                <input type="number" value="0" min="0"/>
+                                <span>Stock : 85</span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                #}
+
+
+                    <fieldset>
+                        <legend>{{ 'Note'|trans }}</legend>
+                        <div class="input-description">
+                            {{ form_widget(renter_form.note) }}
+                            <span class="character">0/200</span>
+                        </div>
+                        <div class="button">
+                            <input type="submit" class="bt-blue4" value="Valider"/>
+                            <button type="reset" class="bt-border">Annuler</button>
+                        </div>
+                    </fieldset>
+                {{ form_end(renter_form) }}
+            </div>
+        </article>
+    </section>
+</div>
+
+

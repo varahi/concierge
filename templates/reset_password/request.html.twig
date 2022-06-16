@@ -1,0 +1,23 @@
+{% extends 'login.html.twig' %}
+
+{% block body %}
+    <section id="login">
+        <article>
+            <div class="content-inner">
+                <h1>{{ 'Concierge me'|trans }} !</h1>
+                <h2>{{ 'Reset password'|trans }}</h2>
+                {{ form_start(requestForm, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                {{ form_row(requestForm.email) }}
+                <br />
+                <div>
+                    <small>{{ 'mail_message_reset_password'|trans }}</small>
+                </div>
+                <div class="input-submit">
+                    <input type="submit" value="{{ 'Reset'|trans }}">
+                </div>
+                {{ form_end(requestForm) }}
+            </div>
+        </article>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'login.html.twig' %}
+
+{% block body %}
+    <section id="login">
+        <article>
+            <div class="content-inner">
+                <h1>{{ 'Concierge me'|trans }} !</h1>
+
+                {% for message in app.flashes('notification') %}
+                    <div class="alert alert-warning alert-dismissible fade show">
+                        <h2>{{ message }}</h2>
+                    </div>
+                {% endfor %}
+
+                <form class="form-std" method="post" autocomplete="off">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    {% if app.user %}
+                        <div class="mb-3">
+                            {{ 'You logged as'|trans }} {{ app.user.username }}, <a href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
+                        </div>
+                    {% endif %}
+                    <fieldset>
+                        {#
+                        <div>
+                            <label for="identifiant">Identifiant</label>
+                            <input type="text" value="{{ last_username }}" name="username" id="username" class="form-control" autocomplete="email" required autofocus>
+                        </div>
+                        #}
+                        <div>
+                            <label for="identifiant">{{ 'Username'|trans }}</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                        </div>
+                        <div>
+                            <label for="password">{{ 'Password'|trans }}</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                        </div>
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
+                        <div class="input-submit">
+                            <input type="submit" value="Se connecter"/>
+                        </div>
+                        <div>
+                            <a class="bt-blue3 nav-link" href="{{ path('app_forgot_password_request') }}">{{ 'Forgot password'|trans }}</a>
+                        </div>
+                        {% if env == 'dev' %}
+                            <div>
+                                <a class="nav-link" href="{{ path('app_register') }}">{{ 'Sign up'|trans }}</a>
+                            </div>
+                        {% endif %}
+                    </fieldset>
+                </form>
+
+                {% if env == 'dev' %}
+                    <div class="button-bottom">
+                        <a class="bt-blue3" href="{{ path('app_administrator') }}">{{ 'Administrator'|trans }}</a>
+                        <a class="bt-blue3" href="{{ path('app_owner_profile') }}">{{ 'Owner'|trans }}</a>
+                        <a class="bt-blue3" href="{{ path('app_employer_profile') }}">{{ 'Employees'|trans }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </article>
+    </section>
+
+    {# <a class="bt-blue3 nav-link" href="reset-password">Reset password</a> #}
+
+{% endblock %}

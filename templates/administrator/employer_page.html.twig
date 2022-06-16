@@ -1,0 +1,86 @@
+{% extends 'profile.html.twig' %}
+{% block title %}Hello Administrator{% endblock %}
+{% block body %}
+
+    <main id="main">
+        <div id="main-left">
+            <div class="left">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>
+								<a class="bt-settings link-dialog" data-dialog="list-service" href="#">
+								{{ 'Settings'| trans }}</a>{{ 'Customer employers'| trans }}
+								<a class="bt-logout" href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
+							</p>
+                        </div>
+                        <div class="bottom">
+                            <div class="button-top">
+                                <div class="button-top">
+                                    <a class="bt-blue3 bt-home" href="{{ path('app_administrator') }}">{{ 'Customer page'| trans | raw }}</a>
+                                    <a class="bt-blue3 link-dialog ajax-popup-link" href="{{ path('app_create_employer') }}">{{ 'Add epmloyer'| trans | raw }}</a>
+                                    <a class="bt-blue3" href="{{ path('app_entry_leaving') }}">{{ 'Show departures'| trans | raw }}</a>
+                                </div>
+                            </div>
+                            {% include 'administrator/partials/_search_form.html.twig' %}
+                        </div>
+                    </header>
+                    {% include 'partials/_message.html.twig' %}
+                    <article class="content">
+                        {% if searchString is not empty %}
+                            <a class="bt-blue3" href="{{ path(app.request.attributes.get('_route')) }}">{{ 'Reset'|trans}}</a><br /><br />
+                        {% endif %}
+                        {% include 'administrator/partials/leftCol/_employers_list.html.twig' %}
+                    </article>
+                </section>
+            </div>
+            <div class="right">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>{{ 'Tasks'|trans }}</p>
+                        </div>
+                        <div class="bottom">
+                            <form class="form-range">
+                                <div class="daterange">
+                                    <span></span>
+                                </div>
+                            </form>
+                        </div>
+                    </header>
+                    <article class="content">
+                        <div class="button-top">
+                            <a class="bt-blue2 link-dialog ajax-popup-link" href="{{ path('app_add_task') }}">{{ 'Add task'|trans }}</a>
+                            <a class="bt-blue3 task-active" href="#">{{ 'Tasks in progress'|trans }}</a>
+                            <a class="bt-blue3 task-done" href="#">{{ 'Tasks done'|trans }}</a>
+                        </div>
+                        {% include 'administrator/partials/rightCol/_task_list.html.twig' %}
+                    </article>
+                </section>
+            </div>
+            {% include 'administrator/partials/_add_renter_form.html.twig' %}
+        </div>
+
+        <aside id="main-right">
+            <div class="all-width">
+                <a class="bt-arrow" href="#">Elargir</a>
+            </div>
+            <input type="text" id="newCalendarDate" value=""/>
+            <div id="calendar"></div>
+        </aside>
+
+        {% include 'administrator/partials/js/_calendar.html.twig' %}
+        {% include 'administrator/partials/js/_appartments.html.twig' %}
+        {% if owners %}
+            {% for user in owners %}
+                {% for apartment in user.apartments %}
+                    <div id="detail-appartment" class="detail-appartment-{{ apartment.id }}">
+                        {% include 'administrator/partials/lightbox/_detail_appartment.html.twig' %}
+                    </div>
+                    {% include 'administrator/partials/lightbox/_settings.html.twig' %}
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </main>
+    {% include 'administrator/partials/lightbox/list_services.html.twig' %}
+{% endblock %}

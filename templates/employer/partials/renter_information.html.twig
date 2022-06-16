@@ -1,0 +1,57 @@
+<div>
+    <h2>{{ 'Renter information'|trans }}</h2>
+    <table class="table-std">
+        <tbody>
+        {#
+        <tr>
+            <td>{{ 'Status'|trans }}</td>
+            <td colspan="2">
+                {% for housing in task.renter.housing %}
+                    {{ housing.state }}
+                {% endfor %}
+            </td>
+        </tr>
+        #}
+        <tr>
+            <th>{{ 'Renter'|trans }} </th>
+            <td colspan="2">{{ task.renter.firstName }} {{ task.renter.lastName }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Phone'|trans }}</th>
+            <td colspan="2">{{ task.renter.telephone }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Email'|trans }}</th>
+            <td colspan="2">{{ task.renter.email }}</td>
+        </tr>
+        <tr>
+            {% if task.calendar.startDate or task.calendar.endDate %}
+                <th>{{ 'Dates'|trans }}</th>
+            {% endif %}
+            {% if task.calendar.startDate %}
+                <td>{{ task.calendar.startDate|date("d-m-Y") }}</td>
+            {% endif %}
+            {% if task.calendar.endDate %}
+                <td>{{ task.calendar.endDate|date("d-m-Y") }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            {% if task.calendar.startHour or task.calendar.endHour %}
+                <th>{{ 'Time'|trans }}</th>
+            {% endif %}
+            {% if task.calendar.startHour %}
+                <td>{{ task.calendar.startHour|date("H:i:s") }}</td>
+            {% endif %}
+            {% if task.calendar.endHour %}
+                <td>{{ task.calendar.endHour|date("H:i:s") }}</td>
+            {% endif %}
+        </tr>
+        {% if task.renterNote %}
+            <tr>
+                <th>{{ 'Note'|trans }}</th>
+                <td colspan="2">{{ task.renterNote }}</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>

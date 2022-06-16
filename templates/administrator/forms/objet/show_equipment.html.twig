@@ -1,0 +1,50 @@
+<div id="custom-content" class="white-popup-block">
+    <div class="_lightbox-std">
+        <div id="edit-equipment" class="content-lightbox">
+            <div class="left-detail">
+                <header>
+                    <p class="title">{{ 'Equipment'|trans }}</p>
+                </header>
+                <div class="content">
+                    <h2>{{ 'Equipment list'|trans }}
+                        <a href="{{ path('app_delete_equipment', { id: equipment.id}) }}"
+                           class="bt-delete" onclick="return confirm('{{ 'Are you sure'|trans }}')">{{ 'Delete equipment'|trans }}
+                        </a>
+                    </h2>
+                    <div class="description">
+                        <div class="col">
+                            {% if equipment.name %}
+                                <p><strong>{{ 'Names'|trans }}: </strong>{{ equipment.name }}</p>
+                            {% endif %}
+                            {% if equipment.state %}
+                                <p><strong>{{ 'State'|trans }}: </strong>{{ equipment.state }}</p>
+                            {% endif %}
+                            {% if equipment.quantity %}
+                                <p><strong>{{ 'Quantity'|trans }}: </strong>{{ equipment.quantity }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col txt-descr">
+                            {% if equipment.description %}
+                                <p><strong>{{ 'Description'|trans }}: </strong>{{ equipment.description }}</p>
+                            {% endif %}
+                        </div>
+                        {#
+                        <a href="#" class="bt-edit link-dialog" data-dialog="edit-equipment">Modifier</a>
+                        #}
+                    </div>
+                    {% if equipment.documents %}
+                        <h2>{{ 'Equipment photos'|trans }}</h2>
+                        <div class="list-photo">
+                            {% for document in equipment.documents %}
+								<div class="photo" data-number="{{loop.index}}">
+									<img src="{{ asset('uploads/documents/' ~ suffixDirectoryName ~ document.imageName) }}" width="204" height="142" />
+								</div>
+							{% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% include 'administrator/partials/lightbox/_right_detail.html.twig' %}
+        </div>
+    </div>
+</div>

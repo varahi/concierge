@@ -1,0 +1,10 @@
+<svg id="ic-actions-calendar" xmlns="http://www.w3.org/2000/svg" width="28.376" height="28.376" viewBox="0 0 28.376 28.376">
+  <rect id="Rectangle_29" data-name="Rectangle 29" width="28.376" height="28.376" fill="none"/>
+  <g id="Layer" transform="translate(0.915 1.831)">
+    <g id="Vrstva_98" data-name="Vrstva 98">
+      <path id="Tracé_72" data-name="Tracé 72" d="M23.925,4.471H22.719V3.236a1.207,1.207,0,1,0-2.413,0V4.471H8.24V3.236a1.207,1.207,0,1,0-2.413,0V4.471H4.62A3.664,3.664,0,0,0,1,8.179V23.007a3.664,3.664,0,0,0,3.62,3.707H23.925a3.664,3.664,0,0,0,3.62-3.707V8.179a3.664,3.664,0,0,0-3.62-3.707ZM3.413,8.179A1.221,1.221,0,0,1,4.62,6.943H23.925a1.221,1.221,0,0,1,1.207,1.236V9.414H3.413ZM25.132,23.007a1.221,1.221,0,0,1-1.207,1.236H4.62a1.221,1.221,0,0,1-1.207-1.236V11.886H25.132Z" transform="translate(-1 -2)" fill="#1d2634" fill-rule="evenodd"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="2.746" height="2.746" rx="0.8" transform="translate(5.01 12.923)" fill="#1d2634"/>
+      <rect id="Rectangle_5" data-name="Rectangle 5" width="2.746" height="2.746" rx="0.8" transform="translate(11.273 12.923)" fill="#1d2634"/>
+    </g>
+  </g>
+</svg>

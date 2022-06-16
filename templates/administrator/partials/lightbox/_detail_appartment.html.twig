@@ -1,0 +1,187 @@
+<section>
+    <header>
+	<div class="top">
+            <p>{{ 'APARTMENT CONFIGURATION'|trans }} {{ apartment.name }}
+                <a class="bt-close bt-close-{{ apartment.id }}" href="#">Fermer</a>
+            </p>
+    </div>
+	<div class="bottom">
+            <div class="row">
+                <div>
+                    <h2>{{ 'Owner information'|trans }}</h2>
+                    <table class="table-std">
+                        <tbody>
+                        <tr>
+                            <th>{{ 'Owner'|trans }}</th>
+                            <td>
+                                {% if apartment.user.firstName or apartment.user.lastName %}
+                                    {{ apartment.user.firstName }} {{ apartment.user.lastName }}
+                                {% endif %}
+
+                                {% if apartment.user.contactPerson %}
+                                    {{ apartment.user.contactPerson }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'Phone'|trans }}</th>
+                            <td>
+                                {% if apartment.user.telephone %}
+                                    {{ apartment.user.telephone }}
+                                {% endif %}
+                        </tr>
+                        <tr>
+                            <th>{{ 'form.email'|trans }}</th>
+                            <td>
+                                {% if apartment.user.email %}
+                                    {{ apartment.user.email }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'Offer'|trans }}</th>
+                            <td>
+                                {% if apartment.packs %}
+                                    {{ apartment.packs.name }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'Number of rooms'|trans }}</th>
+                            <td>{{ apartment.numRooms }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'Number of beds'|trans }}</th>
+                            <td>{{ apartment.numBeds }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'Note'|trans }}</th>
+                            <td>{{ apartment.note }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h2>{{ 'Booking calendar'|trans }}</h2>
+                    {#
+                    <div id="calendar{{ apartment.id }}" class="calendar_appartment"></div>
+                    {% include 'administrator/partials/js/_appartment_calendar.html.twig' %}
+                    #}
+
+                    {#
+                    <div id="calendar2"></div>
+                    {% include 'administrator/partials/js/_calendar.html.twig' %}
+                    #}
+
+                    {% if apartment.task|length > 0 %}
+                        <div id="calendar{{ apartment.id }}" class="calendar_appartment">
+                            {% for task in apartment.task %}
+                                {% if task.isEntry == 1 %}
+                                    {% if task.calendar.startDate %}
+                                        {% if (task.calendar.endDate) >= date('-15days') and task.calendar|length > 0 %}
+                                            {% if task.renter %}
+                                                <hr/>
+                                                <p><strong>{{ task.renter.firstName }} {{ task.renter.lastName }}</strong></p>
+                                            {% endif %}
+                                            <p class="date-calendar">
+                                                {{ task.calendar.startDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }} -
+                                                {{ task.calendar.endDate|localizeddate('full', 'none', app.request.locale, null, 'EEE, dd MMM yyyy') }}
+                                                <a href="{{ path('app_edit_event', { id: task.id}) }}" class="bt-edit ajax-popup-link close-ui-dialog">
+                                                    {{ 'Edit'|trans }}
+                                                </a>
+                                            </p>
+                                        {% else %}
+                                            {% if loop.first %}
+                                                <p>{{ 'No actual tasks'|trans }}</p>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>{{ 'No tasks'|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    <article class="content">
+        <div class="row">
+            <div>
+                <p class="title">{{ 'THE APARTMENT EQUIPMENT'|trans }}
+                    <a href="#" class="bt-settings link-dialog" data-dialog="lightbox-settings-{{ apartment.id }}">{{ 'Settings'|trans }}</a>
+                </p>
+                {% include 'partials/_apartment_equipment.html.twig' %}
+            </div>
+            <div class="right">
+                <p class="title">{{ 'THE ELEMENTS OF THE APARTMENT'|trans }}</p>
+                <p class="text-center">
+                    {% if apartment.element %}
+                        <a href="{{ path('app_apartment_elements', { id: apartment.element.id, apartment: apartment.id }) }}"
+                           class="link-dialog ajax-popup-link"> {{ 'Add specific elements'|trans }}
+                        </a>
+                    {% else %}
+                        <p>{{ 'No elements for apartment'|trans }}</p>
+                        <a href="{{ path('app_add_apartment_elements', { apartment: apartment.id }) }}"> {{ 'Add a set of elements'|trans }}</a>
+                    {% endif %}
+                </p>
+
+                {% if apartment.element %}
+                    {% if apartment.element.garage %}
+                        <p class="txt-valid">{{ 'Garage'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.parking %}
+                        <p class="txt-valid">{{ 'Parking'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.basement %}
+                        <p class="txt-valid">{{ 'Basement'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.garden %}
+                        <p class="txt-valid">{{ 'Garden'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.basementParking %}
+                        <p class="txt-valid">{{ 'Underground parking'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.parentalSuite %}
+                        <p class="txt-valid">{{ 'Parental suite'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.furniture %}
+                        <p class="txt-valid">{{ 'Furniture'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.poll %}
+                        <p class="txt-valid">{{ 'Pool'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.teracce %}
+                        <p class="txt-valid">{{ 'Terrace'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.mezzanine %}
+                        <p class="txt-valid">{{ 'Mezzanine'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.storage %}
+                        <p class="txt-valid">{{ 'Storage'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.veranda %}
+                        <p class="txt-valid">{{ 'Veranda'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.unfurnished %}
+                        <p class="txt-valid">{{ 'Unfurnished'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.bathroom %}
+                        <p class="txt-valid">{{ 'Bathroom'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.separateWc %}
+                        <p class="txt-valid">{{ 'Separate WC'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.wifi %}
+                        <p class="txt-valid">{{ 'WiFi'|trans }}</p>
+                    {% endif %}
+                    {% if apartment.element.elevator %}
+                        <p class="txt-valid">{{ 'Elevator'|trans }}</p>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,51 @@
+<div class="input-flex test">
+    <div class="col-8">
+        {% if invoicePrestations is defined and invoicePrestations is not null %}
+            <label>{{ 'Contain'|trans }}</label>
+            {% for invoicePrestation in invoicePrestations %}
+                <div class="input-flex">
+                    <div class="input-select">
+                        <select name="calendar_form[prestation][]" id="calendar_form_prestation_{{ invoicePrestation.id }}">
+                            {% for prestation in prestations %}
+                                <option value="{{ prestation.id }}" {% if invoicePrestation.id == prestation.id %} selected {% endif %}
+                                        {% if prestation.isOwner == 1 and prestation.isRenter == 1 %}
+                                            class="velvet-green"
+                                        {% elseif prestation.isRenter == 1 %}
+                                            class="velvet"
+                                        {% else %}
+                                            class="green"
+                                        {% endif %}
+                                >
+                                    {{ prestation.name }} - {% if prestation.isRenter == 1 %} Renter {% endif %} {% if prestation.isOwner == 1 %} Owner {% endif %}
+                                    {{ prestation.price|format_currency('EUR')  }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="col-2">
+        {% if invoicePrestations is defined and invoicePrestations is not null %}
+            <label class="required">{{ 'Quantity'|trans }}</label>
+            {% for invoiceContain in invoiceContains %}
+                {% if invoiceContain.prestation is defined and invoiceContain.prestation is not null %}
+                    <div class="input-flex">
+                        <div>
+                            <input type="number" id="form-std_quantity_{{ invoiceContain.id }}" width="20" name="calendar_form[prestation_quantity][]"
+                                   placeholder="{{ invoiceContain.quantity }}" value="{{ invoiceContain.quantity }}" required>
+                        </div>
+                        <div style="margin: auto 5px; flex: none; padding: 0;">
+                            <a class="bt-delete close-ui-dialog" onclick="return confirm('{{ 'Are you sure'|trans }}')"
+                               href="{{ path('app_delete_invoice_contain', {id: invoiceContain.id, task: task.id}) }}">{{ 'Delete'|trans }}
+                            </a>
+                        </div>
+                    </div>
+                    <input type="hidden" name="calendar_form[prestation_contains][]" value="{{ invoiceContain.id }}">
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

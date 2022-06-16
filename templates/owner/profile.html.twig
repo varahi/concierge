@@ -1,0 +1,91 @@
+{% extends 'owner.html.twig' %}
+{% block title %}Hello Owner {{ user.firstName }} {{ user.lastName }} {% endblock %}
+{% block body %}
+
+    <main id="main">
+        <div id="main-left">
+            <div class="left left-owner">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>{{ 'My reservations'|trans }}</p>
+							<a class="bt-logout" href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
+                        </div>
+                        {% include 'partials/_message.html.twig' %}
+                    </header>
+                    <article class="content">
+                        {% include 'owner/partials/_form_owner_left.html.twig' %}
+                        <div class="row">
+                            <div>
+                                <p class="title">
+                                    {#
+                                    <a href="#" class="bt-settings link-dialog" data-dialog="lightbox-settings">{{ 'Add specific elements'|trans }}</a>
+                                    #}
+                                    {% if housing is defined %}
+                                        {# Appt not defined #}
+                                    {% else %}
+                                    <p class="title">
+                                    {{ 'THE APARTMENT EQUIPMENT'|trans }}
+                                        <a href="#" class="bt-settings link-dialog" data-dialog="lightbox-settings-{{ apartment.id }}">{{ 'Settings'|trans }}</a>
+                                    </p>
+                                    {% endif %}
+                                </p>
+
+                                {% if housing is defined %}
+                                    {# Appt not defined #}
+                                {% else %}
+                                    {% include 'partials/_apartment_equipment.html.twig' %}
+                                    {% include 'administrator/partials/lightbox/_settings.html.twig' %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div id="calendar2"></div>
+                        {% include 'administrator/partials/js/_calendar.html.twig' %}
+                        {% include 'owner/partials/_calendar_list.html.twig' %}
+
+                        {#
+                        {% include 'owner/partials/_calendar_list.html.twig' %}
+                        #}
+
+                    </article>
+                </section>
+            </div>
+            <div class="right-owner">
+                <section>
+                    <header>
+                        <div class="top">
+                            <p>{{ 'Enter renter'|trans  }} {% if apartment is defined %} {{ 'for'|trans }} {{ apartment.name }} {% endif %}</p>
+                        </div>
+                    </header>
+                    <article class="content">
+                        <div class="detail-invoice">
+                            {# Add renter form #}
+                            {% if housing is defined %}
+                                {# Appt not defined #}
+                            {% else %}
+                                {% include 'owner/partials/_add_renter_form.html.twig' %}
+                            {% endif %}
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(function(){
+            // bind change event to select
+            $('#select-id').on('change', function () {
+                var url = $(this).val(); // get selected value
+                if (url) { // require a URL
+                    window.location = url; // redirect
+                }
+                return false;
+            });
+            /*$('.ajax-popup-link').magnificPopup({
+                type: 'ajax'
+            });*/
+        });
+    </script>
+
+{% endblock %}

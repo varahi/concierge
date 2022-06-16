@@ -1,0 +1,79 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-appartment" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="left">
+                <div class="image">
+                    <img src="{{ asset('images/image-logement.svg') }}" width="304" height="388" alt="" />
+                </div>
+                {#
+                <p class="text-center">
+                    <a href="#" class="bt-pdf">Exporter pdf</a>
+                </p>
+                #}
+            </div>
+            <div class="right">
+                <h2>{{ 'Add appartaments'|trans }}</h2>
+                {{ form_start(add_housing_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    <legend>{{ 'form.task_title'|trans }}</legend>
+                    <div>
+                        <div class="input-select">
+                            {{ form_row(add_housing_form.user) }}
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>{{ 'Add appartaments'|trans }}</legend>
+                    <label>{{ 'Housing title'|trans }}</label>
+                    <div>
+                        {#
+                        {{ form_widget(add_housing_form.name) }}
+                        #}
+
+                    </div>
+                    <div class="input-flex">
+                        {{ form_row(add_housing_form.residence) }}
+                        {{ form_row(add_housing_form.apartment) }}
+                        {{ form_row(add_housing_form.logement) }}
+                    </div>
+                    <div class="input-flex">
+                        {{ form_row(add_housing_form.numRooms) }}
+                        {{ form_row(add_housing_form.numBeds) }}
+                    </div>
+                    <div class="input-select">
+                        {{ form_row(add_housing_form.employer) }}
+                    </div>
+                    <div class="input-select-multiple">
+                        {{ form_row(add_housing_form.agency) }}
+                    </div>
+                    <div>
+                        <div class="input-select">
+                            <label for="add_apartment_form_packs" class="required">{{ 'Packs'|trans }}</label>
+                            <select id="add_apartment_form_packs" name="add_apartment_form[packs]">
+                                <option disabled value="">{{ 'Please select'|trans }}</option>
+                                {% for pack in packs %}
+                                    <option value="{{ pack.id }}">{{ pack.name }} {% include 'partials/_pack_list.html.twig' %}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    {{ form_row(add_housing_form.address) }}
+                    <div class="input-flex">
+                        {{ form_row(add_housing_form.zip) }}
+                        {{ form_row(add_housing_form.city) }}
+                    </div>
+
+                    <div>
+                        <label for="note">{{ 'File'|trans }} ({{ 'PDF Allowed'|trans }})</label>
+                        {{ form_widget(add_housing_form.file) }}
+                    </div>
+
+                    <div class="input-submit">
+                        <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                    </div>
+                </fieldset>
+                {{ form_end(add_housing_form) }}
+            </div>
+        </div>
+    </div>
+</div>

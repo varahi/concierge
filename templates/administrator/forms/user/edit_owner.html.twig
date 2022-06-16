@@ -1,0 +1,73 @@
+<div id="custom-content" class="white-popup-block">
+
+    <div id="edit-owner" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2>{{ 'Edit an owner'|trans }}</h2>
+                {{ form_start(edit_owner_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                    <fieldset>
+                        <legend>{{ 'Contact information'|trans }}</legend>
+                        <div class="input-flex">
+                            {{ form_row(edit_owner_form.company) }}
+                        </div>
+                        <div class="input-flex">
+                            {{ form_row(edit_owner_form.firstName) }}
+                            {{ form_row(edit_owner_form.lastName) }}
+                        </div>
+                        {{ form_row(edit_owner_form.address) }}
+                        <div class="input-flex">
+                            <div class="input-cp">
+                                {{ form_row(edit_owner_form.zip) }}
+                            </div>
+                            {{ form_row(edit_owner_form.city) }}
+                        </div>
+                        <div class="input-flex">
+                            <div>
+                                <label for="edit_owner_form_telephone">{{ 'Phone'|trans }}</label>
+                                <input type="text" id="edit_owner_form_telephone" name="edit_owner_form[telephone]" maxlength="255"
+                                       class="inputmask mask-phone" value="{{ owner.telephoneFullNumber }}">
+                                {#
+                                {{ form_row(edit_owner_form.telephone) }}
+                                #}
+                                {{ form_row(edit_owner_form.telephoneFullNumber) }}
+                            </div>
+                            <div>
+                                <label for="edit_owner_form_telephone">{{ 'Phone2'|trans }}</label>
+                                <input type="text" id="edit_owner_form_telephone2" name="edit_owner_form[telephone2]" maxlength="255"
+                                       class="inputmask mask-phone" value="{{ owner.telephone2FullNumber  }}">
+                                {#
+                                {{ form_row(edit_owner_form.telephone2) }}
+                                #}
+                                {{ form_row(edit_owner_form.telephone2FullNumber) }}
+                            </div>
+                        </div>
+						<div>
+							{{ form_row(edit_owner_form.email) }}
+						</div>
+                        <div>
+                            {{ form_row(edit_owner_form.note) }}
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        {#
+                        <legend>{{ 'List of housing'|trans }}<a class="bt-add" href="#">{{ 'Add'|trans }}</a></legend>
+                        #}
+
+                        <div>
+                            <div class="input-select-multiple">
+                                {{ form_row(edit_owner_form.apartments) }}
+                            </div>
+                        </div>
+                        <div class="input-submit">
+                            <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                            <a href="{{ path('app_delete_owner', { id: owner.id}) }}" onclick="return confirm('{{ 'Are you sure delete owner'|trans }}')"
+                               class="bt-disabled">{{ 'Delete owner'|trans }}
+                            </a>
+                        </div>
+                    </fieldset>
+                {{ form_end(edit_owner_form) }}
+            </div>
+        </div>
+    </div>
+</div>
+

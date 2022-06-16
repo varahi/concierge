@@ -1,0 +1,22 @@
+<div class="row2">
+    {% if apartment.rooms %}
+        {% for room in apartment.rooms %}
+            <div class="column">
+                <p><strong>{{ room.name }}</strong></p>
+                {% if room.objets %}
+                    <ul>
+                        {% for objet in room.objets %}
+                            <li>- {{ objet.quantity}} {{ objet.name}}
+                                <a href="{{ path('app_show_equipment', { id: objet.id }) }}" class="bt-photo link-dialog ajax-popup-link {% if objet.documents|length > 0 %}bt-glass{% endif %}"
+                                   title="{{ 'Show photo'|trans }}">{{ 'Detail'|trans }}</a>
+                                <a href="{{ path('app_edit_equipment', { id: objet.id }) }}" class="bt-edit link-dialog ajax-popup-link title="{{ 'Edit furniture'|trans }}">{{ 'Edit'|trans }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p> {{ 'No rooms'|trans }}</p>
+    {% endif %}
+</div>

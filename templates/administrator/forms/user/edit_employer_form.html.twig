@@ -1,0 +1,112 @@
+<div class="white-popup-block">
+	<div id="edit-tenant" class="_lightbox-std">
+		<div class="content-lightbox">
+			<div class="center">
+				<script>
+					$( function() {
+						$( "#date-start" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+						$( "#date-end" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
+					} );
+				</script>
+				<h2 class="text-center">{{ 'Edit an employer'|trans }}</h2>
+				{{ form_start(employer_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+				<div class="row">
+					<div class="col-6">
+						<fieldset>
+							<div class="input-flex">
+								{{ form_row(employer_form.lastName) }}
+								{{ form_row(employer_form.firstName) }}
+							</div>
+							{{ form_row(employer_form.telephone) }}
+							<div class="input-flex">
+								<div>
+									<label for="date-start" class="required">{{ 'Start date'|trans }}</label>
+									<input type="text" id="date-start" name="edit_employer_form[start-date]"
+										   placeholder="{{ 'Start date'|trans }}" value="{{ user.startDate|date("d-m-Y") }}"/>
+								</div>
+								<div>
+									<label for="date-end" class="required">{{ 'End date'|trans }}</label>
+									<input type="text" id="date-end" name="edit_employer_form[end-date]"
+										   placeholder="{{ 'End date'|trans }}" value="{{ user.endDate|date("d-m-Y") }}"/>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>{{ 'ASSOCIATED APARTMENTS'|trans }} <a class="bt-add" href="#">{{ 'Add'|trans }}</a></legend>
+							<div class="input-select-multiple">
+								{{ form_row(employer_form.employerAppts) }}
+							</div>
+
+							{#
+							<div class="input-select-multiple">
+								<select id="edit_employer_form_apartments" name="form[apartments][]" required="required" class="hidden" multiple="multiple">
+									{% for apartment in apartments %}
+										<option value="{{ apartment.id }}">Appt {{ apartment.id }} - {{ apartment.address }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							#}
+
+							{#
+							<div>
+								<div class="input-select-multiple">
+									{{ form_row(employer_form.task) }}
+								</div>
+							</div>
+							#}
+						</fieldset>
+					</div>
+					<div class="col-6">
+						<fieldset>
+							<legend>{{ 'EMPLOYEE ACCOUNT'|trans }}</legend>
+							<input type="text" id="edit_employer_form_username" maxlength="255"
+								   placeholder="Identifiant" readonly="readOnly"
+								   disabled="disabled" value="{{ user.email }}"><br />
+							<legend>{{ 'Change password'|trans }}</legend>
+							{{ form_row(employer_form.plainPassword) }}
+							<div class="col-4">
+								{{ form_row(employer_form.color) }}
+							</div>
+						</fieldset>
+
+					</div>
+				</div>
+				<fieldset>
+					<div class="row">
+						<div class="col-4">
+							<div class="input-submit">
+								<input type="submit" value="{{ 'form.submit'|trans }}"/>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="input-submit">
+								<input type="reset" value="Annuler"/>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="input-submit">
+								<a href="{{ path('app_disable_employer', { id: user.id}) }}" onclick="return confirm('{{ 'Are you sure deactivate'|trans }}')"
+								   class="bt-disabled">{{ 'DEACTIVATE ACCOUNT'|trans }}
+								</a>
+							</div>
+						</div>
+					</div>
+
+					{#
+					<div class="input-submit">
+						<input type="submit" value="{{ 'form.submit'|trans }}"/>
+						<input type="reset" value="Annuler"/>
+						<a href="{{ path('app_disable_employer', { id: user.id}) }}" onclick="return confirm('{{ 'Are you sure deactivate'|trans }}')"
+						   class="bt-disabled">{{ 'DEACTIVATE ACCOUNT'|trans }}
+						</a>
+					</div>
+					#}
+
+				</fieldset>
+				{{ form_end(employer_form) }}
+
+			</div>
+		</div>
+	</div>
+</div>

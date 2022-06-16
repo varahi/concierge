@@ -1,0 +1,46 @@
+<div class="add-newService text-center">
+    <a class="bt-blue" href="#">{{ 'New service'|trans }}</a>
+</div>
+
+<div class="input-newService input-hidden">
+    <div class="input-flex">
+        <div class="col-8">
+            <label>{{ 'New service'|trans }}</label>
+        </div>
+        <div class="col-4">
+            <label>{{ 'New quantity'|trans }}</label>
+        </div>
+    </div>
+    <div class="input-flex input-newLine">
+        <div class="col-8">
+            {# New param field #}
+            <div class="input-flex">
+                <div class="input-select">
+                    <select name="calendar_form[new_service][]" >
+                        <option value="">{{ 'New service'|trans }}</option>
+                        {% for service in services %}
+                            <option value="{{ service.id }}"
+                                    {% if service.isOwner == 1 and service.isRenter == 1 %}
+                                        class="velvet-green"
+                                    {% elseif service.isRenter == 1 %}
+                                        class="velvet"
+                                    {% else %}
+                                        class="green"
+                                    {% endif %}
+                            >
+								{{ service.name }} - {% if service.isRenter == 1 %} Renter {% endif %} {% if service.isOwner == 1 %} Owner {% endif %}  {{ service.price }} &#8364;
+							</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="input-flex">
+                <div>
+                    <input type="number" id="new_quantity" name="calendar_form[new_service_quantity][]" placeholder="{{ 'Enter value' }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

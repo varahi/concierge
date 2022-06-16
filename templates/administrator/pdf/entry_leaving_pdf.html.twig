@@ -1,0 +1,64 @@
+{% extends 'pdf.html.twig' %}
+{% block body %}
+    <h1 style="text-align: center; text-transform: uppercase; color: #477CD5; font-weight: normal">Arrivées / Départs</h1>
+
+        <div class="employer-list" align="center">
+            {% for employer in employers %}
+                <span class="icon-employee" data-user="{{ employer.id }}" style="background-color: {{ employer.color }}">
+                    <span style="color: #fff;">{{ employer.firstName|slice(0, 1) }}</span>
+                </span>
+            {% endfor %}
+        </div>
+
+    <div class="table">
+        <table class="table-std table-employee">
+            <thead>
+            <tr>
+                <th></th>
+                <th>{{ 'Start date'|trans }}<span class="order"></span></th>
+                <th>{{ 'Arriving time'|trans }}<span class="order"></span></th>
+                <th>{{ 'End date'|trans }}<span class="order"></span></th>
+                <th>{{ 'Departure time'|trans }}<span class="order"></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+                {% if task.isEntry == 1 %}
+                    {% for employer in task.users %}
+                        {% if employer.id == userId or userId == 'all' %}
+                            <tr data-user="{{ employer.id }}">
+                                <td class="first table-icon">
+                                    {% if task.housing %}
+                                        {{ task.housing.name }}
+                                    {% else %}
+                                        {{ task.title }}
+                                    {% endif %}
+                                    <span class="table-icon" style="background-color: {{ employer.color }}">{{ employer.firstName|slice(0, 1) }}</span>
+                                </td>
+                                <td>{{ task.calendar.startDate |date("d-m-Y") }}</td>
+                                <td>
+                                    <input value="{{ task.calendar.startHour |date('H:i') }}" />
+                                    <span>{{ task.calendar.startHour |date('H:i') }}</span>
+                                </td>
+                                <td>{{ task.calendar.endDate |date("d-m-Y") }}</td>
+                                <td>
+                                    <input value="{{ task.calendar.endHour |date('H:i') }}" />
+                                    <span>{{ task.calendar.endHour |date('H:i') }}</span>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                {#
+                {% if task.isArchived == null %}
+                {% endif %}
+                #}
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,94 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div id="add-owner" class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2>{{ 'Apartment elements'|trans }}</h2>
+
+                {{ form_start(edit_apartment_elements_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    <div class="input-col-3">
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.garage) }}
+                            <label for="apartment_elements_form_garage">{{ 'Garage'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.garden) }}
+                            <label for="apartment_elements_form_garden">{{ 'Garden'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.furniture) }}
+                            <label for="apartment_elements_form_furniture">{{ 'Furniture'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.mezzanine) }}
+                            <label for="apartment_elements_form_mezzanine">{{ 'Mezzanine '|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.unfurnished) }}
+                            <label for="apartment_elements_form_unfurnished">{{ 'Unfurnished '|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.wifi) }}
+                            <label for="apartment_elements_form_wifi">{{ 'WiFi'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.parking) }}
+                            <label for="apartment_elements_form_parking">{{ 'Parking'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.basementParking) }}
+                            <label for="apartment_elements_form_basementParking">{{ 'Underground parking'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.poll) }}
+                            <label for="apartment_elements_form_poll">{{ 'Pool'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.storage) }}
+                            <label for="apartment_elements_form_storage">{{ 'Storage'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.bathroom) }}
+                            <label for="apartment_elements_form_bathroom">{{ 'Bathroom'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.elevator) }}
+                            <label for="apartment_elements_form_elevator">{{ 'Elevator'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.basement) }}
+                            <label for="apartment_elements_form_basement">{{ 'Basement'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.parentalSuite) }}
+                            <label for="apartment_elements_form_parentalSuite">{{ 'Parental suite'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.teracce) }}
+                            <label for="apartment_elements_form_teracce">{{ 'Terrace'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.veranda) }}
+                            <label for="apartment_elements_form_veranda">{{ 'Veranda'|trans }}</label>
+                        </div>
+                        <div class="input-checkbox">
+                            {{ form_widget(edit_apartment_elements_form.separateWc) }}
+                            <label for="apartment_elements_form_separateWc">{{ 'Separate WC'|trans }}</label>
+                        </div>
+                        {{ form_row(edit_apartment_elements_form.other) }}
+                    </div>
+                    {{ form_row(edit_apartment_elements_form.note) }}
+                    <div class="input-submit2 text-center">
+                        <input type="submit" value="{{ 'form.submit'|trans }}"/>
+                    </div>
+                </fieldset>
+
+                {#
+                <input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>
+                #}
+                {{ form_end(edit_apartment_elements_form) }}
+
+            </div>
+        </div>
+    </div>
+</div>
