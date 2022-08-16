@@ -75,7 +75,7 @@ class EditTaskFormType extends AbstractType
                 'label' => 'List of housing',
             ])
             */
-            ->add('description', TextareaType::class, [
+            ->add('note', TextareaType::class, [
                 'required' => false,
                 'label' => false,
                 'constraints' => [

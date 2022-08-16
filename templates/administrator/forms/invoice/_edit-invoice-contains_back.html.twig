@@ -1,0 +1,56 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2 class="text-center">{{ 'Edit content'|trans }}</h2>
+                {{ form_start(invoice_contain_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+
+                    <div class="add-newPrestation text-center">
+                        <a class="bt-blue" href="#">{{ 'Add line'|trans }}</a>
+                    </div>
+
+                    <div class="input-newPrestation input-hidden">
+                        <div class="input-flex">
+                            <div class="col-8">
+                                <label>{{ 'New Contain'|trans }}</label>
+                            </div>
+                            <div class="col-4">
+                                <label>{{ 'New quantity'|trans }}</label>
+                            </div>
+                        </div>
+                        <div class="input-flex input-newLine">
+                            <div class="col-8">
+                                {# New param field #}
+                                <div class="input-flex">
+                                    <div class="input-select">
+                                        <select name="invoice_contain_form[new_prestation][]" >
+                                            <option value="">{{ 'New Contain'|trans }}</option>
+                                            {% for prestation in prestations %}
+                                                <option value="{{ prestation.id }}">{{ prestation.name }} - {{ prestation.price }} &#8364;</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-flex">
+                                    <div>
+                                        <input type="number" id="new_quantity" name="invoice_contain_form[new_prestatin_quantity][]" placeholder="{{ 'Enter value' }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <div class="input-submit text-center">
+                    <input type="submit" value="Valider"/>
+                </div>
+                <input type="hidden" name="invoice_contain_form[user]" value="{{ user.id }}">
+                <input type="hidden" name="invoice_contain_form[invoice]" value="{{ invoice.id }}">
+                {{ form_end(invoice_contain_form) }}
+            </div>
+        </div>
+    </div>
+</div>

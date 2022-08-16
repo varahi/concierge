@@ -1,0 +1,171 @@
+{% extends 'pdf2.html.twig' %}
+{% block body %}
+    <table class="pdf-table">
+        <thead>
+            <tr>
+                <td width="400">
+                    <b>LL CONCIERGERIE</b>
+                    <p>
+                        Galerie Commerciale Les Soldanelles	<br />
+                        Place de l'Etoile<br />
+                        05200 Les Orres
+                    </p>
+                </td>
+                <td width="300">
+                    <b>FACTURE N° {{ invoice.number }} </b><br />
+                    Date: {{ invoice.date|date("d/m/Y") }}
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <b>Appartement</b> : {{ invoice.apartment.name }} {{ invoice.apartment.user.company }}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <br /><br />
+    <table class="pdf-table">
+        <tr>
+            <td>
+                Prestation(s) effectuées par LL Conciergerie :
+            </td>
+        </tr>
+    </table>
+
+    <br /><br />
+
+    <table class="pdf-table-items">
+        <thead>
+            <tr>
+                <th width="150">
+                    Prestation(s)
+                </th>
+                <th width="150">
+                    Quantité
+                </th>
+                <th width="150">
+                    Montant unitaire
+                </th>
+                <th width="150">
+                    Total HT
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight: normal">
+                    {% if invoice.contain is defined %}
+                        {% for contain in invoice.contain %}
+                            {% if contain.service is not null %}
+                                <p>{{ contain.service.name }}</p>
+                            {% endif %}
+
+                            {% if contain.prestation is not null %}
+                                <p>{{ contain.prestation.name }}</p>
+                            {% endif %}
+
+                            {% if contain.material is not null %}
+                                <p>{{ contain.material.name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+
+                <td style="font-weight: normal">
+                    {% if invoice.contain is defined %}
+                        {% for contain in invoice.contain %}
+                            {% if contain.service is not null %}
+                                <p>{{ contain.quantity }}</p>
+                            {% endif %}
+
+                            {% if contain.prestation is not null %}
+                                <p>{{ contain.quantity }}</p>
+                            {% endif %}
+
+                            {% if contain.material is not null %}
+                                <p>{{ contain.quantity }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+
+                <td style="font-weight: normal">
+                    {% if invoice.contain is defined %}
+                        {% for contain in invoice.contain %}
+                            {% if contain.service is not null %}
+                                <p> {{ contain.service.price|format_currency('EUR')  }}HT</p>
+                            {% endif %}
+
+                            {% if contain.prestation is not null %}
+                                <p> {{ contain.prestation.price|format_currency('EUR')  }}HT</p>
+                            {% endif %}
+
+                            {% if contain.material is not null %}
+                                <p> {{ contain.material.price|format_currency('EUR')  }}HT</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+
+                <td style="font-weight: normal">
+                    {% if invoice.contain is defined %}
+                        {% for contain in invoice.contain %}
+                            {% if contain.service is not null %}
+                                <p> {{ contain.service.price|number_format * contain.quantity|number_format}} &euro;HT</p>
+                            {% endif %}
+
+                            {% if contain.prestation is not null %}
+                                <p> {{ contain.prestation.price|number_format * contain.quantity|number_format}} &euro;HT</p>
+                            {% endif %}
+
+                            {% if contain.material is not null %}
+                                <p> {{ contain.material.price|number_format * contain.quantity|number_format}} &euro;HT</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <br />
+
+    <table class="pdf-table-items">
+        <tr>
+            <td width="250"></td>
+            <td width="200">TOTAL HT</td>
+            <td width="200">
+                {{ invoice.total|number_format(2, ',', ' ')}} &euro;HT
+            </td>
+        </tr>
+
+        <tr>
+            <td width="250"></td>
+            <td width="200">TVA 20%</td>
+            <td width="200">
+                {% set totalVAT = invoice.total|number_format * 0.2 %}
+                {{ totalVAT|number_format(2, ',', ' ')}} &euro;HT
+            </td>
+        </tr>
+
+        <tr>
+            <td width="250"></td>
+            <td width="200">TOTAL TTC</td>
+            <td width="200">
+                {% set totalPrice = invoice.total|number_format + invoice.total|number_format * 0.2 %}
+                {{ totalPrice|number_format(2, ',', ' ') }} &euro;HT
+            </td>
+        </tr>
+    </table>
+
+    <footer>
+        LL Conciergerie - Galerie Commerciale Les Soldanelles - Place de l'Etoile - 05200 Les Orres<br />
+        N° SIREN : 509 676 409 - info@llconciergerie.fr
+    </footer>
+
+{% endblock %}

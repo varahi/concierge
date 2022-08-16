@@ -152,8 +152,6 @@ class FileService
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
-
-        // Load HTML to Dompdf
         $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'

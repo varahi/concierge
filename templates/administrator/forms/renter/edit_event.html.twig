@@ -26,6 +26,7 @@
 								$( "#date-end" ).datepicker({dateFormat: '{{ scriptDateFormat }}'});
 							} );
 						</script>
+
 						<div class="input-flex">
 							<div class="input-date">
 								<label for="date-start" class="required">{{ 'Start date'|trans }}</label>
@@ -35,7 +36,16 @@
 								<label for="date-end" class="required">{{ 'End date'|trans }}</label>
 								<input type="text" id="date-end" name="end-date" required="required" autocomplete="0" value="{{ task.calendar.endDate|date("d-m-Y") }}">
 							</div>
+							<div class="hour-start">
+								<label for="hour-start" class="required">{{ 'Arriving time'|trans }}</label>
+								<input type="time" id="hour-start" name="start-hour" value="{{ task.calendar.startHour|date("H:i") }}" required>
+							</div>
+							<div class="hour-end">
+								<label for="hour-end" class="required">{{ 'Departure time'|trans }}</label>
+								<input type="time" id="hour-end" name="end-hour" value="{{ task.calendar.endHour|date("H:i") }}" required>
+							</div>
 						</div>
+
 						<div class="input-flex">
 							{{ form_row(edit_event_form.lastName) }}
 							{{ form_row(edit_event_form.firstName) }}

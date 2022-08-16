@@ -24,6 +24,7 @@
                     <article class="content">
                         <div class="list-user list-invoice">
                             <a href="{{ path('app_invoice_page', { id: user.id}) }}" class="bt-border">{{ 'New invoice'|trans }}</a>
+                            <br /><br /><hr /><br />
                             {% if user.invoices|length > 0 %}
                                 {% for invoice in user.invoices %}
                                     {% include 'invoice/partials/_list_invoices.html.twig' %}
@@ -47,6 +48,7 @@
                     </script>
                     <article class="content">
                         <div class="detail-invoice">
+
                             {{ form_start(invoice_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
                             <fieldset>
                                 <h2>{{ 'Invoice'|trans }}</h2>
@@ -62,50 +64,28 @@
                                                 <input type="text" id="firstname" name="" value="{{ user.firstName }}" readonly disabled />
                                             </div>
                                         </div>
-
-                                        {#
-                                            <div class="input-select">
-                                                 {{ form_row(invoice_form.apartment) }}
-                                             </div>
-                                            <br /><br />
-                                        #}
-
                                         <div class="input-flex">
                                             <div><label class="label-class required" for="edit_invoice_form_total">Total</label>
                                                 <input type="text" id="edit_invoice_form_total" name="edit_invoice_form[total]" required="required"
                                                        class="input-select" value="{{ invoice.total|format_currency('EUR') }}" readonly disabled>
                                             </div>
-                                            {#
-                                            {{ form_row(invoice_form.total) }}
-                                            #}
-
                                         </div>
                                     </div>
                                     <div>
-                                        {#
                                         <div class="input-flex">
-                                            <div>
-                                                <label for="phone">{{ 'Phone'|trans }}: </label>
-                                                <input type="phone" id="phone" name="" value="{{ user.telephone }}" disabled readonly />
-                                            </div>
-                                            <div>
-                                                <label for="email">{{ 'Email'|trans }} :</label>
-                                                <input type="email" id="email" name="" value="{{ user.email }}" disabled readonly />
-                                            </div>
+                                            {% if invoice.task.0.startDate is defined %}
+                                                <div>
+                                                    <label for="startDate">{{ 'Start date'|trans }}: </label>
+                                                    <input type="text" id="startDate" name="" value="{{ invoice.task.0.startDate|date("d-m-Y") }}" readonly />
+                                                </div>
+                                            {% endif %}
+                                            {% if invoice.task.0.startDate is defined %}
+                                                <div>
+                                                    <label for="endDate">{{ 'End date'|trans }}: </label>
+                                                    <input type="text" id="endDate" name="" value="{{ invoice.task.0.endDate|date("d-m-Y") }}" readonly />
+                                                </div>
+                                            {% endif %}
                                         </div>
-                                        #}
-
-                                        <div class="input-flex">
-                                            <div>
-                                                <label for="startDate">{{ 'Start date'|trans }}: </label>
-                                                <input type="text" id="startDate" name="" value="{{ invoice.task.0.startDate|date("d-m-Y") }}" disabled readonly />
-                                            </div>
-                                            <div>
-                                                <label for="endDate">{{ 'End date'|trans }}: </label>
-                                                <input type="text" id="endDate" name="" value="{{ invoice.task.0.endDate|date("d-m-Y") }}" disabled readonly />
-                                            </div>
-                                        </div>
-
                                         <br />
                                         <h2>{{ 'Invoice information'|trans }}</h2>
                                         <div class="input-flex">
@@ -114,18 +94,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                {% include 'invoice/partials/_table_invoice.html.twig' %}
                                 <div class="button">
                                     <input type="submit" value="{{ 'Save invoice'|trans }}"/>
-
-                                    {#
-                                    <a href="#" class="bt-border">{{ 'Save invoice'|trans }}</a>
-                                    <a href="#" class="bt-blue4">{{ 'Generate facture'|trans }}</a>
-                                    #}
-
                                 </div>
                             </fieldset>
                             {{ form_end(invoice_form) }}
+
+                            {% include 'invoice/partials/_table_invoice.html.twig' %}
+                            <a href="{{ path('app_invoice_pdf', { id: invoice.id}) }}" style="max-width: 300px; text-align: center" target="_blank" title="Download invoice PDF" class="bt-blue4">
+                                {{ 'Generate facture'|trans }}
+                            </a>
                         </div>
                     </article>
 

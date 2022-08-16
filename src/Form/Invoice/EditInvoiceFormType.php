@@ -22,12 +22,13 @@ class EditInvoiceFormType extends AbstractType
     {
         $userId = $options['userId'];
         $builder
+
             ->add('number', TextType::class, [
                 'required' => true,
                 'attr' => [
                     //'rows' => 5,
                     'class' => 'input-select',
-                    'disabled' => true,
+                    'readonly' => true
                 ],
                 'label_attr' => [
                     'class' => 'label-class'

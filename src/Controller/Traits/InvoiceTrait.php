@@ -234,7 +234,7 @@ trait InvoiceTrait
 
         // Create invoice for task
         $invoice = new Invoice();
-        $invoice->setNumber('PR');
+        $invoice->setNumber('FV');
 
         // Save invoice to get id
         try {
@@ -245,9 +245,9 @@ trait InvoiceTrait
         }
 
         if ($invoice->getId()) {
-            $invoice->setNumber('PR' . $invoice->getId());
+            $invoice->setNumber('FV' . $invoice->getId());
         } else {
-            $invoice->setNumber('PR' . $task->getId());
+            $invoice->setNumber('FV' . $task->getId());
         }
 
         $invoice->addTask($task);
@@ -344,16 +344,16 @@ trait InvoiceTrait
         $entityManager = $this->doctrine->getManager();
         $post = $request->request->get($formKey);
 
-        // Get services qty
+        // Get related params qty
         if (isset($post['new_'.$relatedName.'_quantity'])) {
             if (!empty($post['new_'.$relatedName.'_quantity'][0] && is_array($post['new_'.$relatedName.'_quantity']))) {
-                foreach ($post['new_material_quantity'] as $newQuantity) {
-                    $newQty[] = $newQuantity;
+                foreach ($post['new_'.$relatedName.'_quantity'] as $key => $newQuantity) {
+                    $newQty[$key] = $newQuantity;
                 }
             }
         }
 
-        // Set materials and qty
+        // Set related params and qty
         if (isset($post['new_'.$relatedName])) {
             if (!empty($post['new_'.$relatedName][0] && is_array($post['new_'.$relatedName]))) {
                 foreach ($post['new_'.$relatedName] as $key => $newRelatedId) {
@@ -362,17 +362,17 @@ trait InvoiceTrait
                     $newInvoiceContain->setName('Contain for invoice ' . $invoice->getId());
                     $newInvoiceContain->$relatedMethod($newRelatedObj);
                     if (!isset($newQuantity[$key])) {
-                        $newQuantity[$key] = 1;
+                        //$newQuantity[$key] = 1;
+                        $newQty[$key] = 1;
                     }
                     $newInvoiceContain->setQuantity((int)$newQty[$key]);
                     $newInvoiceContain->setInvoice($invoice);
-
                     // Store new contain to get price
                     $entityManager->persist($newInvoiceContain);
-                    // ToDo: set price and total to new contain
                     $newInvoiceContain->setPrice($newRelatedObj->getPrice());
                     $newInvoiceContain->setTotal($newRelatedObj->getPrice() * (int)$newQty[$key]);
                     $entityManager->persist($newInvoiceContain);
+                    $entityManager->persist($invoice);
                 }
             }
         }
@@ -395,15 +395,15 @@ trait InvoiceTrait
             if (!empty($post[$relatedName][0] && is_array($post[$relatedName]))) {
                 foreach ($post[$relatedName] as $key => $relatedId) {
                     $relatedObj = $repository->findOneBy(['id' => $relatedId]);
-                    $invoiceContainObj[$key]->setQuantity((int)$relatedQty[$key]);
-                    $invoiceContainObj[$key]->$relatedMethod($relatedObj);
-                    $invoiceContainObj[$key]->setPrice($relatedObj->getPrice());
-                    $invoiceContainObj[$key]->setTotal($relatedObj->getPrice() * (int)(int)$relatedQty[$key]);
-                    $entityManager->persist($invoiceContainObj[$key]);
+                    if (isset($invoiceContainObj[$key])) {
+                        $invoiceContainObj[$key]->setQuantity((int)$relatedQty[$key]);
+                        $invoiceContainObj[$key]->$relatedMethod($relatedObj);
+                        $invoiceContainObj[$key]->setPrice($relatedObj->getPrice());
+                        $invoiceContainObj[$key]->setTotal($relatedObj->getPrice() * (int)(int)$relatedQty[$key]);
+                        $entityManager->persist($invoiceContainObj[$key]);
+                    }
                 }
             }
         }
-
-        $entityManager->flush();
     }
 }

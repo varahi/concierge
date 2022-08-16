@@ -393,4 +393,40 @@ trait CalendarTrait
             return null;
         }
     }
+
+
+    /**
+     * @param string $dateCompare1
+     * @param $calendars
+     * @return array|null
+     */
+    public function checkAvailabilityCalendars(string $dateCompare1, $calendars)
+    {
+        // check availability for existing calendars
+        if ($calendars) {
+            foreach ($calendars as $key => $calendar) {
+                if ($calendar->getStartHour()) {
+                    $startDateToCompare[$key] = $calendar->getStartDate()->getTimestamp() + $calendar->getStartHour()->getTimestamp();
+                } else {
+                    $startDateToCompare[$key] = $calendar->getStartDate()->getTimestamp();
+                }
+
+                if ($calendar->getEndHour()) {
+                    $endDateToCompare[$key] = $calendar->getEndDate()->getTimestamp() + $calendar->getEndHour()->getTimestamp();
+                } else {
+                    $endDateToCompare[$key] = $calendar->getEndDate()->getTimestamp();
+                }
+
+                if ($dateCompare1 >= $startDateToCompare[$key] && $dateCompare1 <= $endDateToCompare[$key]) {
+                    $arrValue[] = 'busy';
+                } else {
+                    $arrValue[] = 'free';
+                }
+            }
+        } else {
+            $arrValue = null;
+        }
+
+        return $arrValue;
+    }
 }

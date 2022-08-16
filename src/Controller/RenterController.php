@@ -290,7 +290,9 @@ class RenterController extends AbstractController
         DateUtility $dateUtility
     ): Response {
         $dateStart =  $request->request->get('date_start');
-        $dateCompare1 = strtotime($request->request->get('date_start'));
+        $timeStart = $request->request->get('time_start');
+        $dateTimeStart = $dateStart .' '. $timeStart;
+        $dateCompare1 = strtotime($dateStart .' '. $timeStart);
 
         if ($request->request->get('appartments')) {
             $apartmentIds =  explode(',', $request->request->get('appartments'));
@@ -302,23 +304,12 @@ class RenterController extends AbstractController
         }
 
         // check availability for existing calenadrs
-        if ($calendars) {
-            foreach ($calendars as $key => $calendar) {
-                $startDate[$key] = $calendar->getStartDate()->getTimestamp();
-                $endDate[$key] = $calendar->getEndDate()->getTimestamp();
-                if ($dateCompare1 >= $startDate[$key] && $dateCompare1 <= $endDate[$key]) {
-                    $arrValue[] = 'busy';
-                } else {
-                    $arrValue[] = 'free';
-                }
-                if (in_array("busy", $arrValue)) {
-                    $output = '<p style="color: #ff0000"> ' . 'La date de début est occupée pour la date ' . $dateStart . '</p>';
-                } else {
-                    $output = '<p style="color: #248108"> ' . 'La date de début est libre pour la date ' . $dateStart . '</p>';
-                }
-            }
+        $arrValue = $this->checkAvailabilityCalendars($dateCompare1, $calendars);
+
+        if (!empty($arrValue) && in_array("busy", $arrValue)) {
+            $output = '<p style="color: #ff0000"> ' . 'La date de début est occupée pour la date ' . $dateTimeStart . '</p>';
         } else {
-            $output = '<p style="color: #248108"> ' . 'La date de début est libre pour la date ' . $dateStart . '</p>';
+            $output = '<p style="color: #248108"> ' . 'La date de début est libre pour la date ' . $dateTimeStart . '</p>';
         }
 
         $arrData = ['output' => $output];

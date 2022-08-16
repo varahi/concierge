@@ -1,0 +1,476 @@
+<script>
+    $(document).ready(function(){
+        /**** CALENDAR FULL ****/
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+		var view = {
+			resourceTimelineDay: {
+				type: 'resourceTimeline',
+				duration: { days: 14 },
+				dateIncrement: { days: 1 },
+				buttonText: '14 days',
+				slotDuration: '24:00',
+				slotLabelFormat: [
+					{ weekday: 'short' },
+					{ day: 'numeric' }
+				]
+			}
+		}
+
+        var events = [
+            {% for task in calendarTasks %}
+            {# Not last loop #}
+            {% if task.renter %}
+            {
+                title: '{% if task.renter.firstName is defined %} {{ task.renter.firstName }}{% endif %} {% if task.renter.lastName is defined %} {{ task.renter.lastName }}{% endif %}',
+                {% if task.housing %}
+                resourceId: '{{ task.housing.id }}',
+                {% endif %}
+                start: '{{ task.calendar.startDate|date("Y-m-d") }}T{{ task.calendar.startHour|date("H:i:s") }}',
+                end: '{{ task.calendar.endDate|date("Y-m-d") }}T{{ task.calendar.endHour|date("H:i:s") }}',
+                editable: false,
+                {% if task.isArchived %}
+                backgroundColor: '#dd0000',
+                {%  else %}
+
+                {% if task.invoice %}
+                    {% if task.invoice.isRenter == 1 or task.invoice.isOwner == 1 %}
+                        {% if task.invoice.isRenter == 1 %}
+                        backgroundColor: '#00B715',
+                        {%  else %}
+                        backgroundColor: '#00B715',
+                        {% endif %}
+                    {%  else %}
+                    // Default background
+                    backgroundColor: '#00B715',
+                    {% endif %}
+                {% endif %}
+                {% endif %}
+                url: '{{ path('app_edit_event', { id: task.id}) }}',
+                description: {
+                    services: [
+                        {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                        {% if contain.service is not null %}
+                        {
+                            name: '{{ contain.service.name }}',
+                        },
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    ],
+                    prestations: [
+                        {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                        {% if contain.prestation is not null %}
+                        {
+                            name: '{{ contain.prestation.name }}',
+                        },
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    ]
+                }
+            },
+            {% endif %}
+
+            {% if task.isEvent %}
+            {
+                title: '{% if task.renter.firstName is defined %} {{ task.renter.firstName }}{% endif %} {% if task.renter.lastName is defined %} {{ task.renter.lastName }}{% endif %} {% if task.title %} {{ task.title }}{% endif %}',
+                {% if task.housing %}
+                resourceId: '{{ task.housing.id }}',
+                {% endif %}
+                start: '{{ task.calendar.startDate|date("Y-m-d") }}T{{ task.calendar.startHour|date("H:i:s") }}',
+                end: '{{ task.calendar.endDate|date("Y-m-d") }}T{{ task.calendar.endHour|date("H:i:s") }}',
+                editable: false,
+                {% if task.isArchived %}
+                backgroundColor: '#dd0000',
+                {%  else %}
+                //backgroundColor: '#042eff',
+                backgroundColor: '{{ task.color }}',
+                {% endif %}
+                url: '{{ path('app_edit_task', { task: task.id}) }}',
+                description: {
+                    services: [
+                        {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                        {% if contain.service is not null %}
+                        {
+                            name: '{{ contain.service.name }}',
+                        },
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    ],
+                    prestations: [
+                        {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                        {% if contain.prestation is not null %}
+                        {
+                            name: '{{ contain.prestation.name }}',
+                        },
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    ]
+                }
+            },
+            {% endif %}
+
+            {% if task.isSingle %}
+            {
+                title: '{% if task.renter.firstName is defined %} {{ task.renter.firstName }}{% endif %} {% if task.renter.lastName is defined %} {{ task.renter.lastName }}{% endif %} {% if task.title %} {{ task.title }}{% endif %}',
+                resourceId: '9999',
+                start: '{{ task.calendar.startDate|date("Y-m-d") }}T{{ task.calendar.startHour|date("H:i:s") }}',
+                end: '{{ task.calendar.endDate|date("Y-m-d") }}T{{ task.calendar.endHour|date("H:i:s") }}',
+                editable: false,
+                {% if task.isArchived %}
+                backgroundColor: '#dd0000',
+                {%  else %}
+                backgroundColor: '{{ task.color }}',
+                {% endif %}
+                url: '{{ path('app_edit_task', { task: task.id}) }}',
+                description: {
+                    services: [
+                        {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                        {% if contain.service is not null %}
+                        {
+                            name: '{{ contain.service.name }}',
+                        },
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    ],
+                    prestations: [
+                        {% if task.invoice.contain is defined %}
+                        {% for contain in task.invoice.contain %}
+                        {% if contain.prestation is not null %}
+                        {
+                            name: '{{ contain.prestation.name }}',
+                        },
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    ]
+                }
+            },
+            {% endif %}
+            {% endfor %}
+
+            {% for reservation in reservations %}
+            {
+                title: '{{ reservation.title }}',
+                resourceId: '{{ reservation.housing.id }}',
+                start: '{{ reservation.calendar.startDate|date("Y-m-d") }}T{{ reservation.calendar.startHour|date("H:i:s") }}',
+                end: '{{ reservation.calendar.endDate|date("Y-m-d") }}T{{ reservation.calendar.endHour|date("H:i:s") }}',
+                editable: false,
+                backgroundColor: '#7E354D',
+                url: '{{ path('app_edit_reservation', { id: reservation.id}) }}'
+            },
+            {% endfor %}
+        ]
+
+        var eventAdd = false;
+
+        if($('#calendar2').length > 0){
+            var calendarEl2 = document.getElementById('calendar2');
+            calendar2 = new FullCalendar.Calendar(calendarEl2, {
+                locale: 'fr',
+                schedulerLicenseKey: '0585043515-fcs-1632212428',
+                headerToolbar: {
+                    left: 'title',
+                    center: '',
+                    right: 'prev,next'
+                },
+                titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
+                dayHeaderFormat: { weekday: 'short' },
+                initialView: 'dayGridMonth',
+                /*resourceAreaWidth: '170px',
+                views: view,*/
+                editable: true,
+                resourceAreaHeaderContent: ' ',
+				resourceGroupField: 'task',
+                resources: '{{ url('app_full_calendar', {employee: app.request.get('employee')}) }}',
+                events: events,
+                eventRender: function(eventObj, $el) {
+                    console.log($el);
+                },
+                eventClick: function(info) {
+                    console.log(info.event.url);
+                    info.jsEvent.preventDefault();
+                    $.magnificPopup.open({
+                        items: {
+                            src: info.event.url,
+                        },
+                        type: 'ajax',
+                        closeOnBgClick: false,
+                        callbacks: {
+                            ajaxContentAdded: function() {
+                                $('input').iCheck();
+								
+                                // Ajax content is loaded and appended to DOM
+                                $('.input-select select').selectmenu({
+                                    create: function( event, ui ) {
+                                        $(this).after($('#'+$(this).attr('id')+'-menu').parent());
+										$('#'+$(this).attr('id')+'-button').addClass($(this).find('option:selected').attr('class'));
+                                    },
+									open: function( event, ui ) {
+										var obj = $(this);
+										var classArray = [];
+										
+										$(this).find('option').each(function(){
+											if($(this).attr('class')){
+												classArray.push($(this).attr('class'));
+											}else{
+												classArray.push('');
+											}
+										});
+										$('#'+$(this).attr('id')+'-menu li').each(function(e){
+											$(this).addClass(classArray[e]);
+										});
+										
+										$('.input-rental .input-select .ui-selectmenu-menu li').hide();
+										$('.input-rental .input-select .ui-selectmenu-menu li.velvet-green').show();
+										if($('.input-radio-rental input:checked').val() == 'owner'){
+											$('.input-rental .input-select .ui-selectmenu-menu li.green').show();
+										}
+										if($('.input-radio-rental input:checked').val() == 'renter'){
+											$('.input-rental .input-select .ui-selectmenu-menu li.velvet').show();
+										}
+									},
+									change: function( event, ui ) {
+										$('#'+$(this).attr('id')+'-button').removeClass('velvet green').addClass($(this).find('option:selected').attr('class'));
+									}
+                                });
+                                $('.input-select-multiple select').select2({
+                                });
+                            }
+                        }
+                    });
+
+                }
+            });
+            calendar2.render();
+        }
+
+
+        /**** CALENDAR FULL ****/
+		$('.all-width a').click(function(){
+			if($('#main-right').hasClass('full-width')){
+				$('#main-right').removeClass('full-width');
+				view = {
+					resourceTimelineDay: {
+						type: 'resourceTimeline',
+						duration: { days: 14 },
+						dateIncrement: { days: 1 },
+						buttonText: '14 days',
+						slotDuration: '24:00',
+						slotLabelFormat: [
+							{ weekday: 'short' },
+							{ day: 'numeric' }
+						]
+					}
+				}
+			}else{
+				$('#main-right').addClass('full-width');
+				view = {
+					resourceTimelineDay: {
+						type: 'resourceTimeline',
+						duration: { days: 28 },
+						buttonText: '28 days',
+						slotDuration: '24:00',
+						slotLabelFormat: [
+							{ weekday: 'short' },
+							{ day: 'numeric' }
+						]
+					}
+				}
+			}
+			setTimeout(function(){
+				
+				calendar = new FullCalendar.Calendar(calendarEl, {
+					locale: 'fr',
+					schedulerLicenseKey: '0585043515-fcs-1632212428',
+					headerToolbar: {
+						left: '',
+						center: 'prev,title,next',
+						right: ''
+					},
+					titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
+					dayHeaderFormat: { weekday: 'short' },
+					initialView: 'resourceTimelineDay',
+					resourceAreaWidth: '170px',
+					views: view,
+					editable: true,
+					resourceAreaHeaderContent: ' ',
+					resourceOrder: 'title',
+					resourceGroupField: 'task',
+                    resources: '{{ url('app_full_calendar', {employee: app.request.get('employee')}) }}',
+					events: events,
+					eventRender: function(eventObj, $el) {
+						console.log($el);
+					},
+					eventMouseEnter: function(info) {
+						if($('.popup-calendar').length > 0){
+							$('.popup-calendar').remove();
+						}
+						if(info.event.extendedProps.description){
+							if(info.event.extendedProps.description.prestations.length > 0 || info.event.extendedProps.description.services.length > 0){
+								$('body').after('<div class="popup-calendar"><div class="content-pop"></div></div>');
+								for(i=0;i < info.event.extendedProps.description.prestations.length;i++){
+									$('.popup-calendar .content-pop').append('<p>'+info.event.extendedProps.description.prestations[i].name+'</p>');
+								}
+								for(i=0;i < info.event.extendedProps.description.services.length;i++){
+									$('.popup-calendar .content-pop').append('<p>'+info.event.extendedProps.description.services[i].name+'</p>');
+								}
+								
+								$('.popup-calendar').css({
+									left: $(info.el).offset().left+"px",
+									top: $(info.el).offset().top - $('.popup-calendar').outerHeight(true) - 10 +"px"
+								});
+								
+								if($('.popup-calendar').offset().top < 0){
+									$('.popup-calendar').addClass('top');
+									$('.popup-calendar').css({
+										top: "auto",
+										top: $(info.el).offset().top + $(info.el).height()+"px"
+									});
+								}
+								if($('.popup-calendar').offset().left + $('.popup-calendar').width() > $(window).width()){
+									$('.popup-calendar').addClass('right');
+									$('.popup-calendar').css({
+										left: "auto",
+										right: "20px"
+									});
+								}
+							}
+						}
+					},
+					eventMouseLeave: function(info){
+						if($('.popup-calendar').length > 0){
+							$('.popup-calendar').remove();
+						}
+					},
+					eventClick: function(info) {
+						console.log(info.event.url);
+						info.jsEvent.preventDefault();
+						$.magnificPopup.open({
+							items: {
+								src: info.event.url,
+							},
+							type: 'ajax',
+							closeOnBgClick: false,
+							callbacks: {
+								ajaxContentAdded: function() {
+									$('input').iCheck();
+									// Ajax content is loaded and appended to DOM
+									$('.input-select select').selectmenu({
+										create: function( event, ui ) {
+											$(this).after($('#'+$(this).attr('id')+'-menu').parent());
+											$('#'+$(this).attr('id')+'-button').addClass($(this).find('option:selected').attr('class'));
+										},
+										open: function( event, ui ) {
+											var obj = $(this);
+											var classArray = [];
+											
+											$(this).find('option').each(function(){
+												if($(this).attr('class')){
+													classArray.push($(this).attr('class'));
+												}else{
+													classArray.push('');
+												}
+											});
+											$('#'+$(this).attr('id')+'-menu li').each(function(e){
+												$(this).addClass(classArray[e]);
+											});
+											
+											$('.input-rental .input-select .ui-selectmenu-menu li').hide();
+										$('.input-rental .input-select .ui-selectmenu-menu li.velvet-green').show();
+											if($('.input-radio-rental input:checked').val() == 'owner'){
+												$('.input-rental .input-select .ui-selectmenu-menu li.green').show();
+											}
+											if($('.input-radio-rental input:checked').val() == 'renter'){
+												$('.input-rental .input-select .ui-selectmenu-menu li.velvet').show();
+											}
+										},
+										change: function( event, ui ) {
+											$('#'+$(this).attr('id')+'-button').removeClass('velvet green').addClass($(this).find('option:selected').attr('class'));
+										}
+									});
+									$('.input-select-multiple select').select2({
+									});
+								}
+							}
+						});
+
+					}
+				});
+				calendar.render();
+				calendar.updateSize();
+			}, 500);
+			return false;
+		});
+		
+		var start = moment();
+		var end = moment().startOf('day').add(31, 'day');
+
+		function cb(start, end) {
+			$('#newCalendarDate .daterange span').html(start.format('DD. MM. YYYY') + ' - ' + end.format('DD. MM. YYYY'));
+		}
+
+		$('#newCalendarDate .daterange').daterangepicker({
+			 "locale": {
+				"format": "DD/MM/YYYY",
+				"separator": " - ",
+				"applyLabel": "Confirmer",
+				"cancelLabel": "Annuler",
+				"fromLabel": "Du",
+				"toLabel": "Au",
+				"customRangeLabel": "Personnalisé",
+				"weekLabel": "W",
+				"daysOfWeek": [
+					"Di",
+					"Lu",
+					"Ma",
+					"Me",
+					"Je",
+					"Ve",
+					"Sa"
+				],
+				"monthNames": [
+					"Janvier",
+					"Février",
+					"Mars",
+					"Avril",
+					"Mai",
+					"Juin",
+					"Juillet",
+					"Août",
+					"Septembre",
+					"Octobre",
+					"Novembre",
+					"Decembre"
+				],
+				"firstDay": 1
+			},
+			startDate: start,
+			endDate: end
+		}, cb);
+
+		cb(start, end);
+		
+		$('#newCalendarDate .daterange').on('apply.daterangepicker', function(ev, picker) {
+			//do something, like clearing an input
+			var dateStart = Math.floor(picker.startDate._d.getTime() / 1000);
+			var dateEnd = Math.floor(picker.endDate._d.getTime() / 1000);
+			calendar.gotoDate(picker.startDate._d);
+		});
+		
+		$(document).on('click', '#calendar .fc-toolbar-title', function(){
+			$("#newCalendarDate").datepicker("show");
+		});
+    });
+</script>

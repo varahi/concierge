@@ -85,13 +85,17 @@ class TaskRepository extends ServiceEntityRepository
      * @param int $id
      * @return int|mixed|string
      */
-    public function findByApartment(int $id)
+    public function findByApartment(int $id, $isEntry = '')
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('t')
             ->from(self::TASK_TABLE, 't')
             ->join('t.housing', 'h')
             ->where($qb->expr()->eq('h.id', $id));
+
+        if ($isEntry == 1) {
+            $qb->andWhere('t.isEntry is not NULL');
+        }
 
         return $qb->getQuery()->getResult();
     }
@@ -142,27 +146,50 @@ class TaskRepository extends ServiceEntityRepository
                 ->andWhere($qb->expr()->neq('t.id', $task->getId()));
         }
 
-        if ($task->getCalendar()) {
+        if ($task->getCalendar() && $task->getCalendar()->getId() !==null) {
             $qb->andWhere($qb->expr()->eq('t.calendar', $task->getCalendar()->getId()));
         }
 
-        if ($task->getRenter()) {
+        if ($task->getRenter() && $task->getRenter()->getId() !==null) {
             $qb->andWhere($qb->expr()->eq('t.renter', $task->getRenter()->getId()));
         }
 
-        if ($task->getInvoice()) {
+        if ($task->getInvoice() && $task->getInvoice()->getId() !==null) {
             $qb->andWhere($qb->expr()->eq('t.invoice', $task->getInvoice()->getId()));
         }
 
         if (count($qb->getQuery()->getResult()) <= 1) {
             return $qb->getQuery()->getOneOrNullResult();
         } else {
-            //return null;
-            //$qb->setMaxResults(1);
-            //return $qb->getQuery()->getSingleColumnResult();
-            //return $qb->getQuery()->getOneOrNullResult();
             return $qb->getQuery()->getResult();
         }
+    }
+
+    /**
+     * @return int|mixed|string
+     */
+    public function findArchived()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('t')
+            ->from(self::TASK_TABLE, 't')
+            ->where($qb->expr()->eq('t.isArchived', 1));
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @return float|int|mixed|string
+     */
+    public function findActive()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('t')
+            ->from(self::TASK_TABLE, 't')
+            ->where('t.isArchived is NULL')
+            ->orWhere($qb->expr()->eq('t.isArchived', 0));
+
+        return $qb->getQuery()->getResult();
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Form\Invoice;
 
 use App\Entity\Housing;
 use App\Entity\InvoiceContain;
+use App\Entity\Materials;
 use App\Entity\Prestation;
 use App\Entity\Services;
 use Doctrine\ORM\EntityRepository;
@@ -22,47 +23,39 @@ class AddInvoiceContainFormType extends AbstractType
     {
         //$invoiceId = $options['invoiceId'];
         $builder
-
             /*
-            ->add('name', TextType::class, [
-                'required' => true,
-                'label' => 'Prestation',
-                'translation_domain' => 'messages',
-            ])
-            */
-
             ->add('prestation', EntityType::class, [
                 'class' => Prestation::class,
                 'multiple'  => false,
                 'expanded'  => false,
-                //'by_reference' => false,
                 'choice_label' => 'selector',
                 'label' => 'Prestation',
                 'translation_domain' => 'messages',
                 'required' => false,
             ])
+            */
+
             /*
             ->add('service', EntityType::class, [
-                'class' => Prestation::class,
+                'class' => Services::class,
                 'multiple'  => false,
                 'expanded'  => false,
-                //'by_reference' => false,
                 'choice_label' => 'selector',
                 'label' => 'Service',
                 'translation_domain' => 'messages',
                 'required' => false,
             ])
+            ->add('material', EntityType::class, [
+                'class' => Materials::class,
+                'multiple'  => false,
+                'expanded'  => false,
+                'choice_label' => 'selector',
+                'label' => 'Material',
+                'translation_domain' => 'messages',
+                'required' => false,
+            ])
             */
-            ->add(
-                'quantity',
-                IntegerType::class,
-                [
-                    'required' => false,
-                    'label' => 'Quantity',
-                    //'empty_data' => '1',
-                    'translation_domain' => 'messages',
-                ]
-            )
+
             /*
             ->add('price', MoneyType::class, [
                 'required' => true,

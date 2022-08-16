@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\Traits\InvoiceTrait;
 use App\Entity\Invoice;
 use App\Entity\InvoiceContain;
 use App\Entity\Params;
@@ -10,13 +11,18 @@ use App\Entity\User;
 use App\Entity\Task;
 use App\Form\Invoice\InvoicePageFormType;
 use App\Form\Invoice\InvoiceContainFormType;
+use App\Form\Invoice\EditInvoiceContainFormType;
 use App\Form\Invoice\AddInvoiceContainFormType;
 use App\Form\Invoice\EditInvoiceFormType;
+use App\Repository\InvoiceContainRepository;
 use App\Repository\InvoiceRepository;
+use App\Repository\MaterialsRepository;
 use App\Repository\PrestationRepository;
+use App\Repository\ServicesRepository;
 use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
+use App\Service\DateUtility;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,9 +35,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class InvoiceController extends AbstractController
 {
+    use InvoiceTrait;
+
     public const ROLE_ADMIN = 'ROLE_ADMIN';
 
     /**
@@ -84,11 +95,19 @@ class InvoiceController extends AbstractController
         User $user,
         UserRepository $userRepository,
         TranslatorInterface $translator,
+        DateUtility $dateUtility,
         NotifierInterface $notifier
     ): Response {
         if ($this->security->isGranted(self::ROLE_ADMIN)) {
             $routeName = $request->attributes->get('_route');
             $searchString = $request->query->get('q');
+
+            if ($user->getInvoices()) {
+                foreach ($user->getInvoices() as $invoice) {
+                    $invoices[] = $invoice;
+                }
+            }
+
             $invoice = new Invoice();
             $url = $this->generateUrl('app_invoice_page', ['id' => $user->getId()]);
             $form = $this->createForm(InvoicePageFormType::class, $invoice, [
@@ -99,29 +118,43 @@ class InvoiceController extends AbstractController
             $form->handleRequest($request);
 
             if ($form->isSubmitted()) {
-                $post = $request->request->get('invoice_form');
+                $post = $request->request->get('invoice_page_form');
                 $userId = $post['user'];
                 $user = $userRepository->findOneBy(['id' => $userId]);
                 $invoice->setOwner($user);
+                if ($post['date'] !=='') {
+                    $date = $dateUtility->checkDate($post['date']);
+                    $invoice->setDate($date);
+                }
                 $entityManager = $this->doctrine->getManager();
                 $entityManager->persist($invoice);
+                $invoice->setNumber('FV' . $invoice->getId());
                 $entityManager->persist($user);
                 $entityManager->flush();
 
                 $message = $translator->trans('Invoice created', array(), 'flash');
                 $notifier->send(new Notification($message, ['browser']));
-                //return $this->redirectToRoute("app_invoice_page");
                 return $this->redirect($url);
             }
 
             return new Response($this->twig->render('invoice/invoice_page.html.twig', [
-                'invoice_form' => $form->createView(),
+                'invoice_page_form' => $form->createView(),
                 'user' => $user,
                 'routeName' => $routeName,
                 'searchString' => $searchString,
                 'placeholderDateFormat' => $this->placeholderDateFormat,
                 'scriptDateFormat' => $this->scriptDateFormat,
             ]));
+
+
+        // Redirect to first invoice
+            /*if(isset($invoices)) {
+                return new RedirectResponse($this->urlGenerator->generate('app_edit_invoice', [
+                    'id' => $invoices[0]->getId(),
+                    'user' => $user->getId()
+                ]));
+            } else {
+            }*/
         } else {
             $message = $translator->trans('Please login', array(), 'flash');
             $notifier->send(new Notification($message, ['browser']));
@@ -152,24 +185,39 @@ class InvoiceController extends AbstractController
             ]);
             $form->handleRequest($request);
 
-            // Automatically set toral to contain
-            $containTotal = [];
+            // Automatically set total to contain
+            $entityManager = $this->doctrine->getManager();
             if ($invoice->getContain()) {
                 foreach ($invoice->getContain() as $contain) {
+                    if ($contain->getPrestation()) {
+                        $contain->setPrice($contain->getPrestation()->getPrice());
+                    }
+                    if ($contain->getService()) {
+                        $contain->setPrice($contain->getService()->getPrice());
+                    }
+                    if ($contain->getMaterial()) {
+                        $contain->setPrice($contain->getMaterial()->getPrice());
+                    }
                     $price = $contain->getPrice();
                     $qty = $contain->getQuantity();
+
                     $contain->setTotal($price * $qty);
-                    $containTotal[] = $contain->getTotal();
+                    $totalContain[] = $contain->getTotal();
                 }
             }
-            // Add total value to invoice
-            if (!empty($containTotal)) {
-                $total = array_sum($containTotal);
+
+            if (!empty($totalContain)) {
+                $total = array_sum($totalContain);
                 $invoice->setTotal($total);
             }
 
+            $invoice->setNumber('FV' . $invoice->getId());
+            $entityManager->persist($invoice);
+            $entityManager->flush();
+
             if ($form->isSubmitted() && $form->isValid()) {
-                $entityManager = $this->doctrine->getManager();
+                $invoice->setNumber('FV' . $invoice->getId());
+                //$entityManager = $this->doctrine->getManager();
                 $entityManager->persist($invoice);
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -229,6 +277,10 @@ class InvoiceController extends AbstractController
         Invoice $invoice,
         UserRepository $userRepository,
         InvoiceRepository $invoiceRepository,
+        MaterialsRepository $materialsRepository,
+        ServicesRepository $servicesRepository,
+        PrestationRepository $prestationRepository,
+        InvoiceContainRepository $invoiceContainRepository,
         TranslatorInterface $translator,
         NotifierInterface $notifier
     ): Response {
@@ -243,15 +295,26 @@ class InvoiceController extends AbstractController
                 'method' => 'POST',
             ]);
             $form->handleRequest($request);
+
+            $materials = $materialsRepository->findAllOrder(['name' => 'ASC']);
+            $services = $servicesRepository->findAllOrder(['name' => 'ASC']);
+            $prestations = $prestationRepository->findAllOrder(['name' => 'ASC']);
+
             if ($form->isSubmitted()) {
-                $post = $request->request->get('invoice_contain_form');
+                $post = $request->request->get('calendar_form');
                 $invoice = $invoiceRepository->findOneBy(['id' => $post['invoice']]);
-                $contain->setName('Contain for invoice ' . $invoice->getId());
-                $contain->setInvoice($invoice);
+
+                // Set related prestations //add_invoice_contain_form
+                $this->setInvoiceRelatedParams($request, $prestationRepository, $invoiceContainRepository, $invoice, 'calendar_form', 'prestation', 'setPrestation');
+                // Set related services
+                $this->setInvoiceRelatedParams($request, $servicesRepository, $invoiceContainRepository, $invoice, 'calendar_form', 'service', 'setService');
+                // Set related materials
+                $this->setInvoiceRelatedParams($request, $materialsRepository, $invoiceContainRepository, $invoice, 'calendar_form', 'material', 'setMaterial');
+
                 $entityManager = $this->doctrine->getManager();
                 $entityManager->persist($invoice);
-                $entityManager->persist($contain);
                 $entityManager->flush();
+
                 $message = $translator->trans('Invoice updated', array(), 'flash');
                 $notifier->send(new Notification($message, ['browser']));
                 return $this->redirect($this->generateUrl('app_edit_invoice', ['id' => $invoice->getId(), 'user' => $user->getId()]));
@@ -259,6 +322,9 @@ class InvoiceController extends AbstractController
             return new Response($this->twig->render('administrator/forms/invoice/add_contain.html.twig', [
                 'add_contain_form' => $form->createView(),
                 'invoice' => $invoice,
+                'prestations' => $prestations,
+                'materials' => $materials,
+                'services' => $services,
                 'user' => $user
             ]));
         } else {
@@ -269,65 +335,62 @@ class InvoiceController extends AbstractController
     }
 
     /**
-     * @Route("/edit-invoice-contains/invoice-{id}", name="app_edit_invoice_contains")
+     * @Route("/edit-invoice-contain/contain-{id}", name="app_edit_invoice_contain")
      */
     public function editInvoiceContain(
         Request $request,
         InvoiceContain $contain,
-        UserRepository $userRepository,
-        InvoiceRepository $invoiceRepository,
         PrestationRepository $prestationRepository,
-        Invoice $invoice,
+        ServicesRepository $servicesRepository,
+        MaterialsRepository $materialsRepository,
         TranslatorInterface $translator,
         NotifierInterface $notifier
     ): Response {
         if ($this->security->isGranted(self::ROLE_ADMIN)) {
-            $userId = $request->query->get('user');
-            $url = $this->generateUrl('app_edit_invoice_contains', ['id' => $invoice->getId(), 'user' => $userId]);
-            $user = $userRepository->findOneBy(['id' => $userId]);
-            $form = $this->createForm(InvoiceContainFormType::class, $invoice, [
+            $url = $this->generateUrl('app_edit_invoice_contain', ['id' => $contain->getId()]);
+            $form = $this->createForm(EditInvoiceContainFormType::class, $contain, [
                 'action' => $url,
-                'userId' => $user->getId(),
                 'method' => 'POST',
             ]);
+
             $form->handleRequest($request);
             $prestations = $prestationRepository->findAll();
+            $services = $servicesRepository->findAll();
+            $materials = $materialsRepository->findAll();
 
             if ($form->isSubmitted()) {
-                $postArr = $request->request->get('invoice_contain_form');
-                if (is_array($postArr['new_prestation']) && !empty($postArr['new_prestation'])) {
-                    if ($postArr['new_prestation']['0'] !=='') {
-                        foreach ($postArr['new_prestation'] as $key => $newPrestation) {
-                            $prestationObj = $prestationRepository->findOneBy(['id' => $newPrestation]);
-                            if (isset($postArr['new_prestatin_quantity']) && $prestationObj instanceof Prestation) {
-                                $prestationObj->setQuantity($postArr['new_prestatin_quantity'][$key]);
-                            }
-                        }
-
-                        if ($prestationObj instanceof Prestation) {
-                            $contain->setPrestation($prestationObj);
-                        }
-
-                        $entityManager = $this->doctrine->getManager();
-                        $entityManager->persist($contain);
-                        $entityManager->flush();
-                        $notifier->send(new Notification('Contain updated', ['browser']));
-                        return $this->redirect($this->generateUrl('app_edit_invoice_contains', ['id' => $invoice->getId(), 'user' => $userId ]));
-                    }
+                $postArr = $request->request->get('edit_invoice_contain_form');
+                if (isset($postArr['prestation']) && $postArr['prestation'] !=='') {
+                    $prestation = $prestationRepository->findOneBy(['id' => $postArr['prestation']]);
+                    $contain->setPrestation($prestation);
                 }
+                if (isset($postArr['service']) && $postArr['service'] !=='') {
+                    $service = $servicesRepository->findOneBy(['id' => $postArr['service']]);
+                    $contain->setService($service);
+                }
+                if (isset($postArr['material']) && $postArr['material'] !=='') {
+                    $material = $materialsRepository->findOneBy(['id' => $postArr['material']]);
+                    $contain->setMaterial($material);
+                }
+
+                $entityManager = $this->doctrine->getManager();
+                $entityManager->persist($contain);
+                $entityManager->flush();
+                $notifier->send(new Notification('Contain updated', ['browser']));
+                $referer = $request->headers->get('referer');
+                return new RedirectResponse($referer);
             }
 
-            return new Response($this->twig->render('administrator/forms/invoice/edit-invoice-contains.html.twig', [
+            return new Response($this->twig->render('administrator/forms/invoice/edit-invoice-contain.html.twig', [
                 'invoice_contain_form' => $form->createView(),
-                'edit_contain' => '1',
-                'invoice' => $invoice,
                 'prestations' => $prestations,
-                'user' => $user
+                'services' => $services,
+                'materials' => $materials,
+                'contain' => $contain
             ]));
         } else {
             $message = $translator->trans('Please login', array(), 'flash');
-            $notifier->send(new Notification($message, ['browser']));
-            return $this->redirectToRoute("app_login");
+            throw new AccessDeniedException($message);
         }
     }
 

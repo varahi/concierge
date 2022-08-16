@@ -111,8 +111,7 @@
             {% endif %}
             {% if task.note %}
                 <div class="info-note">
-                    <a class="bt-infonote ajax-popup-link" title="{{ 'View task note'|trans }}"
-                       href="{{ path('app_task_note', { task: task.id}) }}">{{ 'Note'|trans }}</a>
+                    <span style="cursor: pointer" class="bt-infonote" title="{{ task.note }}" href="">{{ 'Note'|trans }}</span>
                 </div>
             {% endif %}
         </div>

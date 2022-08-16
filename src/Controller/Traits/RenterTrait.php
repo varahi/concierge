@@ -194,6 +194,17 @@ trait RenterTrait
 
         // Set renter for calendar
         $calendar->setRenter($entryTask->getRenter());
+
+        // Set times for calendar
+        if (!empty($post['startTime']) && $post['startTime'] !=='') {
+            $startHour = \datetime::createfromformat('H:i', $post['startTime']);
+            $calendar->setStartHour($startHour);
+        }
+        if (!empty($post['endTime']) && $post['endTime'] !=='') {
+            $endHour = \datetime::createfromformat('H:i', $post['endTime']);
+            $calendar->setEndHour($endHour);
+        }
+
         $entityManager->persist($calendar);
 
         // Set properties for end task

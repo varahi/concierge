@@ -1,0 +1,76 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2 class="text-center">AJOUTER DU CONTENU</h2>
+                {{ form_start(add_contain_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                <fieldset>
+                    <div class="input-flex">
+                        <div class="col-8">
+                            {#
+                            <div class="input-select">
+                                {{ form_row(add_contain_form.prestation) }}
+                            </div>
+                            #}
+
+                            <div class="input-select">
+                                <label>{{ 'New prestation'|trans }}</label>
+                                <select name="add_invoice_contain_form[new_prestation][]" >
+                                    <option value="">{{ 'New prestation'|trans }}</option>
+                                    {% for prestation in prestations %}
+                                        <option value="{{ prestation.id }}"
+                                                {% if prestation.isOwner == 1 and prestation.isRenter == 1 %}
+                                                    class="velvet-green"
+                                                {% elseif prestation.isRenter == 1 %}
+                                                    class="velvet"
+                                                {% else %}
+                                                    class="green"
+                                                {% endif %}
+                                        >
+                                            {{ prestation.name }} - {% if prestation.isRenter == 1 %} Renter {% endif %} {% if prestation.isOwner == 1 %} Owner {% endif %} {{ prestation.price }} &#8364;
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="add_invoice_contain_form_prestation_quantity">{{ 'Quantity'|trans }}</label>
+                            <input type="number" id="add_invoice_contain_form_prestation_quantity" name="add_invoice_contain_form[new_prestation_quantity][]">
+                        </div>
+                    </div>
+
+                    <div class="input-flex">
+                        <div class="col-8">
+                            <div class="input-select">
+                                {{ form_row(add_contain_form.service) }}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="add_invoice_contain_form_service_quantity">{{ 'Quantity'|trans }}</label>
+                            <input type="number" id="add_invoice_contain_form_service_quantity" name="add_invoice_contain_form[new_service_quantity][]">
+                        </div>
+                    </div>
+
+                    <div class="input-flex">
+                        <div class="col-8">
+                            <div class="input-select">
+                                {{ form_row(add_contain_form.material) }}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="add_invoice_contain_form_material_quantity">{{ 'Quantity'|trans }}</label>
+                            <input type="number" id="add_invoice_contain_form_material_quantity" name="add_invoice_contain_form[new_material_quantity][]">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="input-submit text-center">
+                    <input type="submit" value="Valider"/>
+                </div>
+                <input type="hidden" name="invoice_contain_form[user]" value="{{ user.id }}">
+                <input type="hidden" name="invoice_contain_form[invoice]" value="{{ invoice.id }}">
+                {{ form_end(add_contain_form) }}
+            </div>
+        </div>
+    </div>
+</div>

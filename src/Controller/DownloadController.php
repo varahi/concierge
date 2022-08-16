@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\Traits\TaskTrait;
 use App\Entity\Housing;
+use App\Entity\Invoice;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
@@ -308,6 +309,38 @@ class DownloadController extends AbstractController
             $html = $this->renderView('administrator/pdf/task_invoice_pdf.html.twig', [
                 'title' => "Invoice PDF",
                 'task' => $task,
+            ]);
+
+            $dompdf = $fileService->prepareDompdf($html, 'task_invoice.pdf');
+
+            $response = new Response();
+            $response->setContent($dompdf->output());
+            $response->setStatusCode(200);
+            $response->headers->set('Content-Type', 'application/pdf');
+
+            return $response;
+        } else {
+            $message = $translator->trans('Please login', array(), 'flash');
+            $notifier->send(new Notification($message, ['browser']));
+            return $this->redirectToRoute("app_login");
+        }
+    }
+
+    /**
+     * @Route("/invoice-{id}/download-pdf", name="app_invoice_pdf")
+     */
+    public function invoicePdf(
+        Invoice $invoice,
+        NotifierInterface $notifier,
+        TranslatorInterface $translator,
+        FileService $fileService
+    ): Response {
+        if ($this->security->isGranted(self::ROLE_ADMIN)) {
+
+            // Retrieve the HTML generated in our twig file
+            $html = $this->renderView('administrator/pdf/invoice_pdf.html.twig', [
+                'title' => "Invoice PDF",
+                'invoice' => $invoice,
             ]);
 
             $dompdf = $fileService->prepareDompdf($html, 'task_invoice.pdf');

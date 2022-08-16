@@ -22,13 +22,8 @@ class InvoicePageFormType extends AbstractType
     {
         $userId = $options['userId'];
         $builder
-            //->add('created')
-            //->add('number')
-            //->add('date')
-            //->add('price')
-            //->add('total')
-            //->add('renter')
-            //->add('owner')
+
+            /*
             ->add('number', TextType::class, [
                 'required' => true,
                 'attr' => [
@@ -40,6 +35,8 @@ class InvoicePageFormType extends AbstractType
                 ],
                 'label' => 'Number :'
             ])
+            */
+
             ->add('date', DateType::class, [
                 'label'     => 'Date :',
                 'required' => true,
@@ -63,8 +60,10 @@ class InvoicePageFormType extends AbstractType
                         ->orderBy('u.id', 'ASC');
                 },
                 'label' => 'Choose apartment',
-                'choice_label' => 'selector',
+                //'choice_label' => 'selector',
+                'choice_label' => 'name',
             ])
+            /*
             ->add('total', MoneyType::class, [
                 'required' => false,
                 'attr' => [
@@ -75,6 +74,7 @@ class InvoicePageFormType extends AbstractType
                 ],
                 'label' => 'Total'
             ])
+            */
             /*
             ->add('owner', HiddenType::class, [
                 'required' => false,

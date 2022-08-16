@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Download {{ title }}{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('/app/public_html/css/pdf.css') }}" media="all">
+    {% endblock %}
+
+    <style>
+        table {
+            font-size: 16px;
+        }
+        table td,
+        table th {
+            text-align: left;
+        }
+        .pdf-table-items th {
+            font-weight: bold;
+        }
+        footer {
+            position: fixed;
+            bottom: -20px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body class="pdf">
+{% block body %}
+{% endblock %}
+</body>
+</html>

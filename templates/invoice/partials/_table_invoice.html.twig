@@ -30,9 +30,6 @@
                 {% if contain.material %}
                     {{ contain.material.name }}
                 {% endif %}
-                {% if contain.pack %}
-                    {{ contain.pack.name }}
-                {% endif %}
             </td>
             <td>
                 {% if contain.service %}
@@ -44,23 +41,20 @@
                 {% if contain.material %}
                     {{ contain.material.price|format_currency('EUR')  }}
                 {% endif %}
-                {% if contain.pack %}
-                    {{ contain.pack.price|format_currency('EUR')  }}
-                {% endif %}
             </td>
             <td>
-
                 {% if contain.service %}
                     {{ contain.service.price|number_format * contain.quantity|number_format}} &euro;
                 {% endif %}
-
+                {% if contain.prestation %}
+                    {{ contain.prestation.price|number_format * contain.quantity|number_format}} &euro;
+                {% endif %}
+                {% if contain.material %}
+                    {{ contain.material.price|number_format * contain.quantity|number_format}} &euro;
+                {% endif %}
             </td>
             <td>
-                {#
-                <a href="{{ path('app_edit_invoice_contain', { id: contain.id, user: user.id, invoice: invoice.id}) }}" class="bt-edit ajax-popup-link">{{ 'Edit'|trans }}</a>
-                #}
-
-                <a href="{{ path('app_edit_invoice_contains', { id: invoice.id, user: user.id}) }}" class="bt-edit ajax-popup-link">{{ 'Edit'|trans }}</a>
+                <a href="{{ path('app_edit_invoice_contain', { id: contain.id}) }}" class="bt-edit ajax-popup-link">{{ 'Edit'|trans }}</a>
             </td>
         </tr>
     {% endfor %}

@@ -1,0 +1,76 @@
+<div id="custom-content" class="white-popup-block white-popup-block-padding">
+    <div class="_lightbox-std">
+        <div class="content-lightbox">
+            <div class="center">
+                <h2 class="text-center">{{ 'Edit content'|trans }}</h2>
+                {{ form_start(invoice_contain_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+
+                <div class="input-flex">
+                    <div class="col-8">
+                        {% if contain.service %}
+                            <div class="input-select">
+                                <div>
+                                    <label for="edit_invoice_contain_form_service">{{ 'Service'|trans }}</label>
+                                    <select id="edit_invoice_contain_form_service" name="edit_invoice_contain_form[service]">
+                                        {% for service in services %}
+                                            <option value="{{ service.id }}" {% if contain.service.id == service.id %} selected {% endif %}>
+                                                {{ service.name }} - {{ service.price }} &#8364;
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if contain.prestation %}
+                            <div class="input-select">
+                                <div>
+                                    <label for="edit_invoice_contain_form_prestation">{{ 'Prestation'|trans }}</label>
+                                    <select id="edit_invoice_contain_form_prestation" name="edit_invoice_contain_form[prestation]">
+                                        {% for prestation in prestations %}
+                                            <option value="{{ prestation.id }}" {% if contain.prestation.id == prestation.id %} selected {% endif %}>
+                                                {{ prestation.name }} - {{ prestation.price }} &#8364;
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if contain.material %}
+                        <div class="input-select">
+                            <div class="input-select">
+                                <div>
+                                    <label for="edit_invoice_contain_form_material">{{ 'Material'|trans }}</label>
+                                    <select id="edit_invoice_contain_form_material" name="invoice_contain_form[material]">
+                                        {% for material in materials %}
+                                            <option value="{{ material.id }}" {% if contain.material.id == material.id %} selected {% endif %}>
+                                                {{ material.name }} - {{ material.price }} &#8364;
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                    </div>
+                    <div class="col-4">
+                        {{ form_row(invoice_contain_form.quantity) }}
+                    </div>
+                </div>
+
+                <div class="input-submit text-center">
+                    <input type="submit" value="Valider"/>
+                </div>
+
+                {#
+                <input type="hidden" name="edit_invoice_contain_form[user]" value="{{ user.id }}">
+                <input type="hidden" name="edit_invoice_contain_form[invoice]" value="{{ invoice.id }}">
+                #}
+
+                {{ form_end(invoice_contain_form) }}
+            </div>
+        </div>
+    </div>
+</div>

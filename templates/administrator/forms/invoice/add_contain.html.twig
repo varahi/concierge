@@ -5,22 +5,19 @@
                 <h2 class="text-center">AJOUTER DU CONTENU</h2>
                 {{ form_start(add_contain_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
                 <fieldset>
-                    <div class="input-flex">
-                        <div class="col-8">
-                            <div class="input-select">
-                                {{ form_row(add_contain_form.prestation) }}
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            {{ form_row(add_contain_form.quantity) }}
-                        </div>
+                    <div class="input-rental">
+                        {% include 'administrator/partials/forms/_new_prestation.html.twig' %}
+                        <br />
+                        {% include 'administrator/partials/forms/_new_services.html.twig' %}
+                        <br />
+                        {% include 'administrator/partials/forms/_new_materials.html.twig' %}
                     </div>
                 </fieldset>
                 <div class="input-submit text-center">
                     <input type="submit" value="Valider"/>
                 </div>
-                <input type="hidden" name="invoice_contain_form[user]" value="{{ user.id }}">
-                <input type="hidden" name="invoice_contain_form[invoice]" value="{{ invoice.id }}">
+                <input type="hidden" name="calendar_form[user]" value="{{ user.id }}">
+                <input type="hidden" name="calendar_form[invoice]" value="{{ invoice.id }}">
                 {{ form_end(add_contain_form) }}
             </div>
         </div>

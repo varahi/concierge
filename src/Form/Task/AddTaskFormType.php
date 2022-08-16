@@ -99,7 +99,7 @@ class AddTaskFormType extends AbstractType
                 'label' => 'Renter',
             ])
             */
-            ->add('description', TextareaType::class, [
+            ->add('note', TextareaType::class, [
                 'required' => false,
                 'label' => false,
                 'constraints' => [

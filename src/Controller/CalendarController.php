@@ -290,7 +290,7 @@ class CalendarController extends AbstractController
                         }
 
                         // Calculate total sum for invoice
-                        if (count($invoice->getContain()) > 1) {
+                        if (count($invoice->getContain()) > 0) {
                             foreach ($invoice->getContain() as $contain) {
                                 $totalContain[] = $contain->getTotal();
                             }

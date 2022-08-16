@@ -60,13 +60,17 @@ class TaskExpiredDateToArchiveCommand extends Command
         OutputInterface $output
     ): int {
         $io = new SymfonyStyle($input, $output);
-        $tasks = $this->taskRepository->findAll();
-        $count = $this->countExpiredDateTaskToArchive($tasks);
+        //$tasks = $this->taskRepository->findAll();
+        $activeTasks = $this->taskRepository->findActive();
+        $archivedTasks = $this->taskRepository->findArchived();
+        $count = $this->countExpiredDateTaskToArchive($activeTasks);
 
         if ($input->getOption('dry-run')) {
             $io->note('Dry mode enabled');
         } else {
-            $this->expiredDateTaskToArchive($tasks);
+            $this->setTaskToArchive($activeTasks);
+            // Set tasks to active if task has flag "archived", but has actual visible dates
+            $this->setTaskToActive($archivedTasks);
         }
 
         $io->success(sprintf('Moved to archive "%d" tasks.', $count));
@@ -76,7 +80,7 @@ class TaskExpiredDateToArchiveCommand extends Command
     /**
      * @param $tasks
      */
-    private function expiredDateTaskToArchive(
+    private function setTaskToArchive(
         $tasks
     ) {
         if ($tasks) {
@@ -88,9 +92,29 @@ class TaskExpiredDateToArchiveCommand extends Command
                     if ($dateNow > $taskDate) {
                         $task->setIsArchived(true);
                     }
-                    //if($dateNow <= $taskDate) {
-                    //$task->setIsArchived(false);
-                    //}
+                    $this->em->persist($task);
+                    $this->em->flush();
+                }
+            }
+        }
+    }
+
+    /**
+     * @param $tasks
+     * @return void
+     */
+    private function setTaskToActive(
+        $tasks
+    ) {
+        if ($tasks) {
+            $dateNow = date($this->dateFormat);
+
+            foreach ($tasks as $task) {
+                if (null !== $task->getCalendar()->getEndDate()) {
+                    $taskDate = $task->getCalendar()->getEndDate()->format($this->dateFormat);
+                    if ($dateNow <= $taskDate) {
+                        $task->setIsArchived(false);
+                    }
                     $this->em->persist($task);
                     $this->em->flush();
                 }

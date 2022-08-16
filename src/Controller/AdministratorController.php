@@ -195,7 +195,12 @@ class AdministratorController extends AbstractController
             if ($form->isSubmitted()) {
                 $post = $request->request->get('add_renter_form');
                 // Check and redirect if renter is busy
-                $startDate = $post['startDate'];
+
+                if ($post['startTime'] !=='') {
+                    $startDate = $post['startDate'] .' '. $post['startTime'];
+                } else {
+                    $startDate = $post['startDate'];
+                }
                 $dateCompare1 = strtotime($startDate);
 
                 if (is_array($post['apartments']) && !empty($post['apartments'])) {
@@ -204,19 +209,7 @@ class AdministratorController extends AbstractController
                 }
 
                 // check availability for existing calendars
-                if ($calendars) {
-                    foreach ($calendars as $key => $calendar) {
-                        $startDateToCompare[$key] = $calendar->getStartDate()->getTimestamp();
-                        $endDateToCompare[$key] = $calendar->getEndDate()->getTimestamp();
-                        if ($dateCompare1 >= $startDateToCompare[$key] && $dateCompare1 <= $endDateToCompare[$key]) {
-                            $arrValue[] = 'busy';
-                        } else {
-                            $arrValue[] = 'free';
-                        }
-                    }
-                } else {
-                    $arrValue = null;
-                }
+                $arrValue = $this->checkAvailabilityCalendars($dateCompare1, $calendars);
 
                 // Redirect if apartment busy
                 if (!empty($arrValue) && in_array("busy", $arrValue)) {
@@ -266,12 +259,13 @@ class AdministratorController extends AbstractController
                             // Set related materials
                             $this->setInvoiceRelatedParams($request, $materialsRepository, $invoiceContainRepository, $invoice, 'calendar_form', 'material', 'setMaterial');
 
-                            // Saved before calculating total sum
                             $entityManager = $this->doctrine->getManager();
                             $entityManager->persist($invoice);
+                            $entityManager->flush();
 
                             // Calculate total sum for invoice
-                            if (count($invoice->getContain()) > 1) {
+                            // ToDo: currently when create new prestation property total not calculated and incorrec qty for contrains
+                            if (count($invoice->getContain()) > 0) {
                                 foreach ($invoice->getContain() as $contain) {
                                     $totalContain[] = $contain->getTotal();
                                 }
@@ -279,6 +273,8 @@ class AdministratorController extends AbstractController
                                 $invoice->setTotal($total);
                             }
 
+                            //$entityManager = $this->doctrine->getManager();
+                            //$entityManager->persist($invoice);
                             $entityManager->flush();
                         }
                     }

@@ -22,6 +22,8 @@
                     {% include 'partials/_message.html.twig' %}
                     <article class="content">
                         <div class="list-user list-invoice">
+                            <a href="{{ path('app_invoice_page', { id: user.id}) }}" class="bt-border">{{ 'New invoice'|trans }}</a>
+                            <br /><br /><hr /><br />
                             {% if user.invoices|length > 0 %}
                                 {% for invoice in user.invoices %}
                                     {% include 'invoice/partials/_list_invoices.html.twig' %}
@@ -45,7 +47,7 @@
                     </script>
                     <article class="content">
                         <div class="detail-invoice">
-                            {{ form_start(invoice_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
+                            {{ form_start(invoice_page_form, {'attr' : {'class': 'form-std', 'autocomplete': 'off'}} ) }}
                             <fieldset>
                                 <h2 style="text-transform: uppercase">{{ 'New invoice'|trans }}</h2>
                                 <div class="row">
@@ -61,15 +63,17 @@
                                             </div>
                                         </div>
                                         <div class="input-select">
-                                            {{ form_row(invoice_form.apartment) }}
+                                            {{ form_row(invoice_page_form.apartment) }}
                                         </div>
                                         <br /><br />
-										<div class="input-price">
-											{{ form_row(invoice_form.total) }}
+                                        {#
+                                        <div class="input-price">
+                                            {{ form_row(invoice_page_form.total) }}
                                         </div>
+                                        #}
                                     </div>
                                     <div>
-                                        <div class="input-flex">
+                                        {#<div class="input-flex">
                                             <div>
                                                 <label for="phone">{{ 'Phone'|trans }}: </label>
                                                 <input type="text" id="phone" name="" value="{{ user.telephone }}" disabled readonly />
@@ -78,12 +82,12 @@
                                                 <label for="email">{{ 'Email'|trans }} :</label>
                                                 <input type="email" id="email" name="" value="{{ user.email }}" disabled readonly />
                                             </div>
-                                        </div>
+                                        </div>#}
                                         <br>
                                         <h2>{{ 'Invoice information'|trans }}</h2>
                                         <div class="input-flex">
-                                            {{ form_row(invoice_form.number) }}
-                                            {{ form_row(invoice_form.date) }}
+                                            {# {{ form_row(invoice_page_form.number) }}#}
+                                            {{ form_row(invoice_page_form.date) }}
                                         </div>
                                     </div>
                                 </div>
@@ -95,8 +99,8 @@
                                     #}
                                 </div>
                             </fieldset>
-                            <input type="hidden" name="invoice_form[user]" value="{{ user.id }}">
-                            {{ form_end(invoice_form) }}
+                            <input type="hidden" name="invoice_page_form[user]" value="{{ user.id }}">
+                            {{ form_end(invoice_page_form) }}
                         </div>
                     </article>
 

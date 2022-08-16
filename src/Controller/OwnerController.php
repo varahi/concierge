@@ -233,6 +233,9 @@ class OwnerController extends AbstractController
                 $tasks = $this->getTasksByApartments($apartmentIds, $taskRepository);
             }
 
+            // Task fror js calendar
+            $calendarTasks = $taskRepository->findByApartment(intval($apartment->getId()), '1');
+
             $reservations = $reservationRepository->findByUser($user);
             $services = $servicesRepository->findAllOrder(['name' => 'ASC']);
             $prestations = $prestationRepository->findAllOrder(['name' => 'ASC']);
@@ -335,6 +338,7 @@ class OwnerController extends AbstractController
                 'apartment' => $apartment,
                 'user' => $user,
                 'tasks' => $tasks,
+                'calendarTasks' => $calendarTasks,
                 'reservations' => $reservations,
                 'services' => $services,
                 'prestations' => $prestations,
